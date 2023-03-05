@@ -3,7 +3,7 @@
 [![en](https://img.shields.io/badge/lang-en-red.svg)](https://github.com/alejandroMAD/mvc-swing-drones/blob/main/README.md)
 [![es](https://img.shields.io/badge/lang-es-yellow.svg)](https://github.com/alejandroMAD/coding-essentials/blob/main/README.es.md)
 
-Bundle of 3 Java programming projects covering basic algorithms, OOP essentials, and database connectivity to ensure first-year programming students pass their course.
+A bundle of 3 Java programming projects covering basic algorithms, OOP essentials, and database connectivity designed to ensure that first-year programming students pass their course.
 
 License
 --------
