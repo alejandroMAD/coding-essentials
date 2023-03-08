@@ -34,7 +34,7 @@ Exceptuando el primer ejercicio, que es un caso de pura imaginación para aplica
 * Programación Orientada a Objetos
 * Estructuras básicas (variables, métodos, constantes, operadores)
 * Control de flujo (condicionales, bucles)
-* Visibilidad encapsulamiento
+* Visibilidad y encapsulamiento
 * Arrays uni y bidimensionales
 * Tipos enumerados (Enum)
 * Sobreescritura de métodos
@@ -96,18 +96,127 @@ Exceptuando el primer ejercicio, que es un caso de pura imaginación para aplica
 12. Los objetos de ```RobotPintor``` instanciados con un ```Comportamiento``` ```REGULAR``` dibujarán exactamente la figura con la altura y carácter de repetición pasados por argumento, mientras que las instancias de ```RobotPintor``` de ```Comportamiento``` ```ALEATORIO``` ignorarán los parámetros de configuración de ```dibujar()``` y pintarán una figura escogida aleatoriamente, de altura aleatoria (máximo 12 líneas) y un carácter aleatorio. Considera la conveniencia de restringir los caracteres a un rango concreto de caracteres de la tabla ASCII, p. ej. entre 33-95 para evitar la impresión de figuras “invisibles”.
 13. La clase ```RobotPoeta``` contiene tres campos de tipo String[] (array de Strings), cada uno de ellos con 4 líneas de un poema o canción diferentes y un campo String[][] (array bidimensional) que almacena los tres poemas. La clase definirá dos constructores sobrecargados coordinados con los de su superclase ```RobotArtista``` y un único método ```recitar()```, que no devuelve nada pero imprime en consola 4 versos de la colección bajo las siguientes reglas: Si la instancia de ```RobotPoeta``` tiene un ```Comportamiento``` ```REGULAR```, imprimirá de manera congruente los 4 versos del poema o canción de uno de los arrays String[] elegido al azar; si tiene un ```Comportamiento``` ```ALEATORIO```, imprimirá 4 versos escogidos aleatoriamente de cualquiera de los tres poemas o canciones, de modo que existirá una probabilidad muy pequeña de que imprima 4 versos del mismo poema en su debido orden.
 14. Define, por último, una clase principal con método ```main()``` destinada a instanciar un ```Robot``` de cada tipo (un ```RobotPrimo```, un ```RobotCortador```, un ```RobotPintor``` ```REGULAR```, un ```RobotPintor``` ```ALEATORIO```, un ```RobotPoeta``` ```REGULAR``` y un ```RobotPoeta``` ```ALEATORIO```), imprimir la información general de cada objeto mediante el método ```toString()``` e invocar a continuación los métodos de cada objeto para someterlos a prueba en la ejecución del programa. El orden de pruebas propuesto es el siguiente:
-    
+
+     1. Impresión de datos de los seis objetos.
+     2. Solicitar al RobotPrimo procesar el número 11 para saber si es o no primo.
+     3. Solicitar al RobotPrimo imprimir el intervalo de números primos entre 1 y 50.
+     4. Solicitar a un RobotPintor de Comportamiento REGULAR dibujar un TRIÁNGULO de 8 líneas de alto compuesto de caracteres ‘$’.
+     5. Solicitar a un RobotPintor de Comportamiento ALEATORIO imprimir una figura con cualesquiera argumentos: el objeto dibujará una figura de manera aleatoria.
+     6. Solicitar al RobotCortador procesar el número 4.0 y procesar el número 0.285714.
+     7. Solicitar al RobotCortador procesar el String “acurruca”, procesar el array de enteros {5, 5, 45, 66, 1001, 2, 3, 11} y procesar también el array de Strings {"Mercurio", "Venus", "Tierra", "Marte", "Júpiter", "Saturno", "Urano", "Neptuno"}.
+     8. Solicitar a un RobotPoeta de Comportamiento REGULAR recitar versos de su colección.
+     9. Solicitar a un RobotPoeta de Comportamiento ALEATORIO recitar versos de su colección.
+     10. Imprime para terminar un mensaje indicando el número total de Robots construidos.
+
+<h3 id="linaje-salida">Salida en consola:</h3>
+
+```I am a Robot of: [name=Bender, serialNumber=1010011010BU22, discipline=Science]
+I am a Robot of: [name=Euclid, serialNumber=E213002248G, discipline=Science]
+I am a Robot of: [name=Frida, serialNumber=K15019071954L, discipline=Arts]
+I am a Robot of: [name=Salvador, serialNumber=D1904858585A, discipline=Arts]
+I am a Robot of: [name=Byron, serialNumber=E18091849AP, discipline=Arts]
+I am a Robot of: [name=3DG4R-4LL4N-P03, serialNumber=E18091849AP, discipline=Arts]
+
++----------------------+
+|     Operations     |
++----------------------+
+
+11 is a prime number.
+
+Primes between 1-50:
+[2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47]
+
+$
+$$
+$$$
+$$$$
+$$$$$
+$$$$$$
+$$$$$$$
+$$$$$$$$
+
+ G
+GGG
+ G
+
+Whole part: 4; Decimal part: 0.0
+Whole part: 0; Decimal part: 0.285714
+
+acur / ruca
+First half: [5, 5, 45, 66] / Second half: [1001, 2, 3, 11]
+First half: [Mercurio, Venus, Tierra, Marte] / Second half: [Júpiter, Saturno, Urano, Neptuno]
+
+3-1 Tu rencor, tu porqué, tu agonía...
+3-2 O tal vez esa sombra
+3-3 que se tumba a tu lado en la alfombra
+3-4 A esperar que suba la marea.
+
+1-4 Y no poder del árbol desasirse
+2-1 ¿Qué es poesía?, dices mientras clavas
+3-1 Tu rencor, tu porqué, tu agonía...
+2-2 en mi pupila tu pupila azul.
+
+=====Total robots manufactured: [6]=====
+```
+
+<br>    
+
 <h2 id="yum-snack-bar">
   Ejercicio segundo: Yum Snack Bar
   <img src="https://github.githubassets.com/images/icons/emoji/unicode/1f37f.png?v8" alt="popcorn" style="float:right;width:64px;height:64px;">
 </h2>
 
+<h3 id="yum-conocimientos">Conocimientos necesarios:</h3>
+
+* Programación Orientada a Objetos
+* Composición
+* Modularización en paquetes e importación de clases
+* Uso de Colecciones dinámicas en Java
+* Creación y captura de excepciones
+* Creación e implementación de Interfaces
+* API de tiempo y calendario de Java 8+
+* Persistencia de información: API I/O de Java I/O para lectura/escritura de ficherosç
+* Comparación de objetos (Comparable)
+
+<h3 id="yum-requisitos">Requisitos:</h3>
+
+El objetivo es crear un programa en Java para administrar los aspectos básicos de la venta de productos de un establecimiento de palomitas, bebidas y aperitivos para consumir en el cine. La función principal es el registro de las compras o transacciones, simulando una aplicación de TPV o "cash register".
+
+El establecimiento "Yum Snack Bar" ofrece a sus clientes los siguientes productos: 1) Refrescos y 2) palomitas de diferentes tamaños; 3) chocolatinas o snacks, 4) bolsas de chucherías al peso y 5) bolsas de frutos secos variados que se compran también al peso o granel.
+
+1.	Construye una solución Orientada a Objetos que contemple las diferentes clases necesarias para organizar el programa, utilizando paquetería para dividir lo mejor posible el código agrupando las clases por sus características y finalidad.
+2.	Parece clara la conveniencia de utilizar la herencia: por ejemplo, es posible concebir una clase ```CajaPalomitas``` y otra clase ```VasoRefresco```, con características propias, y una superclase ```Producto``` con características comunes como un ```nombre``` y un ```precio```.
+3.	Crea unas constantes que definan los tamaños posibles de las palomitas y las bebidas: ```MEDIANO```, ```GRANDE```, ```GIGANTE```. Una solución posible es la definición de un tipo enumerado ```Tamaño```.
+4.	Las diferentes clases de productos deben implementar los métodos ```toString()``` y _getters_ y _setters_ necesarios. Los constructores de clases y superclases deben coordinarse según los requisitos del ejercicio. Ten presente que esta es una aplicación para gestionar las transacciones, no de constitución de la tienda y productos: por esta razón no se pasará el nombre ni el precio de los productos en su instanciación, sino que ya tendrán un nombre descriptivo y precio predefinidos. Parece aconsejable utilizar a tal fin campos estáticos, p. ej. (double) ```PRECIO```, a falta del uso de una base de datos de productos.
+5.	Las palomitas y bebidas deben tener diferentes precios en función del tamaño. El constructor de la clase VasoRefresco, además del Tamano, recibirá por parámetro el tipo (“COLA”, “COLA_LIGHT”, “NARANJA”, “LIMON”) para lo cual se recomienda el uso de un tipo Enum anidado en la clase. Existirá una clase Menu que permitirá la compra de la combinación de productos palomitas+bebida a precios especiales de promoción. Es aconsejable utilizar la composición para diseñar esta clase, que constará de objetos CajaPalomitas y VasoRefresco.
+6.	El constructor de Menu evaluará que las palomitas y bebidas pasadas por argumento sean del mismo tamaño. No se permiten menús con un caja de palomitas y un vaso de bebida de diferente tamaño (p.ej. Palomitas MEDIANO y Refresco GRANDE). Crea una excepción personalizada llamada 'ExcepcionTamanoIlegal' que sea arrojada en tales casos.
+7.	Las clases para BolsaChucherias y BolsaFrutosSecos, que permiten la compra al peso, deben fijar un precio estático por 100g y su constructor recibirá por parámetro el peso concreto de la compra, que se multiplicará por aquel atributo para calcular el precio. Crea una Interfaz denominada Pesable con un método calcularPrecio(double peso) para sea implementado por estas dos clases de productos que se venden a granel. Es aconsejable emplear alguna función de redondeo de 2 decimales para evitar la impresión de precios como 8.250000000000002.
+8.	Las clases BolsaChucherias y BolsaFrutosSecos deben incorporar una lógica que arroje una excepción IllegalArgumentException si se intenta comprar una bolsa con un precio negativo o anormalmente bajo, menor de 20 g, para prevenir trampas con la balanza.
+9.	La clase Chocolatina será la más simple de todas: hereda de Producto, tendrá un precio estático, el nombre estático del producto y un constructor que no recibe argumentos.
+10.	Crea una clase que Tienda almacene la información del establecimiento que consideres necesaria, y como mínimo su nombre y la fecha en que la tienda fue fundada. Utiliza preferiblemente alguna de las clases relativas a fechas de la API de Java 8 o superior. Debes crear un método que permita imprimir en consola un mensaje del tipo: "Bienvenido al programa de Yum Snack Bar, sirviendo palomitas, colesterol y alegría desde hace {16} años". Este número de años debe calcularse de manera dinámica en función de la fecha de fundación predefinida de la tienda y su diferencia con la fecha actual del sistema cuando se ejecute el programa.
+11.	Crea una clase Transaccion destinada a aglutinar todos los productos comprados por un solo cliente en una operación de caja (p. ej., un cliente compra un Menu, una chocolatina y una bolsa de chucherías en una sola transacción). Una Transaccion se compone de un entero id, una fechaHora exactas de su creación, una lista de <Producto>s (utiliza una colección dinámica) y el precioTotal de los productos que la conforman. Crea los métodos necesarios en la clase Transaccion, incluyendo toString() para mostrar sus componentes en consola, y utiliza los métodos provistos por la clase Producto para implementar la lógica.
+12.	 Se necesita conocer cuál es la Transaccion más cara (precioTotal más elevado) de una lista de transacciones. Puede conseguirse este objetivo de diversas maneras, pero se recomiendo utilizar la interfaz Comparable o la interfaz Comparator para conseguirlo.
+13.	Crea una clase LogTransaccion destinada a almacenar en un fichero 'log.txt' la información de todas las transacciones de una sesión del programa y capaz también de leer la información del log y mostrarla por consola. El formato del log y los detalles de implementación son libres, pero se recomienda guardar cada transacción en una línea, con un formato p. ej.: 'fecha-hora trans-id, producto, producto, producto: precio'.
+14.	Como ejercicio adicional, codifica la clase LogTransaccion con la lógica de comprobación necesaria para que la transacción más cara (punto 12) se guarde en el fichero añadiendo al final de la línea el string “(!)”.
+15.	En una clase principal, en el método main(), invoca la frase de presentación de la tienda (punto 8) y crea sucesivas ventas de productos y transacciones para someter el programa a prueba; las operaciones a desarrollar en el método principal son las siguientes:
 
 
 
 
+<h3 id="yum-salida">Salida en consola:</h3>
 
+<br>
 
+<h2 id="biblioteca-filipinas">
+  Ejercicio tercero: Biblioteca Filipinas
+  <img src="https://github.githubassets.com/images/icons/emoji/unicode/1f4da.png?v8" alt="books" style="float:right;width:64px;height:64px;">
+</h2>
+
+<h3 id="biblioteca-conocimientos">Conocimientos necesarios:</h3>
+
+<h3 id="biblioteca-requisitos">Requisitos:</h3>
+
+<h3 id="biblioteca-salida">Salida en consola:</h3>
 
 
 ## Licencia
