@@ -213,7 +213,7 @@ El establecimiento "Yum Snack Bar" ofrece a sus clientes los siguientes producto
 
 <h3 id="yum-precios">Guía de precios:</h3>
 Se recomienda utilizar esta guía de precios para los productos de la tienda:
-
+<br>
 <table align="center">
     <tr>
         <th colspan=2, align="center">
