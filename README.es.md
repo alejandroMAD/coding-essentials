@@ -15,7 +15,8 @@ Exceptuando el primer ejercicio, que es un caso de pura imaginación para aplica
 2. [Ejercicio segundo: Yum Snack Bar](#yum-snack-bar)
     1. [Conocimientos necesarios](#yum-conocimientos)
     2. [Requisitos](#yum-requisitos)
-    3. [Salida en consola](#yum-salida)
+    3. [Guía de precios](#yum-precios)
+    4. [Salida en consola](#yum-salida)
 3. [Ejercicio tercero: Biblioteca Filipinas](#biblioteca-filipinas)
     1. [Conocimientos necesarios](#biblioteca-conocimientos)
     2. [Requisitos](#biblioteca-requisitos)
@@ -210,6 +211,7 @@ El establecimiento "Yum Snack Bar" ofrece a sus clientes los siguientes producto
     8. Imprime en consola cuál es la transacción más cara de toda la sesión.
     9. Por último, guarda la lista de transacciones en el fichero de _log_ y recupera la información que se ha guardado en este fichero para imprimirla por consola.
 
+<h3 id="yum-precios">Guía de precios:</h3>
 Se recomienda utilizar esta guía de precios para los productos de la tienda:
 
 <table align="center">
@@ -275,36 +277,44 @@ Se recomienda utilizar esta guía de precios para los productos de la tienda:
 | Puerta del Sol, Km. 0, 28013 Madrid, Spain|
 | Serving popcorn, cholesterol, and joy for 37  years. |
 +------------------------+
+
 Transaction [ID=1,
 	formattedTimestamp=15/02/2023-15:00:33,
 	items=[Popcorn box 'LARGE' - price=7.0], Product: 'Chocolate snack' - price=2.0],
 	totalCost=9.0]
+	
 Transaction [ID=2,
 	formattedTimestamp=15/02/2023-15:00:33,
 	items=[Soda beverage cup 'MEDIUM' - price=4.5], Product: 'Mixed nuts bag' - price=7.2],
 	totalCost=11.7]
+	
 products.IllegalSizeException: Soda cup and popcorn box must be of the same size.
 	at products.Menu.<init>(Menu.java:16)
 	at store.Main.main(Main.java:42)
+	
 java.lang.IllegalArgumentException: CandyBag weight must be 20g or higher
 	at products.CandyBag.<init>(CandyBag.java:18)
 	at store.Main.main(Main.java:55)
+	
 Transaction [ID=5,
 	formattedTimestamp=15/02/2023-15:00:33,
 	items=[Product: 'Gummy candy bag' - price=4.4, Menu: Soda+Popcorn 'EXTRALARGE' - price=9.95],
 	totalCost=14.35]
+	
 Transaction [ID=6,
 	formattedTimestamp=15/02/2023-15:00:33,
 	items=[Product: 'Gummy candy bag' - price=8.25, Soda beverage cup 'EXTRALARGE' - price=7.5]],
 	totalCost=15.75]
 
 The most expensive transaction (!) is:
+
 Transaction [ID=6,
 	formattedTimestamp=15/02/2023-15:00:33,
 	items=[Product: 'Gummy candy bag' - price=8.25, Soda beverage cup 'EXTRALARGE' - price=7.5]],
 	totalCost=15.75]
 
 ==== Transactions in the log file ====
+
 15/02/2023-15:00:33 ID=1, Popcorn box, Chocolate snack; price=9.0
 15/02/2023-15:00:33 ID=2, Soda beverage cup, Mixed nuts bag; price=11.7
 15/02/2023-15:00:33 ID=5, Gummy candy bag, Soda cup + Popcorn box at menu price; price=14.35
@@ -319,6 +329,20 @@ Transaction [ID=6,
 </h2>
 
 <h3 id="biblioteca-conocimientos">Conocimientos necesarios:</h3>
+
+* Programación Orientada a Objetos en Java (composición y otras técnicas)
+* Colecciones en Java
+* Clases e interfaces de la API JDBC de Java
+* Bases de datos relacionales: conceptos y estructura
+* Lenguaje MySQL (DDL, DML, DQL)
+* Instalación de un servidor MySQL local (p.ej. phpMyAdmin)
+* Descarga de un driver JDBC apropiado e instalación en el _classpath_ del proyecto
+* Mapeo objeto-relacional manual (sin el uso de un framework ORM)
+* Sintaxis CRUD básica en MySQL
+* Uso de Prepared Statements
+* Cierre de recursos para evitar fugas de memoria (opción de empleo de la sintaxis _try-with-resources_)
+* Captura de excepciones
+* Buenas prácticas en la escritura de código 
 
 <h3 id="biblioteca-requisitos">Requisitos:</h3>
 
@@ -339,6 +363,6 @@ Conociendo estos requisitos, realiza un programa en Java con las siguientes espe
 
 
 ## Licencia
-    Copyright © 2022 Alejandro M. González
+    Copyright © 2023 Alejandro M. González
     
     Licencia MIT: https://opensource.org/licenses/MIT
