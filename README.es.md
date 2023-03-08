@@ -5,7 +5,7 @@
 
 Conjunto de tres proyectos independientes de programación en Java que abarcan el uso de algoritmos básicos, fundamentos de la Programación Orientada a Objetos (POO) y conexión a bases de datos (JDBC), diseñados para que estudiantes de 1º de Programación del CFGS de Desarrollo de Aplicaciones Multiplataforma puedan repasar y superar el curso.
 
-Exceptuando el primer ejercicio, que es un caso de pura imaginación para aplicar conceptos de POO, los ejercicios restantes son el embrión de proyectos y aplicaciones reales con utilidad práctica.
+Exceptuando el primer ejercicio, que es un caso de pura imaginación para aplicar conceptos de POO, los ejercicios restantes son el embrión de proyectos y aplicaciones con utilidad práctica real.
 
 ## Índice de contenido
 1. [Ejercicio primero: Linaje de Robots](#linaje-robots)
@@ -175,7 +175,7 @@ First half: [Mercurio, Venus, Tierra, Marte] / Second half: [Júpiter, Saturno, 
 * Creación y captura de excepciones
 * Creación e implementación de Interfaces
 * API de tiempo y calendario de Java 8+
-* Persistencia de información: API I/O de Java I/O para lectura/escritura de ficherosç
+* Persistencia de información: API I/O de Java I/O para lectura/escritura de ficheros
 * Comparación de objetos (Comparable)
 
 <h3 id="yum-requisitos">Requisitos:</h3>
@@ -187,23 +187,129 @@ El establecimiento "Yum Snack Bar" ofrece a sus clientes los siguientes producto
 1.	Construye una solución Orientada a Objetos que contemple las diferentes clases necesarias para organizar el programa, utilizando paquetería para dividir lo mejor posible el código agrupando las clases por sus características y finalidad.
 2.	Parece clara la conveniencia de utilizar la herencia: por ejemplo, es posible concebir una clase ```CajaPalomitas``` y otra clase ```VasoRefresco```, con características propias, y una superclase ```Producto``` con características comunes como un ```nombre``` y un ```precio```.
 3.	Crea unas constantes que definan los tamaños posibles de las palomitas y las bebidas: ```MEDIANO```, ```GRANDE```, ```GIGANTE```. Una solución posible es la definición de un tipo enumerado ```Tamaño```.
-4.	Las diferentes clases de productos deben implementar los métodos ```toString()``` y _getters_ y _setters_ necesarios. Los constructores de clases y superclases deben coordinarse según los requisitos del ejercicio. Ten presente que esta es una aplicación para gestionar las transacciones, no de constitución de la tienda y productos: por esta razón no se pasará el nombre ni el precio de los productos en su instanciación, sino que ya tendrán un nombre descriptivo y precio predefinidos. Parece aconsejable utilizar a tal fin campos estáticos, p. ej. (double) ```PRECIO```, a falta del uso de una base de datos de productos.
-5.	Las palomitas y bebidas deben tener diferentes precios en función del tamaño. El constructor de la clase VasoRefresco, además del Tamano, recibirá por parámetro el tipo (“COLA”, “COLA_LIGHT”, “NARANJA”, “LIMON”) para lo cual se recomienda el uso de un tipo Enum anidado en la clase. Existirá una clase Menu que permitirá la compra de la combinación de productos palomitas+bebida a precios especiales de promoción. Es aconsejable utilizar la composición para diseñar esta clase, que constará de objetos CajaPalomitas y VasoRefresco.
-6.	El constructor de Menu evaluará que las palomitas y bebidas pasadas por argumento sean del mismo tamaño. No se permiten menús con un caja de palomitas y un vaso de bebida de diferente tamaño (p.ej. Palomitas MEDIANO y Refresco GRANDE). Crea una excepción personalizada llamada 'ExcepcionTamanoIlegal' que sea arrojada en tales casos.
-7.	Las clases para BolsaChucherias y BolsaFrutosSecos, que permiten la compra al peso, deben fijar un precio estático por 100g y su constructor recibirá por parámetro el peso concreto de la compra, que se multiplicará por aquel atributo para calcular el precio. Crea una Interfaz denominada Pesable con un método calcularPrecio(double peso) para sea implementado por estas dos clases de productos que se venden a granel. Es aconsejable emplear alguna función de redondeo de 2 decimales para evitar la impresión de precios como 8.250000000000002.
-8.	Las clases BolsaChucherias y BolsaFrutosSecos deben incorporar una lógica que arroje una excepción IllegalArgumentException si se intenta comprar una bolsa con un precio negativo o anormalmente bajo, menor de 20 g, para prevenir trampas con la balanza.
-9.	La clase Chocolatina será la más simple de todas: hereda de Producto, tendrá un precio estático, el nombre estático del producto y un constructor que no recibe argumentos.
-10.	Crea una clase que Tienda almacene la información del establecimiento que consideres necesaria, y como mínimo su nombre y la fecha en que la tienda fue fundada. Utiliza preferiblemente alguna de las clases relativas a fechas de la API de Java 8 o superior. Debes crear un método que permita imprimir en consola un mensaje del tipo: "Bienvenido al programa de Yum Snack Bar, sirviendo palomitas, colesterol y alegría desde hace {16} años". Este número de años debe calcularse de manera dinámica en función de la fecha de fundación predefinida de la tienda y su diferencia con la fecha actual del sistema cuando se ejecute el programa.
-11.	Crea una clase Transaccion destinada a aglutinar todos los productos comprados por un solo cliente en una operación de caja (p. ej., un cliente compra un Menu, una chocolatina y una bolsa de chucherías en una sola transacción). Una Transaccion se compone de un entero id, una fechaHora exactas de su creación, una lista de <Producto>s (utiliza una colección dinámica) y el precioTotal de los productos que la conforman. Crea los métodos necesarios en la clase Transaccion, incluyendo toString() para mostrar sus componentes en consola, y utiliza los métodos provistos por la clase Producto para implementar la lógica.
-12.	 Se necesita conocer cuál es la Transaccion más cara (precioTotal más elevado) de una lista de transacciones. Puede conseguirse este objetivo de diversas maneras, pero se recomiendo utilizar la interfaz Comparable o la interfaz Comparator para conseguirlo.
-13.	Crea una clase LogTransaccion destinada a almacenar en un fichero 'log.txt' la información de todas las transacciones de una sesión del programa y capaz también de leer la información del log y mostrarla por consola. El formato del log y los detalles de implementación son libres, pero se recomienda guardar cada transacción en una línea, con un formato p. ej.: 'fecha-hora trans-id, producto, producto, producto: precio'.
-14.	Como ejercicio adicional, codifica la clase LogTransaccion con la lógica de comprobación necesaria para que la transacción más cara (punto 12) se guarde en el fichero añadiendo al final de la línea el string “(!)”.
-15.	En una clase principal, en el método main(), invoca la frase de presentación de la tienda (punto 8) y crea sucesivas ventas de productos y transacciones para someter el programa a prueba; las operaciones a desarrollar en el método principal son las siguientes:
+4.	Las diferentes clases de productos deben implementar los métodos ```toString()``` y _getters_ y _setters_ necesarios. Los constructores de clases y superclases deben coordinarse según los requisitos del ejercicio. Ten presente que esta es una aplicación para gestionar las transacciones, no de constitución de la tienda y productos: por esta razón no se pasará el nombre ni el precio de los productos en su instanciación, sino que ya tendrán un nombre descriptivo y precio predefinidos. Parece aconsejable utilizar a tal fin campos estáticos como ```NOMBRE``` y ```PRECIO```, a falta del uso de una base de datos de productos. Utiliza el tipo double para manejar el precio de los productos.
+5.	Las palomitas y bebidas deben tener diferentes precios en función del tamaño. El constructor de la clase ```VasoRefresco```, además del ```Tamaño```, recibirá por parámetro el ```Sabor``` (```COLA```, ```COLA_LIGHT```, ```NARANJA```, ```LIMON```) para lo cual se recomienda el uso de un tipo Enum ```Sabor``` anidado en la clase. Existirá una clase ```Menu``` que permitirá la compra de la combinación de productos palomitas + bebida a precios especiales de promoción. Es aconsejable utilizar la composición para diseñar esta clase, que constará de objetos ```CajaPalomitas``` y ```VasoRefresco```.
+6.	<span id="yum-requisitos-6">El constructor</span> de ```Menu``` evaluará que las palomitas y bebidas pasadas por argumento sean del mismo ```Tamaño```. No se permiten menús con un caja de palomitas y un vaso de bebida de diferente ```Tamaño``` (p.ej. ```Palomitas``` ```MEDIANO``` y ```Refresco``` ```GRANDE```). Crea una excepción personalizada llamada ```ExcepcionTamañoIlegal``` que pueda ser arrojada en tales casos.
+7.	Las clases para ```BolsaChucherias``` y ```BolsaFrutosSecos```, que permiten la compra al peso, deben fijar un precio estático referido a 100g de ese producto, y su constructor recibirá por parámetro el peso concreto de la compra, que se multiplicará por aquel atributo para calcular el precio. Crea una interfaz denominada ```Pesable``` con un método ```calcularPrecio(double peso)``` para sea implementado por estas dos clases de productos que se venden a granel. Es aconsejable emplear alguna función de redondeo de 2 decimales para evitar la impresión de precios como 8.250000000000002.
+8.	<span id="yum-requisitos-8">Las clases</span> ```BolsaChucherias``` y ```BolsaFrutosSecos``` deben incorporar una lógica que arroje una excepción ```IllegalArgumentException``` si se intenta comprar una bolsa con un precio negativo o anormalmente bajo, menor de 20 g, para prevenir trampas con la balanza.
+9.	La clase ```Chocolatina``` será la más simple de todas: hereda de ```Producto```, tendrá un ```precio``` estático, el ```nombre``` estático del producto y un constructor que no recibe argumentos.
+10.	<span id="yum-requisitos-10">Crea una clase que ```Tienda``` almacene la información del establecimiento</span> que consideres necesaria y, como mínimo, su ```nombre y la ```fecha``` en que la tienda fue fundada. Utiliza preferiblemente alguna de las clases relativas a fechas de la API de Java 8 o superior. Debes crear un método que permita imprimir en consola un mensaje del tipo: "Bienvenido al programa de Yum Snack Bar, sirviendo palomitas, colesterol y alegría desde hace {x} años". Este número de años debe calcularse de manera dinámica en función de la ```fecha``` de fundación predefinida de la tienda y su diferencia con la fecha actual del sistema cuando se ejecute el programa.
+11.	Crea una clase ```Transaccion``` destinada a aglutinar todos los productos comprados por un solo cliente en una operación de caja (p. ej., un cliente compra un ```Menu```, una ```Chocolatina``` y una ```BolsaChucherias``` en una sola ```Transaccion```). Una ```Transaccion``` se compone de un entero ```id```, la ```fechaHora``` exacta de su creación, una ```lista``` de ```<Producto>``` (utiliza una colección dinámica) y el ```precioTotal``` de los productos que la conforman. Crea los métodos necesarios en la clase ```Transaccion```, incluyendo ```toString()``` para mostrar sus componentes en consola, y utiliza los métodos provistos por la clase ```Producto``` para implementar la lógica.
+12.	 <span id="yum-requisitos-12">Se necesita conocer cuál es</span> la ```Transaccion``` más cara (```precioTotal``` más elevado) de una lista de transacciones. Puede conseguirse este objetivo de diversas maneras, pero se recomiendo utilizar la interfaz ```Comparable``` o la interfaz ```Comparator``` para este propósito.
+13.	Crea una clase ```LogTransaccion``` destinada a almacenar en un fichero **log.txt** la información de todas las transacciones de una sesión del programa y capaz también de leer la información del _log_ y mostrarla por consola. El formato del _log_ y los detalles de implementación son libres, pero se recomienda guardar cada transacción en una línea, con un formato p. ej.: 'fecha-hora trans-id, producto, producto, producto: precio'.
+14.	Como ejercicio adicional, introduce en la clase ```LogTransaccion``` la lógica de comprobación necesaria para que la transacción más cara ([punto 12](#yum-requisitos-12)) se guarde en el fichero añadiendo al final de la línea el string “(!)”.
+15.	En una clase principal, en el método main(), invoca la frase de presentación de la tienda ([punto 10](#yum-requisitos-10)) y crea sucesivas ventas de productos y transacciones para someter el programa a prueba. Las operaciones a realizar en el método principal son las siguientes:
 
+    1.	Se crearán secuencialmente seis transacciones diferentes (```Transaccion```) con el fin de guardarlas en una lista, pasarlas a ```LogTransaccion``` para guardarlas en el fichero de _log_ y a continuación leer ese fichero e imprimir su contenido en consola.
+    2. Para la primera transacción, crea las compras de una ```CajaPalomitas``` ```GRANDE``` y una ```Chocolatina```, guarda la transacción en la lista de transacciones e imprímela.
+    3. Para la segunda transacción, compra un ```VasoRefresco``` ```MEDIANO``` y una ```BolsaFrutosSecos``` de 400 g, guarda la transacción e imprímela.
+    4. Para la tercera transacción, compra un ```Menu``` compuesto de un ```VasoRefresco``` de ```COLA_LIGHT``` ```GIGANTE``` y una ```CajaPalomitas``` ```MEDIANO```, forzando el lanzamiento (y captura) de la ```ExcepcionTamañoIlegal``` ([punto 6](#yum-requisitos-6)). La excepción debe prevenir que esta transacción inválida se guarde, loguee o imprima en consola.
+    5. Para la cuarta transacción, compra una ```BolsaChucherias``` haciendo trampas con la balanza, por un peso de 6 g, forzando el lanzamiento de la ```IllegalArgumentException``` del [punto 8](#yum-requisitos-8). La excepción debe prevenir que esta transacción inválida se guarde, loguee o imprima en consola.
+    6. Para la quinta transacción, compra una ```BolsaChucherias``` de 400 g y un ```Menu``` compuesto de un ```VasoRefresco``` ```NARANJA``` ```GIGANTE``` y una ```CajaPalomitas``` ```GIGANTE```. Intenta instanciar el objeto ```Transaccion```, los objetos ```Producto``` y los objetos que componen el ```Menu``` en una sola instrucción de código (instanciación de objetos anónimos o instanciación “al vuelo”). Guarda la transacción e imprímela.
+    7. Para la sexta transacción, que será la más cara, compra una ```BolsaChucherias``` de 750 g y un ```VasoRefresco``` de ```COLA``` ```GIGANTE```, guarda la transacción e imprímela.
+    8. Imprime en consola cuál es la transacción más cara de toda la sesión.
+    9. Por último, guarda la lista de transacciones en el fichero de _log_ y recupera la información que se ha guardado en este fichero para imprimirla por consola.
 
+Se recomienda utilizar esta guía de precios para los productos de la tienda:
 
+<table align="center">
+    <tr>
+        <th colspan=2, align="center">
+            <b>Guía orientativa de precios de los productos de Yum Snack Bar</b>
+        </th>
+    </tr>
+    <tr>
+        <td>
+            Palomitas MEDIANO / GRANDE / GIGANTE
+        </td>
+        <td>
+            5.0 / 7.0 / 9.0
+        </td>
+    </tr>
+    <tr>
+        <td>
+            Refresco MEDIANO / GRANDE / GIGANTE
+        </td>
+        <td>
+            4.5 / 6.0 / 7.5
+        </td>
+    </tr>
+    <tr>
+        <td>
+            Menú MEDIANO / GRANDE / GIGANTE
+        </td>
+        <td>
+            7.95 / 8.95 / 9.95
+        </td>
+    </tr>
+    <tr>
+        <td>
+            Chocolatina
+        </td>
+        <td>
+            2.0
+        </td>
+    </tr>
+    <tr>
+        <td>
+            Bolsa de frutos secos (100 g)
+        </td>
+        <td>
+            1.80
+        </td>
+    </tr>
+    <tr>
+        <td>
+            Bolsa de chucherías (100 g)
+        </td>
+        <td>
+            1.10
+        </td>
+    </tr>
+</table>
 
 <h3 id="yum-salida">Salida en consola:</h3>
+
+```+------------------------+
+| Welcome to the Yum Snack Bar|
+| Puerta del Sol, Km. 0, 28013 Madrid, Spain|
+| Serving popcorn, cholesterol, and joy for 37  years. |
++------------------------+
+Transaction [ID=1,
+	formattedTimestamp=15/02/2023-15:00:33,
+	items=[Popcorn box 'LARGE' - price=7.0], Product: 'Chocolate snack' - price=2.0],
+	totalCost=9.0]
+Transaction [ID=2,
+	formattedTimestamp=15/02/2023-15:00:33,
+	items=[Soda beverage cup 'MEDIUM' - price=4.5], Product: 'Mixed nuts bag' - price=7.2],
+	totalCost=11.7]
+products.IllegalSizeException: Soda cup and popcorn box must be of the same size.
+	at products.Menu.<init>(Menu.java:16)
+	at store.Main.main(Main.java:42)
+java.lang.IllegalArgumentException: CandyBag weight must be 20g or higher
+	at products.CandyBag.<init>(CandyBag.java:18)
+	at store.Main.main(Main.java:55)
+Transaction [ID=5,
+	formattedTimestamp=15/02/2023-15:00:33,
+	items=[Product: 'Gummy candy bag' - price=4.4, Menu: Soda+Popcorn 'EXTRALARGE' - price=9.95],
+	totalCost=14.35]
+Transaction [ID=6,
+	formattedTimestamp=15/02/2023-15:00:33,
+	items=[Product: 'Gummy candy bag' - price=8.25, Soda beverage cup 'EXTRALARGE' - price=7.5]],
+	totalCost=15.75]
+
+The most expensive transaction (!) is:
+Transaction [ID=6,
+	formattedTimestamp=15/02/2023-15:00:33,
+	items=[Product: 'Gummy candy bag' - price=8.25, Soda beverage cup 'EXTRALARGE' - price=7.5]],
+	totalCost=15.75]
+
+==== Transactions in the log file ====
+15/02/2023-15:00:33 ID=1, Popcorn box, Chocolate snack; price=9.0
+15/02/2023-15:00:33 ID=2, Soda beverage cup, Mixed nuts bag; price=11.7
+15/02/2023-15:00:33 ID=5, Gummy candy bag, Soda cup + Popcorn box at menu price; price=14.35
+15/02/2023-15:00:33 ID=6, Gummy candy bag, Soda beverage cup; price=15.75 (!)
+```
 
 <br>
 
@@ -215,6 +321,19 @@ El establecimiento "Yum Snack Bar" ofrece a sus clientes los siguientes producto
 <h3 id="biblioteca-conocimientos">Conocimientos necesarios:</h3>
 
 <h3 id="biblioteca-requisitos">Requisitos:</h3>
+
+El objetivo de este ejercicio es crear un programa en Java con utilidad práctica capaz de administrar el servicio de préstamo de libros de una biblioteca de uso público. La aplicación realiza consultas y actualizaciones de una base de datos MySQL cuyas sentencias de creación e inserción de datos se proporcionan al final de este enunciado.
+
+La base de datos almacena información en cuatro tablas: ```library``` con información y reglas generales de la biblioteca; ```book``` con información de los libros en los fondos de la biblioteca y su disponibilidad; ```reader``` con información sobre los lectores o usuarios abonados al servicio de préstamo de la biblioteca; y ```borrowing``` con información sobre los préstamos de libros a los lectores, que incluye claves foráneas que hacen referencia a las tablas ```book``` y ```reader```.
+
+Es importante conocer las **Normas de Préstamo** de la biblioteca para desarrollar el software de administración de manera congruente<sup>1</sup>. La biblioteca diseñada por defecto en las sentencias SQL que se ofrecen más abajo:
+
+1. Permite a cada usuario tener en préstamo un máximo de 3 libros al mismo tiempo.
+2. Concede los préstamos por un plazo máximo de 15 días.
+3. Y por último, como es típico en muchas bibliotecas públicas de España, fija una penalización para los lectores que devuelvan libros más tarde del plazo máximo, en este caso una penalización de 3 días sin poder tomar prestados libros por cada día de retraso en la devolución de un libro (así, un retraso de 5 días supone una penalización de 15 días).
+
+Conociendo estos requisitos, realiza un programa en Java con las siguientes especificaciones:
+
 
 <h3 id="biblioteca-salida">Salida en consola:</h3>
 
