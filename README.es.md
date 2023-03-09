@@ -361,9 +361,123 @@ Es importante conocer las **Normas de Préstamo** de la biblioteca para desarrol
 
 Conociendo estos requisitos, realiza un programa en Java con las siguientes especificaciones:
 
+1. Crea un proyecto que incorpore en el _classpath_ el driver necesario para manejar una **base de datos MySQL** y define en el programa en Java la ruta, credenciales y otros valores necesarios para establecer la conexión con un servidor local.
+2. Crea la base de datos e inserta los valores que se proporcionan al final de este enunciado en un servidor local (_localhost_) MySQL (puedes utilizar p.ej. XAMPP-phpMyAdmin o MySQL Workbench). Los registros de ejemplo suministrados ofrecen una variedad de casos para poder someter el programa que desarrolles a prueba, incluyendo préstamos (“borrowings”) dinámicamente creados en fechas relativas a la fecha del sistema en el momento de inserción de los datos.
+3. Crea las clases necesarias en tu proyecto en Java para ofrecer una solución orientada a objetos con la suficiente modularidad. Esto significa que el programa debe tener clases “modelo” equivalentes a las entidades de la base de datos: ```Library```, ```Book```, ```Reader``` y ```Borrowing``` con los campos y miembros que corresponden a los campos de la tabla. Se recomienda dividir el código en clases y paquetes siguiendo un patrón de diseño MVC o arquitecturas modulares similares.
+4. El software de administración de una biblioteca como la presentada en este enunciado podría ofrecer muchas funcionalidades tales como operaciones CRUD de libros y lectores abonados, devolución de listas, búsquedas y comparaciones con filtros avanzados, etc. Sin embargo, en este ejercicio sólo debes programar la **funcionalidad necesaria para realizar préstamos de libros a lectores y registrar devoluciones de los libros prestados.** A pesar de que estas dos funciones parecen sencillas, implementarlas adecuadamente con arreglo a las reglas descritas al principio exigirá realizar consultas y comprobaciones en las cuatro tablas.
+5. El programa solicitará al usuario con un “menú” por consola, en un bucle infinito, qué opción quiere realizar —```PRESTAMO```, ```DEVOLUCION```, ```SALIR```— y a continuación solicitará los valores de ```ID``` del libro e ```ID``` del lector para llevar a cabo la operación seleccionada, si es posible realizarla, mediante métodos especializados.
+6. Debes poner especial atención en que el programa, para realizar préstamos y devoluciones, además de otras situaciones evalúe las reglas de número máximo de préstamos, plazo máximo de días de préstamo y días de sanción por día de retraso en el préstamo de la biblioteca, así como el número de préstamos que tiene un lector, si tiene o no días de sanción, el valor de disponibilidad (```available```) de un libro para saber si está prestado actualmente o no, etcétera.
+7. Debe controlarse un caso especial que consiste en el intento de devolver un libro actualmente prestado a un usuario por otro usuario diferente. Si se permitiera hacerlo, aunque el cambio en la disponibilidad del libro se registraría coherentemente, el sistema permitiría el caso indeseado de que un lector viera reducido su número de libros prestados incluso a valores negativos, alterando las normas de funcionamiento de la biblioteca. Para evitarlo, el método que maneja las devoluciones debe comprobar que hay un préstamo del libro especificado al lector introducido y que este préstamo está vigente (la fecha de devolución es nula).
+8. OPCIONAL: Puedes intentar implementar la lógica más compleja de este programa: haz que evalúe los días que un lector lleva de retraso en la devolución de libros que todavía tiene prestados y: 
+    1. Impida tomar prestados nuevos libros a ese lector si tiene retraso.
+    2. Aplique la penalización que le corresponde sumándola al valor del campo ```penalty_count``` de su registro en la tabla ```reader``` y al campo ```overdue_penalty``` del registro de ese préstamo en la tabla ```borrowing``` al tiempo de la devolución.
+10. OPCIONAL: Crea una interfaz gráfica con Java Swing u otro _framework_ similar para facilitar la gestión de préstamos y devoluciones de libros en un entorno gráfico.
+11. OPCIONAL: Añade otras funciones que consideres interesantes para la aplicación.
+12. **RECOMENDACIÓN**: Para buscar en la base de datos préstamos por su ID en orden a registrar una DEVOLUCIÓN, se recomienda limitar la _query_ a la base de datos al último resultado (cláusulas ```DESC LIMIT 1```) para evitar confusiones con préstamos antiguos del mismo libro al mismo lector que podrían producir un funcionamiento anómalo del programa.
+13. Para someter a prueba el programa, se realizará una ejecución dando las siguientes órdenes en el menú de selección de opciones:
+
+    1. La primera operación consistirá en registrar un ```PRÉSTAMO``` del libro con ID 1 (“El Quijote”) por el lector con ID 1 (George Stobbart). Se mostrará un mensaje de confirmación, se modificará la disponibilidad del libro y se incrementará el contador de libros prestados de este lector.
+    2. La segunda operación consistirá en practicar la ```DEVOLUCIÓN``` del libro con ID 3 (“Las aventuras de Huckleberry Finn”) prestado al lector con ID 1 (George Stobbart). Este préstamo viene preconstituido por las inserciones propuestas al final del enunciado, diseñadas para que se realice con fecha del día mismo de la inserción a las 08:34:05 horas. Se mostrará una confirmación de la devolución, se cambiará la disponibilidad del libro (```true```) , se insertará la fecha de devolución en el registro correspondiente de la tabla `borrowing` y se disminuirá el contador de libros prestados del lector.
+    3. La tercera operación consistirá en intentar registrar un ```PRÉSTAMO``` del libro con ID 1 (“El Quijote”) por el lector con ID 6 (Liam McGuire), debiendo mostrarse el mensaje de que no es posible realizar el préstamo tras comprobarse el estado no disponible del libro a causa de la primera operación.
+    4. La cuarta operación consistirá en intentar registrar un ```PRÉSTAMO``` del libro con ID 10 (“Vida y destino”) por el lector con ID 4 (Augustin Rosso), debiendo mostrarse el mensaje de que no es posible autorizar el préstamo porque el lector ya tiene 3 libros, el número máximo de préstamos permitidos. 
+    5. La quinta operación consistirá en intentar registrar un ```PRÉSTAMO``` del libro con ID 14 (“Los miserables”) por el lector con ID 15 (Gamal Khan), debiendo mostrarse el mensaje, a pesar de que el libro está disponible, de que no es posible autorizar el préstamo porque el lector tiene una penalización por retrasos vigente.
+    6. La sexta operación consistirá en intentar registrar la ```DEVOLUCIÓN``` del libro con ID 11 (“La invención de Morel”) por la lectora con ID 9 (Pearl Henderson). Este libro en realidad está prestado al lector con ID 4 (Augustin Rosso) y por lo tanto, el sistema no autorizará la operación informando de esta circunstancia.
+    7. La séptima operación consistirá en registrar la ```DEVOLUCIÓN``` del libro con ID 9 (“El perro de los Baskerville”) por el lector con ID 12 (François Plantard), debiendo autorizarse la operación, mostrarse confirmación y practicarse las debidas operaciones de actualización de la base de datos en cuanto al número de libros prestados del lector, la fecha de devolución del préstamo y la disponibilidad del libro devuelto.
+    8. OPCIONAL: la octava operación, si se ha implementado la lógica de control del punto 8 opcional, consistirá en intentar registrar el ```PRÉSTAMO``` del libro con ID 9 (“El perro de los Baskerville”) devuelto por otro lector por la lectora con ID 2 (Nicole Collard). Esta lectora no presenta todavía una sanción registrada, pero tiene en préstamo dos libro desde hace 19 y 17 días respectivamente conforme a los datos preconstituidos al final del enunciado, por tanto se ha retrasado en su devolución y se espera que el programa prohíba el nuevo préstamo por este motivo.
+    9. OPCIONAL: la novena operación, si se ha implementado la lógica de control del punto 8 opcional, consistirá en registrar la ```DEVOLUCIÓN``` del libro con ID 15 (“Las metamorfosis”) por el lector con ID 3 (André Lobineau), quien ya lleva 1 día de retraso en su devolución. La operación debe ser autorizada y se espera que el programa, además de modificar los campos de disponibilidad del libro, fecha de devolución del préstamo y número de libros prestados de este lector, actualice la base de datos incluyendo la penalización de 3 días por 1 día de retraso.
+    10. OPCIONAL: las operaciones décima y undécima, si se ha implementado la lógica de control del punto 8 opcional, consistirán en registrar la ```DEVOLUCIÓN``` de los libros con ID 7 y 12 (“Robinson Crusoe” y “The stand”) de la lectora con ID 2 (Nicole Collard). Al tener un retraso de 4 y 2 días respectivamente en su devolución, se espera que el programa las registre correctamente y actualice la base de datos poniendo a la lectora Nicole Collard una penalización de 12 + 6 = 18 días.
+    11. La última operación consistirá en elegir la opción ```SALIR```, que deberá terminar con la ejecución iterativa y finalizar el programa. Conviene comprobar en la base de datos MySQL del servidor si los datos de las tablas ```book```, ```borrowing``` y ```reader``` se han actualizado conforme a los préstamos y devoluciones tramitados durante el ejercicio.
 
 <h3 id="biblioteca-salida">Salida en consola:</h3>
 
+```+--------------------------------------------------------------+
+| Do you want to borrow or return a book? (Borrow/Return/Exit) |
++--------------------------------------------------------------+
+borrow
+Enter book ID: 1
+Enter reader ID: 1
+Book El Quijote borrowed successfully by George Stobbart and set 'unavailable'.
++--------------------------------------------------------------+
+| Do you want to borrow or return a book? (Borrow/Return/Exit) |
++--------------------------------------------------------------+
+return
+Enter book ID: 3
+Enter reader ID: 1
+Book 'Las aventuras de Huckleberry Finn' returned successfully and set 'available'.
++--------------------------------------------------------------+
+| Do you want to borrow or return a book? (Borrow/Return/Exit) |
++--------------------------------------------------------------+
+borrow
+Enter book ID: 1
+Enter reader ID: 6
+The book 'El Quijote' is already borrowed.
++--------------------------------------------------------------+
+| Do you want to borrow or return a book? (Borrow/Return/Exit) |
++--------------------------------------------------------------+
+borrow
+Enter book ID: 10
+Enter reader ID: 4
+Reader Augustin Rosso has already the maximum borrowings.
++--------------------------------------------------------------+
+| Do you want to borrow or return a book? (Borrow/Return/Exit) |
++--------------------------------------------------------------+
+borrow
+Enter book ID: 14
+Enter reader ID: 15
+Reader Gamal Khan has a late return or penalty and can't borrow books.
++--------------------------------------------------------------+
+| Do you want to borrow or return a book? (Borrow/Return/Exit) |
++--------------------------------------------------------------+
+return
+Enter book ID: 11
+Enter reader ID: 9
+No borrowing found for the specified book and reader IDs.
++--------------------------------------------------------------+
+| Do you want to borrow or return a book? (Borrow/Return/Exit) |
++--------------------------------------------------------------+
+return
+Enter book ID: 9
+Enter reader ID: 12
+Book 'El perro de los Baskerville' returned successfully and set 'available'.
++--------------------------------------------------------------+
+| Do you want to borrow or return a book? (Borrow/Return/Exit) |
++--------------------------------------------------------------+
+borrow
+Enter book ID: 9
+Enter reader ID: 2
+Reader Nicole Collard has a late return or penalty and can't borrow books.
++--------------------------------------------------------------+
+| Do you want to borrow or return a book? (Borrow/Return/Exit) |
++--------------------------------------------------------------+
+return
+Enter book ID: 15
+Enter reader ID: 3
+Book 'Las metamorfosis' returned successfully and set 'available'.
+Late return penalty applied: 3 days.
++--------------------------------------------------------------+
+| Do you want to borrow or return a book? (Borrow/Return/Exit) |
++--------------------------------------------------------------+
+return
+Enter book ID: 7
+Enter reader ID: 2
+Book 'Robinson Crusoe' returned successfully and set 'available'.
+Late return penalty applied: 12 days.
++--------------------------------------------------------------+
+| Do you want to borrow or return a book? (Borrow/Return/Exit) |
++--------------------------------------------------------------+
+return
+Enter book ID: 12
+Enter reader ID: 2
+Book 'The stand' returned successfully and set 'available'.
+Late return penalty applied: 6 days.
++--------------------------------------------------------------+
+| Do you want to borrow or return a book? (Borrow/Return/Exit) |
++--------------------------------------------------------------+
+exit
+Exiting program...
+```
+
+<h3 id="biblioteca-insert">Sentencias INSERT de creación de registros de ejemplo en la base de datos:</h3>
 
 ## Licencia
     Copyright © 2023 Alejandro M. González
