@@ -16,14 +16,16 @@ Every exercise but the first—a mere play of imagination on objects— are the 
     3. [Console Output](#lineage-output)
     4. [Summary](#lineage-summary)
 2. [Second Exercise: Yum Snack Bar](#yum-snack-bar)
-    1. [Conocimientos necesarios](#yum-conocimientos)
-    2. [Requisitos](#yum-requisitos)
-    3. [Guía de precios](#yum-precios)
-    4. [Salida en consola](#yum-salida)
-3. [Ejercicio tercero: Biblioteca Filipinas](#biblioteca-filipinas)
-    1. [Conocimientos necesarios](#biblioteca-conocimientos)
-    2. [Requisitos](#biblioteca-requisitos)
-    3. [Salida en consola](#biblioteca-salida)
+    1. [Required Knowledge](#yum-knowledge)
+    2. [Requirements](#yum-requirements)
+    3. [Price Guide](#yum-price-guide)
+    4. [Console Output](#yum-output)
+3. [Third exercise: Filipinas Library](#filipinas-library)
+    1. [Required Knowledge](#library-knowledge)
+    2. [Requirements](#library-requirements)
+    3. [Database CREATE DDL statements](#library-db-creation)
+    4. [Database INSERT-VALUES DML statements](#library-db-population)
+    5. [Console Output](#library-output)
 
 <br>
 
@@ -34,20 +36,20 @@ Every exercise but the first—a mere play of imagination on objects— are the 
 
 <h3 id="lineage-knowledge">Required Knowledge:</h3>
 
-* Creación de un programa de consola en Java
-* Uso de Eclipse u otro IDE
-* Programación Orientada a Objetos
-* Estructuras básicas (variables, métodos, constantes, operadores)
-* Control de flujo (condicionales, bucles)
-* Visibilidad y encapsulamiento
-* Arrays uni y bidimensionales
-* Tipos enumerados (Enum)
-* Sobreescritura de métodos
-* Sobrecarga de métodos / sobrecarga de constructores
-* Herencia y polimorfismo
-* Uso de static y final
-* Casting o refundición de tipos
-* Uso de funciones aleatorias
+* Creation of a console program in Java
+* Use of Eclipse or another IDE
+* Object-Oriented Programming
+* Basic structures (variables, methods, constants, operators)
+* Flow control (conditionals, loops)
+* Visibility and encapsulation
+* One-dimensional and two-dimensional arrays
+* Enumerated types (Enum)
+* Method overriding
+* Method overloading / constructor overloading
+* Inheritance and polymorphism
+* Use of static and final
+* Casting or type conversion
+* Use of random functions
 
 <h3 id="lineage-requirements">Requirements:</h3>
 
@@ -62,7 +64,7 @@ Every exercise but the first—a mere play of imagination on objects— are the 
 7. La clase ```RobotPrimo``` ofrece dos utilidades. 1) Su implementación o concreción de ```procesar(double numero)``` evalúa si el número pasado por argumento es o no un número primo y devuelve un String con un mensaje que lo indica. Son números primos aquellos números naturales que sólo son divisibles por sí mismos y por 1. Considera la introducción de lógica de control que evalúe si el número recibido por parámetro es negativo o tiene decimales, casos en los que un número no puede ser primo. 2) La segunda utilidad de ```RobotPrimo``` será un método para imprimir todos los números primos que existen en un intervalo; por esta razón este método —dale un nombre apropiado— debe recibir por parámetro dos números enteros, el ```principio``` y el ```fin``` de dicho intervalo.
 8. La clase ```RobotCortador``` implementa varios métodos sobrecargados ```procesar()``` con diferente signatura. Uno de estos sobreescribe el método abstracto definido por ```RobotCientifico``` y recibe un valor double por parámetro, siendo su misión imprimir en consola por separado la parte entera y la parte decimal del valor recibido como argumento. La clase además definirá: un método ```procesar(int numero)``` que simplemente devuelve el valor recibido dividido por 2 y un método ```procesar(String string)``` que divide la cadena recibida en dos mitades y las imprime por separado en consola. Opcionalmente, puedes crear dos métodos ```procesar()``` adicionales que reciben por parámetro un array de enteros y otro un array de Strings, los dividen por la mitad e imprimen los arrays resultantes por consola.
 9. Debes definir dos subtipos de ```RobotArtista```, ```RobotPoeta``` y ```RobotPintor```. Estas dos subclases no podrán ser objeto de herencia por otras clases por debajo de ellas.
-10.	```RobotPintor``` tiene dos constructores coordinados con los de su superclase ```RobotArtista```: uno que solamente recibe como argumentos el ```nombre``` y ```numeroSerie``` y otro que, además, recibe un ```Comportamiento```. Esta clase contiene definiciones constantes y estáticas de tres figuras geométricas, ```CUADRADO```, ```TRIÁNGULO``` y ```ROMBO``` (pueden incluirse en un tipo Enum ```Figura```; un método ```dibujar(Figura figura, int altura, char caracter)``` que dibuja en consola cualquiera de las tres figuras, compuesta de una repetición de caracteres del valor char pasado por argumento y de una altura en líneas de consola según la altura pasada por argumento. Ejemplos:
+10. ```RobotPintor``` tiene dos constructores coordinados con los de su superclase ```RobotArtista```: uno que solamente recibe como argumentos el ```nombre``` y ```numeroSerie``` y otro que, además, recibe un ```Comportamiento```. Esta clase contiene definiciones constantes y estáticas de tres figuras geométricas, ```CUADRADO```, ```TRIÁNGULO``` y ```ROMBO``` (pueden incluirse en un tipo Enum ```Figura```; un método ```dibujar(Figura figura, int altura, char caracter)``` que dibuja en consola cualquiera de las tres figuras, compuesta de una repetición de caracteres del valor char pasado por argumento y de una altura en líneas de consola según la altura pasada por argumento. Ejemplos:
     
 <table align="center">
     <tr>
@@ -166,36 +168,36 @@ First half: [Mercurio, Venus, Tierra, Marte] / Second half: [Júpiter, Saturno, 
 
 <h3 id="lineage-summary">Summary:</h3>
 
-This program is intended to make for a good example of object-oriented programming in Java. It uses abstract classes and inheritance to create a hierarchy of robot classes with different functionalities.
+This program is intended to serve as a good example of object-oriented programming in Java. It uses abstract classes and inheritance to create a hierarchy of robot classes with different functionality.
 
-The Robot class serves as the base class for all robots and contains common attributes like name and serial number, as well as a static counter to keep track of the number of robots created. The ArtsRobot and ScienceRobot classes are abstract classes that inherit from the superclass Robot and add functionality specific to their respective disciplines.
+The ```Robot``` class serves as the base class for all robots and contains common attributes like name and serial number, as well as a static counter to keep track of the number of robots created. The ```ArtsRobot``` and ```ScienceRobot``` classes are abstract classes that inherit from the superclass ```Robot``` and add functionality specific to their respective disciplines.
 
-The PrimeRobot and CuttingRobot classes inherit from ScienceRobot and provide concrete implementations of the abstract process() method. Each of these robots performs a different operation, such as checking whether a number is prime, cutting a number or string in half.
+The ```PrimeRobot``` and ```CuttingRobot``` classes inherit from ```ScienceRobot``` and provide concrete implementations of the abstract ```process()``` method. Each of these robots serves a different purpose, such as checking whether a number is prime, dividing a number into its components or splitting a string in half.
 
-The PoetRobot and PainterRobot classes inherit from ArtsRobot performing different operations. Their superclass ArtsRobot implement a Behavior attribute that is set to Behavior.REGULAR by default but can be overridden in the constructor. The PoetRobot class uses this attribute to generate poems with different levels of complexity, whereas the PainterRobot paints different shapes made of characters on the console.
+The ```PoetRobot``` and ```PainterRobot``` classes inherit from ```ArtsRobot``` performing different operations. Their superclass ```ArtsRobot``` provides a ```Behavior``` attribute that is set to ```Behavior.REGULAR``` by default but can be overridden in the constructor. The ```PoetRobot``` class uses this attribute to generate poems with different levels of complexity, whereas the ```PainterRobot``` paints on the console geometric shapes made of characters with different rules depending on its ```Behavior```.
 
-Overall, the program demonstrates how to use object-oriented programming concepts like inheritance and abstract classes to create a hierarchy of classes with different functionalities, making the code easier to maintain and extend.
+Overall, the program demonstrates how to use object-oriented programming concepts like inheritance and abstract classes to create a hierarchy of classes with different goals, making the code easier to maintain and extend.
 
 <br>    
 
 <h2 id="yum-snack-bar">
-  Ejercicio segundo: Yum Snack Bar
+  Second exercise: Yum Snack Bar
   <img src="https://github.githubassets.com/images/icons/emoji/unicode/1f37f.png?v8" alt="popcorn" style="float:right;width:64px;height:64px;">
 </h2>
 
-<h3 id="yum-conocimientos">Conocimientos necesarios:</h3>
+<h3 id="yum-knowledge">Required Knowledge:</h3>
 
-* Programación Orientada a Objetos
-* Composición
-* Modularización en paquetes e importación de clases
-* Uso de Colecciones dinámicas en Java
-* Creación y captura de excepciones
-* Creación e implementación de Interfaces
-* API de tiempo y calendario de Java 8+
-* Persistencia de información: API I/O de Java I/O para lectura/escritura de ficheros
-* Comparación de objetos (Comparable)
+* Object-Oriented Programming
+* Composition
+* Modularization into packages and importing of classes
+* Use of dynamic collections in Java
+* Creation and handling of exceptions
+* Creation and implementation of interfaces
+* Java 8+ time and calendar API
+* Information persistence: Java I/O API for reading/writing files
+* Object comparison (_Comparable_)
 
-<h3 id="yum-requisitos">Requisitos:</h3>
+<h3 id="yum-requirements">Requirements:</h3>
 
 El objetivo es crear un programa en Java para administrar los aspectos básicos de la venta de productos de un establecimiento de palomitas, bebidas y aperitivos para consumir en el cine. La función principal es el registro de las compras o transacciones, simulando una aplicación de TPV o "cash register".
 
@@ -227,21 +229,21 @@ El establecimiento "Yum Snack Bar" ofrece a sus clientes los siguientes producto
     8. Imprime en consola cuál es la transacción más cara de toda la sesión.
     9. Por último, guarda la lista de transacciones en el fichero de _log_ y recupera la información que se ha guardado en este fichero para imprimirla por consola.
 
-<h3 id="yum-precios">Guía de precios:</h3>
+<h3 id="yum-price-guide">Price Guide:</h3>
 
-Se recomienda utilizar esta guía de precios para los productos de la tienda:
+The following price guide is recommended for the store's products:
 
 <br>
 
 <table align="center">
     <tr>
         <th colspan=2, align="center">
-            <b>Guía orientativa de precios de los productos de Yum Snack Bar</b>
+            <b>Yum Snack Bar prices</b>
         </th>
     </tr>
     <tr>
         <td>
-            Palomitas MEDIANO / GRANDE / GIGANTE
+            PopcornBox MEDIUM / LARGE / EXTRALARGE
         </td>
         <td>
             5.0 / 7.0 / 9.0
@@ -249,7 +251,7 @@ Se recomienda utilizar esta guía de precios para los productos de la tienda:
     </tr>
     <tr>
         <td>
-            Refresco MEDIANO / GRANDE / GIGANTE
+            SodaCup MEDIUM / LARGE / EXTRALARGE
         </td>
         <td>
             4.5 / 6.0 / 7.5
@@ -257,7 +259,7 @@ Se recomienda utilizar esta guía de precios para los productos de la tienda:
     </tr>
     <tr>
         <td>
-            Menú MEDIANO / GRANDE / GIGANTE
+            Menu MEDIUM / LARGE / EXTRALARGE
         </td>
         <td>
             7.95 / 8.95 / 9.95
@@ -265,7 +267,7 @@ Se recomienda utilizar esta guía de precios para los productos de la tienda:
     </tr>
     <tr>
         <td>
-            Chocolatina
+            Snack
         </td>
         <td>
             2.0
@@ -273,7 +275,7 @@ Se recomienda utilizar esta guía de precios para los productos de la tienda:
     </tr>
     <tr>
         <td>
-            Bolsa de frutos secos (100 g)
+            MixedNutsBag (100 g)
         </td>
         <td>
             1.80
@@ -281,7 +283,7 @@ Se recomienda utilizar esta guía de precios para los productos de la tienda:
     </tr>
     <tr>
         <td>
-            Bolsa de chucherías (100 g)
+            CandyBag (100 g)
         </td>
         <td>
             1.10
@@ -289,7 +291,7 @@ Se recomienda utilizar esta guía de precios para los productos de la tienda:
     </tr>
 </table>
 
-<h3 id="yum-salida">Salida en consola:</h3>
+<h3 id="yum-output">Console Output:</h3>
 
 ```+------------------------+
 | Welcome to the Yum Snack Bar|
@@ -342,28 +344,28 @@ Transaction [ID=6,
 
 <br>
 
-<h2 id="biblioteca-filipinas">
-  Ejercicio tercero: Biblioteca Filipinas
+<h2 id="filipinas-library">
+  Ejercicio tercero: Filipinas Library
   <img src="https://github.githubassets.com/images/icons/emoji/unicode/1f4da.png?v8" alt="books" style="float:right;width:64px;height:64px;">
 </h2>
 
-<h3 id="biblioteca-conocimientos">Conocimientos necesarios:</h3>
+<h3 id="library-knowledge">Required Knowledge:</h3>
 
-* Programación Orientada a Objetos en Java (composición y otras técnicas)
-* Colecciones en Java
-* Clases e interfaces de la API JDBC de Java
-* Bases de datos relacionales: conceptos y estructura
-* Lenguaje MySQL (DDL, DML, DQL)
-* Instalación de un servidor MySQL local (p.ej. phpMyAdmin)
-* Descarga de un driver JDBC apropiado e instalación en el _classpath_ del proyecto
-* Mapeo objeto-relacional manual (sin el uso de un framework ORM)
-* Sintaxis CRUD básica en MySQL
-* Uso de Prepared Statements
-* Cierre de recursos para evitar fugas de memoria (opción de empleo de la sintaxis _try-with-resources_)
-* Captura de excepciones
-* Buenas prácticas en la escritura de código 
+* Object-Oriented Programming in Java (composition and other techniques)
+* Collections API in Java
+* Classes and interfaces of the Java JDBC API
+* Relational databases: concepts and structure
+* MySQL language (DDL, DML, DQL)
+* Installation of a local MySQL server (e.g. phpMyAdmin)
+* Download of an appropriate JDBC driver and installation in the project's classpath
+* Informal object-relational mapping (without using an ORM framework)
+* Basic CRUD in MySQL
+* Use of Prepared Statements
+* Resource closing to avoid memory leaks (option to use the try-with-resources syntax)
+* Exception handling
+* Best practices in code writing
 
-<h3 id="biblioteca-requisitos">Requisitos:</h3>
+<h3 id="library-requirements">Requirements:</h3>
 
 El objetivo de este ejercicio es crear un programa en Java con utilidad práctica capaz de administrar el servicio de préstamo de libros de una biblioteca de uso público. La aplicación realiza consultas y actualizaciones de una base de datos MySQL cuyas sentencias de creación e inserción de datos se proporcionan al final de este enunciado.
 
@@ -403,8 +405,135 @@ Conociendo estos requisitos, realiza un programa en Java con las siguientes espe
     9. OPCIONAL: la novena operación, si se ha implementado la lógica de control del punto 8 opcional, consistirá en registrar la ```DEVOLUCIÓN``` del libro con ID 15 (“Las metamorfosis”) por el lector con ID 3 (André Lobineau), quien ya lleva 1 día de retraso en su devolución. La operación debe ser autorizada y se espera que el programa, además de modificar los campos de disponibilidad del libro, fecha de devolución del préstamo y número de libros prestados de este lector, actualice la base de datos incluyendo la penalización de 3 días por 1 día de retraso.
     10. OPCIONAL: las operaciones décima y undécima, si se ha implementado la lógica de control del punto 8 opcional, consistirán en registrar la ```DEVOLUCIÓN``` de los libros con ID 7 y 12 (“Robinson Crusoe” y “The stand”) de la lectora con ID 2 (Nicole Collard). Al tener un retraso de 4 y 2 días respectivamente en su devolución, se espera que el programa las registre correctamente y actualice la base de datos poniendo a la lectora Nicole Collard una penalización de 12 + 6 = 18 días.
     11. La última operación consistirá en elegir la opción ```SALIR```, que deberá terminar con la ejecución iterativa y finalizar el programa. Conviene comprobar en la base de datos MySQL del servidor si los datos de las tablas ```book```, ```borrowing``` y ```reader``` se han actualizado conforme a los préstamos y devoluciones tramitados durante el ejercicio.
+    
+<h3 id="library-db-creation">Database DDL creation with CREATE statements:</h3>
 
-<h3 id="biblioteca-salida">Salida en consola:</h3>
+```DROP DATABASE IF EXISTS filipinas_library;
+CREATE DATABASE filipinas_library;
+USE filipinas_library;
+
+CREATE TABLE library (
+    library_id INT AUTO_INCREMENT PRIMARY KEY,
+    library_name VARCHAR(255),
+    library_address VARCHAR(255),
+    library_phone_number VARCHAR(20),
+    max_borrowings INT DEFAULT 3,
+    borrowing_period_days INT DEFAULT 15,
+    late_return_penalty_days INT DEFAULT 3
+);
+
+CREATE TABLE book (
+    book_id INT AUTO_INCREMENT PRIMARY KEY,
+    title VARCHAR(255),
+    author VARCHAR(255),
+    publication_year INT,
+    publisher VARCHAR(255),
+    ISBN VARCHAR(13),
+    number_of_pages INT,
+    available BOOLEAN DEFAULT TRUE
+);
+
+CREATE TABLE reader (
+    reader_id INT AUTO_INCREMENT PRIMARY KEY,
+    first_name VARCHAR(255),
+    last_name VARCHAR(255),
+    email VARCHAR(255),
+    phone_number VARCHAR(20),
+    date_of_birth DATE,
+    borrowed_books INT DEFAULT 0,
+    penalty_count INT DEFAULT 0
+);
+
+CREATE TABLE borrowing (
+    borrowing_id INT AUTO_INCREMENT PRIMARY KEY,
+    book_id INT,
+    reader_id INT,
+    borrowing_date DATETIME,
+    return_date DATETIME,
+    overdue_penalty INT DEFAULT 0,
+    FOREIGN KEY (book_id) REFERENCES book(book_id),
+    FOREIGN KEY (reader_id) REFERENCES reader(reader_id)
+);
+```
+
+<h3 id="library-db-population">Database DML data population with INSERT-VALUES statements:</h3>
+
+```INSERT INTO library (library_name, library_address, library_phone_number, max_borrowings, borrowing_period_days, late_return_penalty_days)
+VALUES 
+    ('Biblioteca Islas Filipinas', 'Calle Jesús Maestro, 3', '915800811', 3, 15, 3);
+
+INSERT INTO book (title, author, publication_year, publisher, ISBN, number_of_pages, available)
+VALUES
+    ('El Quijote', 'Miguel de Cervantes', 1605, 'Francisco de Robles', '9788424921862', 863, true),
+    ('Moby Dick', 'Herman Melville', 1851, 'Harper & Brothers', '9781593080275', 635, false),
+    ('Las aventuras de Huckleberry Finn', 'Mark Twain', 1884, 'Chatto & Windus', '9780486280615', 224, false),
+    ('Fundación', 'Isaac Asimov', 1951, 'Gnome Press', '9780553293357', 244, false),
+    ('El Señor de los Anillos', 'J.R.R. Tolkien', 1954, 'George Allen & Unwin', '9780618260584', 1178, true),
+    ('El doctor Jekyll y Mr. Hyde', 'Robert L. Stevenson', 1886, 'Longmans, Green, and Co.', '9780141389509', 144, false),
+    ('Robinson Crusoe', 'Daniel Defoe', 1719, 'W. Taylor', '9780060771504', 320, false),
+    ('No es país para viejos', 'Cormac McCarthy', 2005, 'Vintage', '9780307387134', 320, true),
+    ('El perro de los Baskerville', 'Arthur Conan Doyle', 1902, 'George Newnes Ltd', '9780143122065', 256, false),
+    ('Vida y destino', 'Vasily Grossman', 1980, 'Ediciones Destino', '9788432209469', 896, true),
+    ('La invención de Morel', 'Adolfo Bioy Casares', 1940, 'Editorial Losada', '9789500301429', 144, false),
+    ('The stand', 'Stephen King', 1978, 'Doubleday', '9780385121682', 823, false),
+    ('Rebelión en la granja', 'George Orwell', 1945, 'Secker and Warburg', '9780451526342', 112, true),
+    ('Los miserables', 'Victor Hugo', 1862, 'A. Lacroix, Verboeckhoven & Cie', '9780192839983', 1232, true),
+    ('Las metamorfosis', 'Ovidio', 8, 'Varios', '9780140447897', 723, false);
+    
+INSERT INTO reader (first_name, last_name, email, phone_number, date_of_birth, borrowed_books, penalty_count)
+VALUES 
+    ('George', 'Stobbart', 'george.stobbart@gmail.com', '626461866', '1979-06-18', 1, 0),
+    ('Nicole', 'Collard', 'nico.collard@yahoo.com', '612445112', '1984-10-03', 2, 0),
+    ('André', 'Lobineau', 'andre.lobineau@gmail.com', '691557349', '1985-12-29', 1, 0),
+    ('Augustin', 'Rosso', 'augustin.rosso@yahoo.com', '680220093', '1971-04-05', 3, 0),
+    ('Pierre', 'Carchon', 'pierre.carchon@bbc.co.uk', '616596154', '1999-01-12', 0, 0),
+    ('Liam', 'McGuire', 'liam.mcguire@facebook.com', '677916387', '2002-07-30', 0, 0),
+    ('Clarissa', 'Piermont', 'clarissa.piermont@altavista.com', '648915477', '1956-09-02', 0, 0),
+    ('Duane', 'Henderson', 'duane.penderson@hotmail.com', '610468251', '1982-03-21', 0, 0),
+    ('Pearl', 'Henderson', 'pearl.henderson@hotmail.com', '691465003', '1983-12-01', 1, 0),
+    ('Bruno', 'Ostvalt', 'bruno.ostvalt@yahoo.com', '611025916', '1965-08-08', 0, 0),
+    ('Nigel', 'Peagram', 'nigel.peagram@lycos.com', '696163171', '1991-02-17', 0, 0),
+    ('François', 'Plantard', 'francois.plantard@google.com', '625526744', '1970-01-10', 1, 5),
+    ('Jacques', 'Marquet', 'jacques.marquet@yahoo.com', '682412110', '1968-12-31', 0, 0),
+    ('Antoine', 'Eklund', 'antoine.eklund@gmail.com', '646826952', '1975-06-10', 0, 0),
+    ('Gamal', 'Khan', 'khan@google.com', '600168163', '1986-07-27', 0, 26);
+    
+INSERT INTO borrowing (book_id, reader_id, borrowing_date, return_date, overdue_penalty)
+VALUES 
+    (2, 2, '2022-09-02 11:43:03', '2022-09-13 10:16:19', 0),
+    (13, 2, '2022-09-02 11:43:36', '2022-09-13 18:30:26', 0),
+    (4, 1, '2022-09-13 18:31:18', '2022-09-21 13:01:06', 0),
+    (8, 6, '2022-09-27 12:20:25', '2022-10-11 15:50:31', 0),
+    (9, 8, '2022-10-02 17:00:42', '2022-10-18 11:09:12', 3),
+    (3, 2, '2022-10-07 09:37:26', '2022-10-20 11:00:43', 0),
+    (12, 2, '2022-10-07 09:37:40', '2022-10-20 11:00:59', 0),
+    (1, 4, '2022-10-30 16:11:56', '2022-11-21 12:40:41', 21),
+    (15, 7, '2022-12-02 15:50:42', '2022-12-19 15:15:16', 6),
+    (5, 3, '2022-12-11 18:47:01', '2022-12-30 12:01:24', 12),
+    (10, 2, '2022-12-11 10:13:43', '2022-12-25 13:30:20', 0),
+    (11, 2, '2022-12-11 10:14:04', '2022-12-25 13:30:33', 0),
+    (13, 8, '2022-12-13 14:04:30', '2022-12-28 11:00:33', 0),
+
+    # Insertions relative to present day for penalties and current borrowings to make sense:
+    (6, 15, DATE_SUB(NOW(), INTERVAL 33 DAY), DATE_SUB(NOW(), INTERVAL 7 DAY), 
+        (((33 - 7) - (SELECT borrowing_period_days FROM library)) * (SELECT late_return_penalty_days FROM library))),
+    (7, 2, DATE_SUB(NOW(), INTERVAL 19 DAY), NULL, 
+        ((19 - (SELECT borrowing_period_days FROM library)) * (SELECT late_return_penalty_days FROM library))),
+    (12, 2, DATE_SUB(NOW(), INTERVAL 17 DAY), NULL, 
+        ((17 - (SELECT borrowing_period_days FROM library)) * (SELECT late_return_penalty_days FROM library))),
+    (15, 3, DATE_SUB(NOW(), INTERVAL 16 DAY), NULL, 
+        ((16 - (SELECT borrowing_period_days FROM library)) * (SELECT late_return_penalty_days FROM library))),
+    (5, 12, DATE_SUB(NOW(), INTERVAL 18 DAY), CONCAT(CURDATE() - INTERVAL 1 DAY, ' 16:07:07'),
+        (((18 - 1) - (SELECT borrowing_period_days FROM library)) * (SELECT late_return_penalty_days FROM library))),
+    (6, 4, DATE_SUB(NOW(), INTERVAL 10 DAY), NULL, 0),
+    (4, 4, DATE_SUB(NOW(), INTERVAL 13 DAY), NULL, 0),
+    (11, 4, DATE_SUB(NOW(), INTERVAL 13 DAY), NULL, 0),
+    (9, 12, DATE_SUB(NOW(), INTERVAL 7 DAY), NULL, 0),
+    (2, 9, DATE_SUB(NOW(), INTERVAL 4 DAY), NULL, 0),
+    (3, 1, CONCAT(CURRENT_DATE(), ' 08:34:05'), NULL, 0);
+```
+
+<h3 id="library-output">Console-Output:</h3>
 
 ```+--------------------------------------------------------------+
 | Do you want to borrow or return a book? (Borrow/Return/Exit) |
@@ -492,8 +621,6 @@ Late return penalty applied: 6 days.
 exit
 Exiting program...
 ```
-
-<h3 id="biblioteca-insert">Sentencias INSERT de creación de registros de ejemplo en la base de datos:</h3>
 
 <br>
 
