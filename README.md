@@ -12,17 +12,17 @@ Every exercise but the first—a mere play of imagination on objects— are the 
 ## Table of Contents
 1. [First exercise: Robots Lineage](#robots-lineage)
     1. [Required Knowledge](#lineage-knowledge)
-    2. [Requirements](#lineage-requirements)
+    2. [Project Requirements](#lineage-requirements)
     3. [Console Output](#lineage-output)
     4. [Summary](#lineage-summary)
 2. [Second Exercise: Yum Snack Bar](#yum-snack-bar)
     1. [Required Knowledge](#yum-knowledge)
-    2. [Requirements](#yum-requirements)
+    2. [Project Requirements](#yum-requirements)
     3. [Price Guide](#yum-price-guide)
     4. [Console Output](#yum-output)
 3. [Third exercise: Filipinas Library](#filipinas-library)
     1. [Required Knowledge](#library-knowledge)
-    2. [Requirements](#library-requirements)
+    2. [Project Requirements](#library-requirements)
     3. [Database CREATE DDL statements](#library-db-creation)
     4. [Database INSERT-VALUES DML statements](#library-db-population)
     5. [Console Output](#library-output)
@@ -51,7 +51,7 @@ Every exercise but the first—a mere play of imagination on objects— are the 
 * Casting or type conversion
 * Use of random functions
 
-<h3 id="lineage-requirements">Requirements:</h3>
+<h3 id="lineage-requirements">Project Requirements:</h3>
 
 <p>Escribe un programa en el lenguaje Java, utilizando Eclipse u otro IDE, consistente en una serie de clases de ```Robot``` destinados a realizar cálculos y actividades que arrojen una salida por consola como se describe en los siguientes puntos:<p>
 
