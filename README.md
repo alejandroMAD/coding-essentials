@@ -25,6 +25,7 @@ Every exercise but the first—a mere play of imagination on objects— are the 
     2. [Requisitos](#biblioteca-requisitos)
     3. [Salida en consola](#biblioteca-salida)
 
+<br>
 
 <h2 id="robots-lineage">
   First exercise: Robots Lineage
