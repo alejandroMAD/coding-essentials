@@ -27,15 +27,16 @@ Every exercise but the first—a mere play of imagination on objects— are the 
     4. [Database CREATE DDL statements](#library-db-creation)
     5. [Database INSERT-VALUES DML statements](#library-db-population)
     6. [Console Output](#library-output)
+4. [License](#license)
 
 <br>
 
 <h2 id="robots-lineage">
-  First exercise: Robots Lineage
+  1. First exercise: Robots Lineage
   <img src="https://github.githubassets.com/images/icons/emoji/unicode/1f916.png" alt="slot_machine" style="float:right;width:64px;height:64px;">
 </h2>
 
-<h3 id="lineage-knowledge">Required Knowledge:</h3>
+<h3 id="lineage-knowledge">1.1 Required Knowledge:</h3>
 
 * Creation of a console program in Java
 * Use of Eclipse or another IDE
@@ -52,7 +53,7 @@ Every exercise but the first—a mere play of imagination on objects— are the 
 * Casting or type conversion
 * Use of random functions
 
-<h3 id="lineage-requirements">Project Requirements:</h3>
+<h3 id="lineage-requirements">1.2 Project Requirements:</h3>
 
 <p>Write a program in the Java programming language, using Eclipse or another IDE, with several types of ```Robot``` classes to perform several types of calculations and activities to produce a console output as described in the following points:<p>
 
@@ -116,7 +117,7 @@ Every exercise but the first—a mere play of imagination on objects— are the 
      9. Solicitar a un RobotPoeta de Comportamiento ALEATORIO recitar versos de su colección.
      10. Imprime para terminar un mensaje indicando el número total de Robots construidos.
 
-<h3 id="lineage-output">Console Output:</h3>
+<h3 id="lineage-output">1.3 Console Output:</h3>
 
 ```I am a Robot of: [name=Bender, serialNumber=1010011010BU22, discipline=Science]
 I am a Robot of: [name=Euclid, serialNumber=E213002248G, discipline=Science]
@@ -167,7 +168,7 @@ First half: [Mercurio, Venus, Tierra, Marte] / Second half: [Júpiter, Saturno, 
 =====Total robots manufactured: [6]=====
 ```
 
-<h3 id="lineage-summary">Summary:</h3>
+<h3 id="lineage-summary">1.4 Summary:</h3>
 
 This program is intended to serve as a good example of object-oriented programming in Java. It uses abstract classes and inheritance to create a hierarchy of robot classes with different functionality.
 
@@ -182,11 +183,11 @@ Overall, the program demonstrates how to use object-oriented programming concept
 <br>    
 
 <h2 id="yum-snack-bar">
-  Second exercise: Yum Snack Bar
+  2. Second exercise: Yum Snack Bar
   <img src="https://github.githubassets.com/images/icons/emoji/unicode/1f37f.png?v8" alt="popcorn" style="float:right;width:64px;height:64px;">
 </h2>
 
-<h3 id="yum-knowledge">Required Knowledge:</h3>
+<h3 id="yum-knowledge">2.1 Required Knowledge:</h3>
 
 * Object-Oriented Programming
 * Composition
@@ -198,7 +199,7 @@ Overall, the program demonstrates how to use object-oriented programming concept
 * Information persistence: Java I/O API for reading/writing files
 * Object comparison (_Comparable_)
 
-<h3 id="yum-requirements">Requirements:</h3>
+<h3 id="yum-requirements">2.3 Requirements:</h3>
 
 El objetivo es crear un programa en Java para administrar los aspectos básicos de la venta de productos de un establecimiento de palomitas, bebidas y aperitivos para consumir en el cine. La función principal es el registro de las compras o transacciones, simulando una aplicación de TPV o "cash register".
 
@@ -230,7 +231,7 @@ El establecimiento "Yum Snack Bar" ofrece a sus clientes los siguientes producto
     8. Imprime en consola cuál es la transacción más cara de toda la sesión.
     9. Por último, guarda la lista de transacciones en el fichero de _log_ y recupera la información que se ha guardado en este fichero para imprimirla por consola.
 
-<h3 id="yum-price-guide">Price Guide:</h3>
+<h3 id="yum-price-guide">2.4 Price Guide:</h3>
 
 The following price guide is recommended for the store's products:
 
@@ -292,7 +293,7 @@ The following price guide is recommended for the store's products:
     </tr>
 </table>
 
-<h3 id="yum-output">Console Output:</h3>
+<h3 id="yum-output">2.5 Console Output:</h3>
 
 ```+------------------------+
 | Welcome to the Yum Snack Bar|
@@ -346,11 +347,11 @@ Transaction [ID=6,
 <br>
 
 <h2 id="filipinas-library">
-  Ejercicio tercero: Filipinas Library
+  3. Ejercicio tercero: Filipinas Library
   <img src="https://github.githubassets.com/images/icons/emoji/unicode/1f4da.png?v8" alt="books" style="float:right;width:64px;height:64px;">
 </h2>
 
-<h3 id="library-knowledge">Required Knowledge:</h3>
+<h3 id="library-knowledge">3.1 Required Knowledge:</h3>
 
 * Object-Oriented Programming in Java (composition and other techniques)
 * Collections API in Java
@@ -366,7 +367,7 @@ Transaction [ID=6,
 * Exception handling
 * Best practices in code writing
 
-<h3 id="library-requirements">Requirements:</h3>
+<h3 id="library-requirements">3.2 Project Requirements:</h3>
 
 El objetivo de este ejercicio es crear un programa en Java con utilidad práctica capaz de administrar el servicio de préstamo de libros de una biblioteca de uso público. La aplicación realiza consultas y actualizaciones de una base de datos MySQL cuyas sentencias de creación e inserción de datos se proporcionan al final de este enunciado.
 
@@ -407,11 +408,11 @@ Conociendo estos requisitos, realiza un programa en Java con las siguientes espe
     10. OPCIONAL: las operaciones décima y undécima, si se ha implementado la lógica de control del punto 8 opcional, consistirán en registrar la ```DEVOLUCIÓN``` de los libros con ID 7 y 12 (“Robinson Crusoe” y “The stand”) de la lectora con ID 2 (Nicole Collard). Al tener un retraso de 4 y 2 días respectivamente en su devolución, se espera que el programa las registre correctamente y actualice la base de datos poniendo a la lectora Nicole Collard una penalización de 12 + 6 = 18 días.
     11. La última operación consistirá en elegir la opción ```SALIR```, que deberá terminar con la ejecución iterativa y finalizar el programa. Conviene comprobar en la base de datos MySQL del servidor si los datos de las tablas ```book```, ```borrowing``` y ```reader``` se han actualizado conforme a los préstamos y devoluciones tramitados durante el ejercicio.
     
-<h3 id="library-design">Database Design:</h3>
+<h3 id="library-design">3.3 Database Design:</h3>
 
 ![Database design](/library_design.png)
     
-<h3 id="library-db-creation">Database DDL creation with CREATE statements:</h3>
+<h3 id="library-db-creation">3.4 Database DDL creation with CREATE statements:</h3>
 
 ```DROP DATABASE IF EXISTS filipinas_library;
 CREATE DATABASE filipinas_library;
@@ -461,7 +462,7 @@ CREATE TABLE borrowing (
 );
 ```
 
-<h3 id="library-db-population">Database DML data population with INSERT-VALUES statements:</h3>
+<h3 id="library-db-population">3.5 Database DML data population with INSERT-VALUES statements:</h3>
 
 ```INSERT INTO library (library_name, library_address, library_phone_number, max_borrowings, borrowing_period_days, late_return_penalty_days)
 VALUES 
@@ -538,7 +539,7 @@ VALUES
     (3, 1, CONCAT(CURRENT_DATE(), ' 08:34:05'), NULL, 0);
 ```
 
-<h3 id="library-output">Console-Output:</h3>
+<h3 id="library-output">3.6 Console-Output:</h3>
 
 ```+--------------------------------------------------------------+
 | Do you want to borrow or return a book? (Borrow/Return/Exit) |
@@ -629,7 +630,10 @@ Exiting program...
 
 <br>
 
-## License
+<h2 id="license">
+  4. License:
+</h2>
+
     Copyright (C) 2022  Alejandro M. González
     
     Permission is hereby granted, free of charge, to any person obtaining a copy
