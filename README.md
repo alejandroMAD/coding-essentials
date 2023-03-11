@@ -23,9 +23,10 @@ Every exercise but the first—a mere play of imagination on objects— are the 
 3. [Third exercise: Filipinas Library](#filipinas-library)
     1. [Required Knowledge](#library-knowledge)
     2. [Project Requirements](#library-requirements)
-    3. [Database CREATE DDL statements](#library-db-creation)
-    4. [Database INSERT-VALUES DML statements](#library-db-population)
-    5. [Console Output](#library-output)
+    3. [Database Design](#library-design)
+    4. [Database CREATE DDL statements](#library-db-creation)
+    5. [Database INSERT-VALUES DML statements](#library-db-population)
+    6. [Console Output](#library-output)
 
 <br>
 
@@ -405,6 +406,10 @@ Conociendo estos requisitos, realiza un programa en Java con las siguientes espe
     9. OPCIONAL: la novena operación, si se ha implementado la lógica de control del punto 8 opcional, consistirá en registrar la ```DEVOLUCIÓN``` del libro con ID 15 (“Las metamorfosis”) por el lector con ID 3 (André Lobineau), quien ya lleva 1 día de retraso en su devolución. La operación debe ser autorizada y se espera que el programa, además de modificar los campos de disponibilidad del libro, fecha de devolución del préstamo y número de libros prestados de este lector, actualice la base de datos incluyendo la penalización de 3 días por 1 día de retraso.
     10. OPCIONAL: las operaciones décima y undécima, si se ha implementado la lógica de control del punto 8 opcional, consistirán en registrar la ```DEVOLUCIÓN``` de los libros con ID 7 y 12 (“Robinson Crusoe” y “The stand”) de la lectora con ID 2 (Nicole Collard). Al tener un retraso de 4 y 2 días respectivamente en su devolución, se espera que el programa las registre correctamente y actualice la base de datos poniendo a la lectora Nicole Collard una penalización de 12 + 6 = 18 días.
     11. La última operación consistirá en elegir la opción ```SALIR```, que deberá terminar con la ejecución iterativa y finalizar el programa. Conviene comprobar en la base de datos MySQL del servidor si los datos de las tablas ```book```, ```borrowing``` y ```reader``` se han actualizado conforme a los préstamos y devoluciones tramitados durante el ejercicio.
+    
+<h3 id="library-design">Database Design:</h3>
+
+![Database design](/library_design.png)
     
 <h3 id="library-db-creation">Database DDL creation with CREATE statements:</h3>
 
