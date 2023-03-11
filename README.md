@@ -27,7 +27,8 @@ Every exercise but the first—a mere play of imagination on objects— are the 
     4. [Database CREATE DDL statements](#library-db-creation)
     5. [Database INSERT-VALUES DML statements](#library-db-population)
     6. [Console Output](#library-output)
-4. [License](#license)
+4. [Grade Course Curriculum](#grade-curriculum) 
+5. [License](#license)
 
 <br>
 
@@ -629,8 +630,18 @@ Exiting program...
 
 <br>
 
+<h2 id="grade-curriculum">
+  4. Grade Course Curriculum:
+</h2>
+
+[Higher Technician in Multi-platform Applications Development (English)](https://www.todofp.es/dam/jcr:7655e32d-08a3-47a7-a479-ddb6f032c63e/n-tsdesarrolloaplicacionesmultiplataformaen-pdf.pdf)
+<br>
+[Higher Technician in Multi-platform Applications Development (Spanish)](https://www.todofp.es/dam/jcr:c03b0ca3-58e3-4b1d-ac13-b2c006a9d5f2/n-tsdesarrolloaplicacionesmultiplataformaes-pdf.pdf)
+
+<br>
+
 <h2 id="license">
-  4. License:
+  5. License:
 </h2>
 
     Copyright (C) 2023  Alejandro M. González
