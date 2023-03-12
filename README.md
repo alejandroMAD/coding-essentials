@@ -199,7 +199,7 @@ Overall, the program demonstrates how to use object-oriented programming concept
 * Information persistence: Java I/O API for reading/writing files
 * Object comparison (_Comparable_)
 
-<h3 id="yum-requirements">2.3 Requirements:</h3>
+<h3 id="yum-requirements">2.3 Project Requirements:</h3>
 
 El objetivo es crear un programa en Java para administrar los aspectos básicos de la venta de productos de un establecimiento de palomitas, bebidas y aperitivos para consumir en el cine. La función principal es el registro de las compras o transacciones, simulando una aplicación de TPV o "cash register".
 
