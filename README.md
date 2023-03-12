@@ -201,9 +201,9 @@ Overall, the program demonstrates how to use object-oriented programming concept
 
 <h3 id="yum-requirements">2.3 Project Requirements:</h3>
 
-El objetivo es crear un programa en Java para administrar los aspectos básicos de la venta de productos de un establecimiento de palomitas, bebidas y aperitivos para consumir en el cine. La función principal es el registro de las compras o transacciones, simulando una aplicación de TPV o "cash register".
+The goal of this exercise is to create a Java application to manage the basics of a movie theater snack bar business which sells different kinds of products such as popcorn, beverages and snacks. The main function is to register purchases or transactions, simulating a point-of-sale (POS) or cash register software.
 
-El establecimiento "Yum Snack Bar" ofrece a sus clientes los siguientes productos: 1) Refrescos y 2) palomitas de diferentes tamaños; 3) chocolatinas o snacks, 4) bolsas de chucherías al peso y 5) bolsas de frutos secos variados que se compran también al peso o granel.
+The "Yum Snack Bar" establishment offers its customers the following products: 1) Soda soft drinks in different 2) Popcorn in different sizes; 3) Chocolates or snacks, 4) Bags of candies sold by weight, and 5) Bags of assorted nuts that are also purchased by weight. 6) Menus consisting of a popcorn box + drink.
 
 1.	Construye una solución Orientada a Objetos que contemple las diferentes clases necesarias para organizar el programa, utilizando paquetería para dividir lo mejor posible el código agrupando las clases por sus características y finalidad.
 2.	Parece clara la conveniencia de utilizar la herencia: por ejemplo, es posible concebir una clase ```CajaPalomitas``` y otra clase ```VasoRefresco```, con características propias, y una superclase ```Producto``` con características comunes como un ```nombre``` y un ```precio```.
