@@ -3,6 +3,8 @@
 [![en](https://img.shields.io/badge/lang-en-red.svg)](https://github.com/alejandroMAD/coding-essentials/blob/main/README.md)
 [![es](https://img.shields.io/badge/lang-es-yellow.svg)](https://github.com/alejandroMAD/coding-essentials/blob/main/README.es.md)
 
+![Application logo](/coding_essentials_banner.png)
+
 Conjunto de tres proyectos independientes de programación en Java que abarcan el uso de algoritmos básicos, fundamentos de la Programación Orientada a Objetos (POO) y conexión a bases de datos (JDBC), diseñados para que estudiantes de 1º de Programación del CFGS de Desarrollo de Aplicaciones Multiplataforma puedan repasar y superar el curso.
 
 Exceptuando el primer ejercicio, que es un caso de pura imaginación para aplicar conceptos de POO, los ejercicios restantes son el embrión de proyectos y aplicaciones con utilidad práctica real.
