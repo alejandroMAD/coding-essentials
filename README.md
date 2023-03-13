@@ -4,7 +4,6 @@
 [![en](https://img.shields.io/badge/lang-en-red.svg)](https://github.com/alejandroMAD/coding-essentials/blob/main/README.md)
 [![es](https://img.shields.io/badge/lang-es-yellow.svg)](https://github.com/alejandroMAD/coding-essentials/blob/main/README.es.md)
 
-
 ![Application logo](/coding_essentials_banner.png)
 
 A bundle of three independent Java programming projects covering basic algorithms, OOP fundamentals, and database connectivity (JDBC) designed for first-year programming students to train themselves and pass their course.
