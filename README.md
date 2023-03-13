@@ -202,7 +202,7 @@ Overall, the program demonstrates how to use object-oriented programming concept
 
 <h3 id="yum-requirements">2.3 Project Requirements:</h3>
 
-The goal of this exercise is to create a Java application to manage the basics of a movie theater snack bar business which sells different kinds of products such as popcorn, beverages and snacks. The main function is to register purchases or transactions, simulating a point-of-sale (POS) or cash register software.
+The goal of this exercise is to create a Java application to manage the activity of a movie theater snack bar business which sells different kinds of products such as popcorn, beverages and snacks. The main function is to register purchases or transactions, simulating a point-of-sale (POS) or cash register software.
 
 The "Yum Snack Bar" establishment offers its customers the following products: 1) Soda soft drinks in different sizes; 2) Popcorn in different sizes; 3) Chocolates or snacks, 4) Bags of candies sold by weight; 5) Bags of assorted nuts that are also purchased by weight. 6) Menus consisting of a Popcorn box + Drink.
 
@@ -217,19 +217,19 @@ The "Yum Snack Bar" establishment offers its customers the following products: 1
 9.	The class ```Snack``` will be the simplest of all: it inherits from ```Product```, has a static ```price```, a static ```name``` of the product, and a constructor without any parameters.
 10.	<span id="yum-requirements-10">Create a class</span> ```Store``` that keeps the necessary information of the establishment that you consider necessary and, at a minimum, its ```name``` and the ```foundationDate``` of the snack kiosk. Use preferably one of the time-calendar classes in the Java 8+ API. You must create a method allowing to print a message on the console in the format: "Welcome to the Yum Snack Bar program. Serving popcorn, cholesterol, and joy for {x} years". The number of years must be calculated dynamically based on the predefined ```foundationDate``` of the store and its difference with the current system time when the program is executed.
 11.	Create a class ```Transaction``` to combine all the products purchased by a single customer in a cash operation (e.g., a customer buys a ```Menu```, a ```Snack```, and a ```CandyBag``` in a single ```Transaction```). A ```Transaction``` has attributes of an integer ```id```, the exact ```timestamp``` (date and time) of its creation, a List of products (use a dynamic collection such as a ```List<Product>```), and the ```totalCost``` of the products that make it up. Create the necessary methods in the ```Transaction``` class for the business logic, including ```toString()``` to display the string representation of its components on the console. Use the methods provided by the ```Product``` class to implement the logic.
-12.	<span id="yum-requirements-12">It is necessary to know</span> which is the most expensive ```Transaccion``` —with the highest ```totalCost```— from a list of transactions. This goal can be achieved in various ways, but it is recommended to use the ```Comparable``` or ```Comparator``` interfaces for this purpose.
+12.	<span id="yum-requirements-12">It is necessary to know</span> which is the most expensive ```Transaction``` —with the highest ```totalCost```— from a list of transactions. This goal can be achieved in various ways, but it is recommended to use the ```Comparable``` or ```Comparator``` interfaces for this purpose.
 13.	Define a class ```LogTransaction``` to store in a **log.txt** file the information of all the transactions of a program session and also capable of reading the information from the log and displaying it on the console. The format of the log and the implementation details are free, but to keep it simple it is recommended to save each ```Transaction``` on a new line, with a format like the following: 'date-time transaction-id, product, product, product: price.'
 14.	As an additional exercise, introduce in the ```LogTransaction``` class the necessary evaluation logic so that the most expensive ```Transaction``` ([point 12](#yum-requirements-12)) is saved in the file adding the string **(!)** to the end of its line.
 15.	In a main class, in the ```main()``` method, invoke the store's greeting phrase ([point 10](#yum-requirements-10)) and create successive sales of products and transactions to test the program. The operations to be performed in the main method are as follows:
-    1.	Se crearán secuencialmente seis transacciones diferentes (```Transaccion```) con el fin de guardarlas en una lista, pasarlas a ```LogTransaccion``` para guardarlas en el fichero de _log_ y a continuación leer ese fichero e imprimir su contenido en consola.
-    2. Para la primera transacción, crea las compras de una ```CajaPalomitas``` ```GRANDE``` y una ```Chocolatina```, guarda la transacción en la lista de transacciones e imprímela.
-    3. Para la segunda transacción, compra un ```VasoRefresco``` ```MEDIANO``` y una ```BolsaFrutosSecos``` de 400 g, guarda la transacción e imprímela.
-    4. Para la tercera transacción, compra un ```Menu``` compuesto de un ```VasoRefresco``` de ```COLA_LIGHT``` ```GIGANTE``` y una ```CajaPalomitas``` ```MEDIANO```, forzando el lanzamiento (y captura) de la ```ExcepcionTamañoIlegal``` ([punto 6](#yum-requisitos-6)). La excepción debe prevenir que esta transacción inválida se guarde, loguee o imprima en consola.
-    5. Para la cuarta transacción, compra una ```BolsaChucherias``` haciendo trampas con la balanza, por un peso de 6 g, forzando el lanzamiento de la ```IllegalArgumentException``` del [punto 8](#yum-requisitos-8). La excepción debe prevenir que esta transacción inválida se guarde, loguee o imprima en consola.
-    6. Para la quinta transacción, compra una ```BolsaChucherias``` de 400 g y un ```Menu``` compuesto de un ```VasoRefresco``` ```NARANJA``` ```GIGANTE``` y una ```CajaPalomitas``` ```GIGANTE```. Intenta instanciar el objeto ```Transaccion```, los objetos ```Producto``` y los objetos que componen el ```Menu``` en una sola instrucción de código (instanciación de objetos anónimos o instanciación “al vuelo”). Guarda la transacción e imprímela.
-    7. Para la sexta transacción, que será la más cara, compra una ```BolsaChucherias``` de 750 g y un ```VasoRefresco``` de ```COLA``` ```GIGANTE```, guarda la transacción e imprímela.
-    8. Imprime en consola cuál es la transacción más cara de toda la sesión.
-    9. Por último, guarda la lista de transacciones en el fichero de _log_ y recupera la información que se ha guardado en este fichero para imprimirla por consola.
+    1.	Six different purchases of type ```Transaction``` will be sequentially instantiated in order to save them in a list, pass them into ```LogTransaction``` to save them in the log file, and then read that file and print its contents on the console.
+    2. On the first transaction, purchase a ```LARGE``` ```PopcornBox``` and a ```Snack```, save the ```Transaction``` in the transaction list, and print it.
+    3. On the second transaction, purchase a ```MEDIUM``` ```SodaCup``` and a ```MixedNutsBag``` of 400 g, save the transaction in the transaction list and print the transaction.
+    4. On the third transaction, purchase a ```Menu``` made of an ```EXTRALARGE``` ```LIGHT_COLA``` ```SodaCup```, and a ```MEDIUM``` ```PopcornBox```, just to set off the throwing (and catching) of the ```IllegalSizeException``` ([point 6](#yum-requirements-6)). The exception should prevent this invalid ```Transaction``` from being saved, logged, or printed on the console.
+    5. On the fourth transaction, cheat the scale to buy a 6 g ```CandyBag```, and set off the throwing of an ```IllegalArgumentException``` from [point 8](#yum-requirements-8). The exception should prevent this invalid ```Transaction``` from being saved, logged, or printed on the console.
+    6. On the fifth transaction, purchase a 400 g ```CandyBag``` and a ```Menu``` made of an ```EXTRALARGE``` ```ORANGE``` ```SodaCup``` and an ```EXTRALARGE``` ```PopcornBox```. Try and instantiate the ```Transaction```, the ```Product``` objects, and the objects that make up the ```Menu``` in a single line of code (using _anonymous object instantiation_ or "on the fly" instantiation). Save the transaction and print it.
+    7. On the sixth and most expensive transaction, purchase a ```CandyBag``` of 750 g and an ```EXTRALARGE``` ```COLA``` ```SodaCup```, save the ```Transaction``` and print it.
+    8. Print on the console which ```Transaction``` was the most expensive of the entire session.
+    9. Finally, save the list of transactions to the log file and retrieve the information that has just been saved in this file to print it on the console.
 
 <h3 id="yum-price-guide">2.4 Price Guide:</h3>
 
@@ -369,17 +369,17 @@ Transaction [ID=6,
 
 <h3 id="library-requirements">3.2 Project Requirements:</h3>
 
-El objetivo de este ejercicio es crear un programa en Java con utilidad práctica capaz de administrar el servicio de préstamo de libros de una biblioteca de uso público. La aplicación realiza consultas y actualizaciones de una base de datos MySQL cuyas sentencias de creación e inserción de datos se proporcionan al final de este enunciado.
+The goal of this exercise is to create a Java program with practical utility capable of managing the book borrowing service of a public library. The application performs queries and updates to a MySQL database whose creation and data insertion statements are provided below.
 
-La base de datos almacena información en cuatro tablas: ```library``` con información y reglas generales de la biblioteca; ```book``` con información de los libros en los fondos de la biblioteca y su disponibilidad; ```reader``` con información sobre los lectores o usuarios abonados al servicio de préstamo de la biblioteca; y ```borrowing``` con información sobre los préstamos de libros a los lectores, que incluye claves foráneas que hacen referencia a las tablas ```book``` y ```reader```.
+The database stores information in four tables: ```library``` to keep general information and rules of the library; ```book``` containing information about the books in the library's collection and their availability; ```reader``` containing information about the readers or users of the library's borrowing service; and ```borrowing``` with information about book loans to readers, which includes foreign keys referencing the ```book``` and ```reader``` tables.
 
-Es importante conocer las **Normas de Préstamo** de la biblioteca para desarrollar el software de administración de manera congruente<sup>1</sup>. La biblioteca diseñada por defecto en las sentencias SQL que se ofrecen más abajo:
+It is important to be familiar with the **Library's Borrowing Rules** in order to develop the administration software consistently<sup>1</sup>. The default library designed in the SQL statements offered below:
 
-1. Permite a cada usuario tener en préstamo un máximo de 3 libros al mismo tiempo.
-2. Concede los préstamos por un plazo máximo de 15 días.
-3. Y por último, como es típico en muchas bibliotecas públicas de España, fija una penalización para los lectores que devuelvan libros más tarde del plazo máximo, en este caso una penalización de 3 días sin poder tomar prestados libros por cada día de retraso en la devolución de un libro (así, un retraso de 5 días supone una penalización de 15 días).
+1. Allows each user to have a maximum of 3 books borrowed at the same time.
+2. Grants borrowings for a maximum period of 15 days.
+3. Lastly, as it is customary of many public libraries in Spain, the library imposes a penalty for readers who return books later than the maximum period, in this case the penalty is of 3 days without being able to borrow any book for each day of delay in returning a book—thus, a delay of 5 days results in a penalty of 15 days.
 
-Conociendo estos requisitos, realiza un programa en Java con las siguientes especificaciones:
+Taking these requirements into account, create a Java program with the following specifications:
 
 1. Crea un proyecto que incorpore en el _classpath_ el driver necesario para manejar una **base de datos MySQL** y define en el programa en Java la ruta, credenciales y otros valores necesarios para establecer la conexión con un servidor local.
 2. Crea la base de datos e inserta los valores que se proporcionan al final de este enunciado en un servidor local (_localhost_) MySQL (puedes utilizar p.ej. XAMPP-phpMyAdmin o MySQL Workbench). Los registros de ejemplo suministrados ofrecen una variedad de casos para poder someter el programa que desarrolles a prueba, incluyendo préstamos (“borrowings”) dinámicamente creados en fechas relativas a la fecha del sistema en el momento de inserción de los datos.
