@@ -1,8 +1,8 @@
 # Coding Essentials
 
 [![MIT License](https://img.shields.io/badge/License-MIT-green.svg)](https://choosealicense.com/licenses/mit/)
-[![en](https://img.shields.io/badge/lang-en-red.svg)](https://github.com/alejandroMAD/coding-essentials/blob/main/README.md)
-[![es](https://img.shields.io/badge/lang-es-yellow.svg)](https://github.com/alejandroMAD/coding-essentials/blob/main/README.es.md)
+[![English](https://img.shields.io/badge/lang-English-red.svg)](https://github.com/alejandroMAD/coding-essentials/blob/main/README.md)
+[![Español](https://img.shields.io/badge/lang-Español-yellow.svg)](https://github.com/alejandroMAD/coding-essentials/blob/main/README.es.md)
 
 ![Application logo](/coding_essentials_banner.png)
 
@@ -31,8 +31,10 @@ Every exercise but the first—a mere play of imagination on objects— are the 
     4. [Database CREATE DDL statements](#library-db-creation)
     5. [Database INSERT-VALUES DML statements](#library-db-population)
     6. [Console Output](#library-output)
-4. [Grade Course Curriculum](#grade-curriculum) 
-5. [License](#license)
+    7. [Summary](#library-summary)
+4. [Grade Course Curriculum](#grade-curriculum)
+5. [Acknowledgments](#thanks)
+6. [License](#license)
 
 <br>
 
@@ -694,6 +696,16 @@ exit
 Exiting program...
 ```
 
+<h3 id="library-summary">3.7 Summary:</h3>
+
+The Filipinas Library Java coding exercise is a project aimed at training programming students in coding software applications with a practical utility: a tool for managing the books borrowing service of a public library. To complete this exercise, students will need to have knowledge of Object-Oriented Programming in Java, Collections API, Java JDBC API, relational databases, MySQL language, CRUD operations, and best practices in code writing.
+
+The project requires building from scratch an application that includes the necessary driver in the classpath to connect to and manage a MySQL database in a local server. You must make use of "model" classes equivalent to the entities in the database: Library, Book, Reader, and Borrowing, with properties mapped to the fields in the database tables. The application provides console menu prompts in an infinite loop to enter the operation the user wants to perform (BORROW, RETURN, or EXIT) and request the values bookId and readerId to carry out the selected operation. The program must then perform checks in the four tables to ensure that the borrower's request and other conditions are in accordance with the library's borrowing rules.
+
+Implementing these rules and restrictions requires a strong understanding of conditional logic evaluation, as the program must evaluate multiple conditions to determine whether a borrowing or return operation can be carried out. These conditions include the maximum number of books allowed for simultaneous borrowing, the maximum borrowing period in days, the penalty for overdue items, the availability of a book, the books a reader currently holds, and whether the reader has a registered penalty. Additionally, the program includes optional features such as calculating penalties for overdue items, adding an extra layer of complexity to the conditional logic evaluation. It's possible to develop a graphical user interface with Java Swing or another framework to streamline the management of book borrowings.
+
+By completing this project, students can gain a deeper understanding of how to evaluate multiple conditions and apply these evaluations to manage complex operations effectively, which are essential skills for developing reliable and maintainable software, particularly relevant for applications that require complex rule-based operations such as financial software or logistics management systems.
+
 <br>
 
 <h2 id="grade-curriculum">
@@ -708,8 +720,16 @@ Exiting program...
 
 <br>
 
+<h2 id="thanks">
+  5. Acknowledgments:
+</h2>
+
+I would like to express my gratitude to the teachers and classmates of IES Islas Filipinas in Madrid for their valuable input and support.
+
+<br>
+
 <h2 id="license">
-  5. License:
+  6. License:
 </h2>
 
     Copyright (C) 2023  Alejandro M. González
