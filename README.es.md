@@ -310,53 +310,51 @@ Se recomienda utilizar esta guía de precios para los productos de la tienda:
 
 <h3 id="yum-output">2.5 Salida en consola:</h3>
 
-```+------------------------+
-| Welcome to the Yum Snack Bar|
-| Puerta del Sol, Km. 0, 28013 Madrid, Spain|
-| Serving popcorn, cholesterol, and joy for 37  years. |
-+------------------------+
-
-Transaction [ID=1,
-	formattedTimestamp=15/02/2023-15:00:33,
-	items=[Popcorn box 'LARGE' - price=7.0], Product: 'Chocolate snack' - price=2.0],
-	totalCost=9.0]
+```diff
++----------------------------------------------------------------+
+| Bienvenido/a al Yum Snack Bar                                  |
+| Puerta del Sol, Km. 0, 28013 Madrid, España                    |
+| Sirviendo palomitas, colesterol y alegría desde hace 37  años. |
++----------------------------------------------------------------+
+Transacción [ID=1,
+	fechaHora=14/03/2023-22:32:43,
+	ítems=[Cartón de palomitas 'GRANDE' - precio=7.0], Producto: 'Chocolatina individual' - precio=2.0],
+	precioTotal=9.0]
 	
-Transaction [ID=2,
-	formattedTimestamp=15/02/2023-15:00:33,
-	items=[Soda beverage cup 'MEDIUM' - price=4.5], Product: 'Mixed nuts bag' - price=7.2],
-	totalCost=11.7]
+Transacción [ID=2,
+	fechaHora=14/03/2023-22:32:43,
+	ítems=[Vaso de refresco 'MEDIANO' - precio=4.5], Producto: 'Bolsa de frutos secos' - precio=7.2],
+	precioTotal=11.7]
 	
-products.IllegalSizeException: Soda cup and popcorn box must be of the same size.
-	at products.Menu.<init>(Menu.java:16)
-	at store.Main.main(Main.java:42)
+productos.TamañoIlegalException: El Refresco y Palomitas deben ser del mismo tamaño.
+	at productos.Menu.<init>(Menu.java:36)
+	at tienda.Main.main(Main.java:57)
 	
-java.lang.IllegalArgumentException: CandyBag weight must be 20g or higher
-	at products.CandyBag.<init>(CandyBag.java:18)
-	at store.Main.main(Main.java:55)
+java.lang.IllegalArgumentException: El peso del objeto debe ser 20 g o superior
+	at productos.BolsaChucherias.<init>(BolsaChucherias.java:35)
+	at tienda.Main.main(Main.java:70)
 	
-Transaction [ID=5,
-	formattedTimestamp=15/02/2023-15:00:33,
-	items=[Product: 'Gummy candy bag' - price=4.4, Menu: Soda+Popcorn 'EXTRALARGE' - price=9.95],
-	totalCost=14.35]
+Transacción [ID=5,
+	fechaHora=14/03/2023-22:32:43,
+	ítems=[Producto: 'Bolsa de chucherías' - precio=4.4, Menú: Refresco+Palomitas 'GIGANTE' - precio=9.95],
+	precioTotal=14.35]
 	
-Transaction [ID=6,
-	formattedTimestamp=15/02/2023-15:00:33,
-	items=[Product: 'Gummy candy bag' - price=8.25, Soda beverage cup 'EXTRALARGE' - price=7.5]],
-	totalCost=15.75]
+Transacción [ID=6,
+	fechaHora=14/03/2023-22:32:43,
+	ítems=[Producto: 'Bolsa de chucherías' - precio=8.25, Vaso de refresco 'GIGANTE' - precio=7.5]],
+	precioTotal=15.75]
 
-The most expensive transaction (!) is:
+La transacción más cara de la sesión (!) es:
+Transacción [ID=6,
+	fechaHora=14/03/2023-22:32:43,
+	ítems=[Producto: 'Bolsa de chucherías' - precio=8.25, Vaso de refresco 'GIGANTE' - precio=7.5]],
+	precioTotal=15.75]
 
-Transaction [ID=6,
-	formattedTimestamp=15/02/2023-15:00:33,
-	items=[Product: 'Gummy candy bag' - price=8.25, Soda beverage cup 'EXTRALARGE' - price=7.5]],
-	totalCost=15.75]
-
-==== Transactions in the log file ====
-
-15/02/2023-15:00:33 ID=1, Popcorn box, Chocolate snack; price=9.0
-15/02/2023-15:00:33 ID=2, Soda beverage cup, Mixed nuts bag; price=11.7
-15/02/2023-15:00:33 ID=5, Gummy candy bag, Soda cup + Popcorn box at menu price; price=14.35
-15/02/2023-15:00:33 ID=6, Gummy candy bag, Soda beverage cup; price=15.75 (!)
+==== Transacciones en el fichero de log ====
+14/03/2023-22:32:43 ID=1, Cartón de palomitas, Chocolatina individual; precio=9.0
+14/03/2023-22:32:43 ID=2, Vaso de refresco, Bolsa de frutos secos; precio=11.7
+14/03/2023-22:32:43 ID=5, Bolsa de chucherías, Refresco + Palomitas a precio reducido; precio=14.35
+14/03/2023-22:32:43 ID=6, Bolsa de chucherías, Vaso de refresco; precio=15.75 (!)
 ```
 
 <h3 id="yum-summary">2.6 Resumen:</h3>
