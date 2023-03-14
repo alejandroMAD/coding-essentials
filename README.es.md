@@ -1,36 +1,49 @@
 # Fundamentos de Programación
+
 [![MIT License](https://img.shields.io/badge/License-MIT-green.svg)](https://choosealicense.com/licenses/mit/)
-[![en](https://img.shields.io/badge/lang-en-red.svg)](https://github.com/alejandroMAD/coding-essentials/blob/main/README.md)
-[![es](https://img.shields.io/badge/lang-es-yellow.svg)](https://github.com/alejandroMAD/coding-essentials/blob/main/README.es.md)
+[![English](https://img.shields.io/badge/lang-English-red.svg)](https://github.com/alejandroMAD/coding-essentials/blob/main/README.md)
+[![Español](https://img.shields.io/badge/lang-Español-yellow.svg)](https://github.com/alejandroMAD/coding-essentials/blob/main/README.es.md)
 
 ![Application logo](/coding_essentials_banner.png)
 
 Conjunto de tres proyectos independientes de programación en Java que abarcan el uso de algoritmos básicos, fundamentos de la Programación Orientada a Objetos (POO) y conexión a bases de datos (JDBC), diseñados para que estudiantes de 1º de Programación del CFGS de Desarrollo de Aplicaciones Multiplataforma puedan repasar y superar el curso.
 
-Exceptuando el primer ejercicio, que es un caso de pura imaginación para aplicar conceptos de POO, los ejercicios restantes son el embrión de proyectos y aplicaciones con utilidad práctica real.
+Exceptuando el primer ejercicio, que es un caso de pura imaginación para aplicar conceptos de POO, los demás ejercicios son el embrión de proyectos y aplicaciones con utilidad práctica real. He diseñado estos programas con el propósito de que el esfuerzo para resolverlos, además de permitir entrenar habilidades de programación, resulte una tarea interesante y entretenida.
+
+<br>
 
 ## Índice de contenido
-1. [Ejercicio primero: Linaje de Robots](#linaje-robots)
-    1. [Conocimientos necesarios](#linaje-conocimientos)
-    2. [Requisitos](#linaje-requisitos)
-    3. [Salida en consola](#linaje-salida)
+1. [Ejercicio primero: Linaje de Robots](#robots-lineage)
+    1. [Conocimientos necesarios](#lineage-knowledge)
+    2. [Requisitos](#lineage-requirements)
+    3. [Salida en consola](#lineage-output)
+    4. [Resumen](#lineage-summary)
 2. [Ejercicio segundo: Yum Snack Bar](#yum-snack-bar)
-    1. [Conocimientos necesarios](#yum-conocimientos)
-    2. [Requisitos](#yum-requisitos)
-    3. [Guía de precios](#yum-precios)
-    4. [Salida en consola](#yum-salida)
-3. [Ejercicio tercero: Biblioteca Filipinas](#biblioteca-filipinas)
-    1. [Conocimientos necesarios](#biblioteca-conocimientos)
-    2. [Requisitos](#biblioteca-requisitos)
-    3. [Salida en consola](#biblioteca-salida)
+    1. [Conocimientos necesarios](#yum-knowledge)
+    2. [Requisitos](#yum-requirements)
+    3. [Guía de precios](#yum-price-guide)
+    4. [Salida en consola](#yum-output)
+    5. [Resumen](#yum-summary)
+3. [Ejercicio tercero: Biblioteca Filipinas](#filipinas-library)
+    1. [Conocimientos necesarios](#library-knowledge)
+    2. [Requisitos](#library-requirements)
+    3. [Diseño de la base de datos](#library-design)
+    4. [Sentencias CREATE de creación (DDL) de la base de datos](#library-db-creation)
+    5. [Sentencias INSERT-VALUES de manipulación (DML) para llenar la base de datos](#library-db-population)
+    6. [Salida en consola](#library-output)
+    7. [Resumen](#library-summary)
+4. [Currículum del curso](#grade-curriculum)
+5. [Agradecimientos](#thanks)
+6. [Licencia](#license)
 
+<br>
 
-<h2 id="linaje-robots">
-  Ejercicio primero: Linaje de Robots 
-  <img src="https://github.githubassets.com/images/icons/emoji/unicode/1f916.png" alt="slot_machine" style="float:right;width:64px;height:64px;">
+<h2 id="robots-lineage">
+  1. Ejercicio primero: Linaje de Robots
+  <img src="https://github.githubassets.com/images/icons/emoji/unicode/1f916.png" alt="slot_machine" style="float:right;width:32px;height:32px;">
 </h2>
 
-<h3 id="linaje-conocimientos">Conocimientos necesarios:</h3>
+<h3 id="lineage-knowledge">1.1 Conocimientos necesarios:</h3>
 
 * Creación de un programa de consola en Java
 * Uso de Eclipse u otro IDE
@@ -47,20 +60,20 @@ Exceptuando el primer ejercicio, que es un caso de pura imaginación para aplica
 * Casting o refundición de tipos
 * Uso de funciones aleatorias
 
-<h3 id="linaje-requisitos">Requisitos:</h3>
+<h3 id="lineage-requirements">1.2 Requisitos:</h3>
 
-<p>Escribe un programa en el lenguaje Java, utilizando Eclipse u otro IDE, consistente en una serie de clases de ```Robot``` destinados a realizar cálculos y actividades que arrojen una salida por consola como se describe en los siguientes puntos:<p>
+Escribe un programa en el lenguaje Java, utilizando Eclipse u otro IDE, consistente en una serie de clases de ```Robot``` destinadas a realizar cálculos y actividades que arrojen una salida por consola como se describe en los siguientes puntos:
 
-1. Define una superclase abstracta ```Robot``` que servirá de base para la creación de todos los robots. Un Robot contará siempre con un ```nombre``` y ```numeroSerie```, ambos de tipo String. Crea los campos necesarios para la clase Robot y un constructor parametrizado apropiado.
-2. La superclase abstracta Robot contará además con un campo estático ```contadorRobots``` que servirá para contar cuántos objetos de tipo ```Robot``` se han construido en total. Asimismo, define métodos _getters_ y _setters_ adecuados para los campos de la clase, excepto el _setter_ para contadorRobots, que no debe ser definido pues se quiere evitar la falsificación externa de este contador de construcciones.
-3. Añade a la clase Robot, por último, una sobreescritura del método ```toString()``` propio de todo objeto en Java que devuelva la siguiente información “Soy un Robot de: [nombre=x, número de serie=y]".
-4. Crea dos clases abstractas que hereden de ```Robot```, ```RobotArtista``` y ```RobotCientifico```. Ambas clases implementarán su propia sobreescritura del método ```toString()``` añadiendo a lo que devuelve el método ```toString()``` de su superclase, según corresponda, la información: “, disciplina=Ciencias]” o “, disciplina=Artes]”. Considera la posibilidad de que implementen su propio constructor en coordinación con el constructor de la clase ```Robot```.
-5. La clase ```RobotCientifico``` declarará un método abstracto ```procesar(double numero)``` para implementación y uso por las clases que hereden de ella. La clase ```RobotArtista``` definirá dos constantes ```REGULAR``` y ```ALEATORIO``` para definir el comportamiento de las clases que hereden de ella (considera la posibilidad de declararlas en un tipo enumerado de Java o ```Enum``` denominado ```Comportamiento```). ```RobotArtista```, por esta razón, debe contar con dos constructores sobrecargados, uno que reciba meramente por parámetros el ```nombre``` y ```numeroSerie``` y asigne automáticamente el Comportamiento ```REGULAR``` al robot artista así construido, y un constructor que especifique además de esos dos parámetros un tercer parámetro de ```Comportamiento```, asignando al campo correspondiente el comportamiento que haya recibido como argumento.
-6. Debes definir dos subtipos de ```RobotCientifico```, ```RobotCortador``` y ```RobotPrimo```. Estas dos subclases no podrán ser objeto de herencia por otras clases por debajo de ellas.
-7. La clase ```RobotPrimo``` ofrece dos utilidades. 1) Su implementación o concreción de ```procesar(double numero)``` evalúa si el número pasado por argumento es o no un número primo y devuelve un String con un mensaje que lo indica. Son números primos aquellos números naturales que sólo son divisibles por sí mismos y por 1. Considera la introducción de lógica de control que evalúe si el número recibido por parámetro es negativo o tiene decimales, casos en los que un número no puede ser primo. 2) La segunda utilidad de ```RobotPrimo``` será un método para imprimir todos los números primos que existen en un intervalo; por esta razón este método —dale un nombre apropiado— debe recibir por parámetro dos números enteros, el ```principio``` y el ```fin``` de dicho intervalo.
-8. La clase ```RobotCortador``` implementa varios métodos sobrecargados ```procesar()``` con diferente signatura. Uno de estos sobreescribe el método abstracto definido por ```RobotCientifico``` y recibe un valor double por parámetro, siendo su misión imprimir en consola por separado la parte entera y la parte decimal del valor recibido como argumento. La clase además definirá: un método ```procesar(int numero)``` que simplemente devuelve el valor recibido dividido por 2 y un método ```procesar(String string)``` que divide la cadena recibida en dos mitades y las imprime por separado en consola. Opcionalmente, puedes crear dos métodos ```procesar()``` adicionales que reciben por parámetro un array de enteros y otro un array de Strings, los dividen por la mitad e imprimen los arrays resultantes por consola.
-9. Debes definir dos subtipos de ```RobotArtista```, ```RobotPoeta``` y ```RobotPintor```. Estas dos subclases no podrán ser objeto de herencia por otras clases por debajo de ellas.
-10.	```RobotPintor``` tiene dos constructores coordinados con los de su superclase ```RobotArtista```: uno que solamente recibe como argumentos el ```nombre``` y ```numeroSerie``` y otro que, además, recibe un ```Comportamiento```. Esta clase contiene definiciones constantes y estáticas de tres figuras geométricas, ```CUADRADO```, ```TRIÁNGULO``` y ```ROMBO``` (pueden incluirse en un tipo Enum ```Figura```; un método ```dibujar(Figura figura, int altura, char caracter)``` que dibuja en consola cualquiera de las tres figuras, compuesta de una repetición de caracteres del valor char pasado por argumento y de una altura en líneas de consola según la altura pasada por argumento. Ejemplos:
+1. Define una superclase abstracta ```Robot``` que servirá de base para la creación de todos los robots. Un robot contará siempre con un ```nombre``` y ```numeroSerie```, ambos de tipo String. Crea los campos necesarios para la clase ```Robot``` y un constructor parametrizado apropiado.
+2. La superclase abstracta ```Robot``` contará además con un campo estático ```contadorRobots``` que servirá para contar cuántos objetos de tipo ```Robot``` se han construido en total. Asimismo, define métodos _getters_ y _setters_ adecuados para los campos de la clase, excepto el _setter_ para ```contadorRobots```, que no debe ser definido puesto que se quiere evitar la falsificación externa de este contador de construcciones.
+3. Añade a la clase ```Robot```, por último, una sobreescritura del método ```toString()``` propio de todo objeto en Java que devuelva la siguiente información “Soy un Robot de: [nombre=x, númeroSerie=y]".
+4. Crea dos clases abstractas que hereden de ```Robot```, ```RobotArtista``` y ```RobotCientifico```. Ambas clases implementarán su propia sobreescritura del método ```toString()``` añadiendo a lo que devuelve el método ```toString()``` de su superclase, según corresponda, la información: “, disciplina=Ciencia]” o “, disciplina=Arte]”. Considera la implementación de un constructor para estas clases coordinados con el constructor de la clase ```Robot```.
+5. La clase ```RobotCientifico``` declarará un método abstracto ```procesar(double numeroInput)``` para implementación y uso por las clases que hereden de ella. La clase ```RobotArtista``` definirá dos constantes ```NORMAL``` y ```ALEATORIO``` para definir el comportamiento de las clases herederas (considera la posibilidad de declararlas en un tipo enumerado de Java o ```enum``` denominado ```Comportamiento```). ```RobotArtista```, por esta razón, debe contar con dos constructores sobrecargados, uno que reciba meramente por parámetros el ```nombre``` y ```numeroSerie``` y asigne automáticamente el ```Comportamiento``` ```REGULAR``` al robot artista así construido, y un constructor que especifique además de esos dos parámetros un tercer parámetro de ```Comportamiento```, asignando al campo correspondiente el comportamiento que haya recibido como argumento.
+6. Debes definir dos subtipos de ```RobotCientifico```, ```RobotCortador``` y ```RobotPrimo```. Estas dos subclases no podrán ser objeto de herencia por otras clases inferiores.
+7. La clase ```RobotPrimo``` ofrece dos utilidades. 1) Su implementación o concreción de ```procesar(double numeroInput)``` evalúa si el número pasado por argumento es o no un número primo y devuelve un String con un mensaje que lo indica. Son números primos aquellos números naturales que sólo son divisibles por sí mismos y por 1. Considera la introducción de lógica de control que evalúe si el número recibido por parámetro es negativo o tiene decimales, casos en los que un número no puede ser primo. 2) La segunda utilidad de ```RobotPrimo``` será un método para imprimir todos los números primos que existen en un intervalo; por esta razón este método —dale un nombre apropiado— debe recibir por parámetro dos números enteros, el ```principio``` y el ```fin``` de dicho intervalo.
+8. La clase ```RobotCortador``` implementa varios métodos sobrecargados ```procesar()``` con diferente signatura. Uno de estos sobreescribe el método abstracto definido por ```RobotCientifico``` y recibe un valor double por parámetro, siendo su misión imprimir en consola por separado la parte entera y la parte decimal del valor recibido como argumento. La clase además definirá: un método ```procesar(int numeroInput)``` que simplemente devuelve el valor recibido dividido por 2 y un método ```procesar(String cadena)``` que divide la cadena recibida en dos mitades y las imprime por separado en consola. Opcionalmente, puedes crear dos métodos ```procesar()``` adicionales que reciben por parámetro un array de enteros y otro un array de strings, los dividen por la mitad e imprimen los arrays resultantes por consola.
+9. Debes definir dos subtipos de ```RobotArtista```, ```RobotPoeta``` y ```RobotPintor```. Estas dos subclases no podrán ser objeto de herencia por otras clases inferiores.
+10. ```RobotPintor``` tiene dos constructores coordinados con los de su superclase ```RobotArtista```: uno que solamente recibe como argumentos el ```nombre``` y ```numeroSerie``` y otro que, además, recibe un ```Comportamiento```. Esta clase contiene definiciones constantes y estáticas de tres figuras geométricas, ```CUADRADO```, ```TRIANGULO``` y ```ROMBO``` (pueden incluirse en un tipo enum ```Figura```; un método ```dibujar(Figura figura, int altura, char caracter)``` que dibuja en consola cualquiera de las tres figuras, compuesta de una repetición de caracteres del valor char pasado por argumento y de una altura en líneas de consola según la altura pasada por argumento. Ejemplos:
     
 <table align="center">
     <tr>
@@ -95,38 +108,38 @@ Exceptuando el primer ejercicio, que es un caso de pura imaginación para aplica
     </tr>
 </table>
 
-11. Considera el uso de una estructura de tipo switch-case en el método de ```RobotPintor``` ```dibujar()``` para determinar el dibujo que se realizará, y la posibilidad de delegar el trabajo de los bucles de impresión en consola de tales dibujos en unos métodos: ```dibujarCuadrado()```, ```dibujarTriangulo()```, ```dibujarRombo()```;
-12. Los objetos de ```RobotPintor``` instanciados con un ```Comportamiento``` ```REGULAR``` dibujarán exactamente la figura con la altura y carácter de repetición pasados por argumento, mientras que las instancias de ```RobotPintor``` de ```Comportamiento``` ```ALEATORIO``` ignorarán los parámetros de configuración de ```dibujar()``` y pintarán una figura escogida aleatoriamente, de altura aleatoria (máximo 12 líneas) y un carácter aleatorio. Considera la conveniencia de restringir los caracteres a un rango concreto de caracteres de la tabla ASCII, p. ej. entre 33-95 para evitar la impresión de figuras “invisibles”.
-13. La clase ```RobotPoeta``` contiene tres campos de tipo String[] (array de Strings), cada uno de ellos con 4 líneas de un poema o canción diferentes y un campo String[][] (array bidimensional) que almacena los tres poemas. La clase definirá dos constructores sobrecargados coordinados con los de su superclase ```RobotArtista``` y un único método ```recitar()```, que no devuelve nada pero imprime en consola 4 versos de la colección bajo las siguientes reglas: Si la instancia de ```RobotPoeta``` tiene un ```Comportamiento``` ```REGULAR```, imprimirá de manera congruente los 4 versos del poema o canción de uno de los arrays String[] elegido al azar; si tiene un ```Comportamiento``` ```ALEATORIO```, imprimirá 4 versos escogidos aleatoriamente de cualquiera de los tres poemas o canciones, de modo que existirá una probabilidad muy pequeña de que imprima 4 versos del mismo poema en su debido orden.
-14. Define, por último, una clase principal con método ```main()``` destinada a instanciar un ```Robot``` de cada tipo (un ```RobotPrimo```, un ```RobotCortador```, un ```RobotPintor``` ```REGULAR```, un ```RobotPintor``` ```ALEATORIO```, un ```RobotPoeta``` ```REGULAR``` y un ```RobotPoeta``` ```ALEATORIO```), imprimir la información general de cada objeto mediante el método ```toString()``` e invocar a continuación los métodos de cada objeto para someterlos a prueba en la ejecución del programa. El orden de pruebas propuesto es el siguiente:
-
+11. Considera el uso de una estructura de tipo switch-case en el método de ```RobotPintor``` ```dibujar()``` para determinar el dibujo que se realizará, y la posibilidad de delegar el trabajo de los bucles de impresión de las figuras en consola en métodos delegados: ```dibujarCuadrado()```, ```dibujarTriangulo()```, ```dibujarRombo()```.
+12. Los objetos de ```RobotPintor``` instanciados con un ```Comportamiento``` ```NORMAL``` dibujarán exactamente la figura con la altura y carácter de repetición pasados por argumento, mientras que las instancias de ```RobotPintor``` de ```Comportamiento``` ```ALEATORIO``` ignorarán los parámetros de configuración de ```dibujar()``` y pintarán una figura escogida aleatoriamente, de altura aleatoria (mínimo de 2 líneas y máximo de 12 líneas) y un carácter aleatorio. Considera la conveniencia de restringir los caracteres a un rango concreto de caracteres de la tabla ASCII, p. ej. entre 33-95 para evitar la impresión de figuras “invisibles”.
+13. La clase ```RobotPoeta``` contiene tres campos de tipo String[] (array de Strings), cada uno de ellos con 4 líneas de un poema o canción diferentes y un campo String[][] (array bidimensional) que almacena los tres poemas. La clase definirá dos constructores sobrecargados coordinados con los de su superclase ```RobotArtista``` y un método ```recitar()```, que no devuelve nada pero imprime en consola 4 versos de la colección bajo las siguientes reglas: Si la instancia de ```RobotPoeta``` tiene un ```Comportamiento``` ```NORMAL```, imprimirá de manera coherente los 4 versos del poema o canción de uno de los arrays String[] elegido al azar; si tiene un ```Comportamiento``` ```ALEATORIO```, imprimirá 4 versos escogidos aleatoriamente de cualquiera de los tres poemas o canciones, de modo que existirá una probabilidad muy pequeña de que se obtengan los 4 versos del mismo poema en su debido orden.
+14. **OPCIONAL**: Define otros subtipos de robots de ciencia y de arte que ofrezcan funciones interesantes o divertidas. Investiga los métodos de las clases ```String``` y ```Math``` del paquete ```java.lang``` para encontrar ideas a partir de las cuales definir nuevos robots.
+15. Define, por último, una clase principal con método ```main()``` destinada a instanciar un ```Robot``` de cada tipo (un ```RobotPrimo```, un ```RobotCortador```, un ```RobotPintor``` ```NORMAL```, un ```RobotPintor``` ```ALEATORIO```, un ```RobotPoeta``` ```NORMAL``` y un ```RobotPoeta``` ```ALEATORIO```), imprimir la información general de cada objeto mediante el método ```toString()``` e invocar a continuación los métodos de cada objeto para someterlos a prueba en la ejecución del programa. El orden de pruebas propuesto es el siguiente:
      1. Impresión de datos de los seis objetos.
-     2. Solicitar al RobotPrimo procesar el número 11 para saber si es o no primo.
-     3. Solicitar al RobotPrimo imprimir el intervalo de números primos entre 1 y 50.
-     4. Solicitar a un RobotPintor de Comportamiento REGULAR dibujar un TRIÁNGULO de 8 líneas de alto compuesto de caracteres ‘$’.
-     5. Solicitar a un RobotPintor de Comportamiento ALEATORIO imprimir una figura con cualesquiera argumentos: el objeto dibujará una figura de manera aleatoria.
-     6. Solicitar al RobotCortador procesar el número 4.0 y procesar el número 0.285714.
-     7. Solicitar al RobotCortador procesar el String “acurruca”, procesar el array de enteros {5, 5, 45, 66, 1001, 2, 3, 11} y procesar también el array de Strings {"Mercurio", "Venus", "Tierra", "Marte", "Júpiter", "Saturno", "Urano", "Neptuno"}.
-     8. Solicitar a un RobotPoeta de Comportamiento REGULAR recitar versos de su colección.
-     9. Solicitar a un RobotPoeta de Comportamiento ALEATORIO recitar versos de su colección.
-     10. Imprime para terminar un mensaje indicando el número total de Robots construidos.
+     2. Solicitar al ```RobotPrimo``` procesar el número 11 para saber si es o no primo.
+     3. Solicitar al ```RobotPrimo``` imprimir el intervalo de números primos entre 1 y 50.
+     4. Solicitar a un ```RobotPintor``` de ```Comportamiento``` ```NORMAL``` dibujar un ```TRIANGULO``` de 8 líneas de alto compuesto de caracteres ‘$’.
+     5. Solicitar a un ```RobotPintor``` de ```Comportamiento``` ```ALEATORIO``` imprimir una figura con cualesquiera argumentos: se espera que el objeto dibuje una figura de manera aleatoria.
+     6. Solicitar al ```RobotCortador``` procesar el número 4.0 y procesar el número 0.285714.
+     7. Solicitar al ```RobotCortador``` procesar el String “acurruca”, procesar el array de enteros {5, 5, 45, 66, 1001, 2, 3, 11} y procesar también el array de Strings {"Mercurio", "Venus", "Tierra", "Marte", "Júpiter", "Saturno", "Urano", "Neptuno"}..
+     8. Solicitar a un ```RobotPoeta``` de ```Comportamiento``` ```NORMAL``` recitar versos de su colección.
+     9. Solicitar a un ```RobotPoeta``` de ```Comportamiento``` ```ALEATORIO``` recitar versos de su colección.
+     10. Por último, imprime un mensaje indicando el número total de robots construidos.
 
-<h3 id="linaje-salida">Salida en consola:</h3>
+<h3 id="lineage-output">1.3 Salida en consola:</h3>
 
-```I am a Robot of: [name=Bender, serialNumber=1010011010BU22, discipline=Science]
-I am a Robot of: [name=Euclid, serialNumber=E213002248G, discipline=Science]
-I am a Robot of: [name=Frida, serialNumber=K15019071954L, discipline=Arts]
-I am a Robot of: [name=Salvador, serialNumber=D1904858585A, discipline=Arts]
-I am a Robot of: [name=Byron, serialNumber=E18091849AP, discipline=Arts]
-I am a Robot of: [name=3DG4R-4LL4N-P03, serialNumber=E18091849AP, discipline=Arts]
+```Soy un Robot de: [nombre=Bender, numeroSerie=1010011010BU22, disciplina=Ciencia]
+Soy un Robot de: [nombre=Euclid, numeroSerie=E213002248G, disciplina=Ciencia]
+Soy un Robot de: [nombre=Frida, numeroSerie=K15019071954L, disciplina=Arte]
+Soy un Robot de: [nombre=Salvador, numeroSerie=D1904858585A, disciplina=Arte]
+Soy un Robot de: [nombre=Byron, numeroSerie=E18091849AP, disciplina=Arte]
+Soy un Robot de: [nombre=3DG4R-4LL4N-P03, numeroSerie=E18091849AP, disciplina=Arte]
 
 +----------------------+
-|     Operations     |
+|     Operaciones     |
 +----------------------+
 
-11 is a prime number.
+11 es un número primo.
 
-Primes between 1-50:
+Números primos entre 1 y 50:
 [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47]
 
 $
@@ -142,12 +155,12 @@ $$$$$$$$
 GGG
  G
 
-Whole part: 4; Decimal part: 0.0
-Whole part: 0; Decimal part: 0.285714
+Parte entera: 4; Parte decimal: 0.0
+Parte entera: 0; Parte decimal: 0.285714
 
 acur / ruca
-First half: [5, 5, 45, 66] / Second half: [1001, 2, 3, 11]
-First half: [Mercurio, Venus, Tierra, Marte] / Second half: [Júpiter, Saturno, Urano, Neptuno]
+Primera mitad: [5, 5, 45, 66] / Segunda mitad: [1001, 2, 3, 11]
+Primera mitad: [Mercurio, Venus, Tierra, Marte] / Segunda mitad: [Júpiter, Saturno, Urano, Neptuno]
 
 3-1 Tu rencor, tu porqué, tu agonía...
 3-2 O tal vez esa sombra
@@ -159,17 +172,29 @@ First half: [Mercurio, Venus, Tierra, Marte] / Second half: [Júpiter, Saturno, 
 3-1 Tu rencor, tu porqué, tu agonía...
 2-2 en mi pupila tu pupila azul.
 
-=====Total robots manufactured: [6]=====
+===== Robots construidos en total: [6] =====
 ```
+
+<h3 id="lineage-summary">1.4 Resumen:</h3>
+
+Este programa tiene como objetivo ilustrar un ejemplo de programación orientada a objetos en Java. Utiliza clases abstractas y herencia para crear una jerarquía de tipos de robot con diferentes funcionalidades.
+
+La clase ```Robot``` sirve como clase base para todos los robots y contiene atributos comunes como el nombre y número de serie, así como un contador estático para realizar un seguimiento del número de robots creados. Las clases abstractas ```RobotArtista``` y ```RobotCientifico``` heredan de la superclase ```Robot``` e incorporan funcionalidades específicas en sus respectivas disciplinas.
+
+Las clases ```RobotPrimo``` y ```RobotCortador``` heredan de ```RobotCientifico``` y proporcionan implementaciones concretas del método abstracto ```procesar()```. Cada uno de estos robots tiene un propósito diferente, como verificar si un número es primo, dividir un número con decimales en sus partes entera y decimal o dividir una cadena por la mitad.
+
+Las clases ```RobotPoeta``` y ```RobotPintor``` heredan de ```RobotArtista``` realizando diferentes operaciones. Su superclase ```RobotArtista``` incluye un atributo ```Comportamiento``` que es establecido como ```NORMAL``` de forma predeterminada, pero que puede modificarse a través del método constructor. La clase ```RobotPoeta``` utiliza este atributo para generar poemas con diferentes niveles de complejidad, mientras que la clase ```RobotPintor``` dibuja en la consola formas geométricas compuesta de caracteres con diferentes reglas según su ```Comportamiento```.
+
+En suma, el programa muestra cómo utilizar conceptos y técnicas de programación orientada a objetos como la herencia y la abstracción para crear una jerarquía de clases con diferentes objetivos, lo que facilita el mantenimiento y la escalabilidad del código.
 
 <br>    
 
 <h2 id="yum-snack-bar">
-  Ejercicio segundo: Yum Snack Bar
-  <img src="https://github.githubassets.com/images/icons/emoji/unicode/1f37f.png?v8" alt="popcorn" style="float:right;width:64px;height:64px;">
+  2. Ejercicio segundo: Yum Snack Bar
+  <img src="https://github.githubassets.com/images/icons/emoji/unicode/1f37f.png?v8" alt="popcorn" style="float:right;width:32px;height:32px;">
 </h2>
 
-<h3 id="yum-conocimientos">Conocimientos necesarios:</h3>
+<h3 id="yum-knowledge">2.1 Conocimientos necesarios:</h3>
 
 * Programación Orientada a Objetos
 * Composición
@@ -179,41 +204,41 @@ First half: [Mercurio, Venus, Tierra, Marte] / Second half: [Júpiter, Saturno, 
 * Creación e implementación de Interfaces
 * API de tiempo y calendario de Java 8+
 * Persistencia de información: API I/O de Java I/O para lectura/escritura de ficheros
-* Comparación de objetos (Comparable)
+* Comparación de objetos (_Comparable_)
 
-<h3 id="yum-requisitos">Requisitos:</h3>
+<h3 id="yum-requirements">2.3 Requisitos:</h3>
 
 El objetivo es crear un programa en Java para administrar los aspectos básicos de la venta de productos de un establecimiento de palomitas, bebidas y aperitivos para consumir en el cine. La función principal es el registro de las compras o transacciones, simulando una aplicación de TPV o "cash register".
 
 El establecimiento "Yum Snack Bar" ofrece a sus clientes los siguientes productos: 1) Refrescos y 2) palomitas de diferentes tamaños; 3) chocolatinas o snacks, 4) bolsas de chucherías al peso y 5) bolsas de frutos secos variados que se compran también al peso o granel.
 
-1.	Construye una solución Orientada a Objetos que contemple las diferentes clases necesarias para organizar el programa, utilizando paquetería para dividir lo mejor posible el código agrupando las clases por sus características y finalidad.
-2.	Parece clara la conveniencia de utilizar la herencia: por ejemplo, es posible concebir una clase ```CajaPalomitas``` y otra clase ```VasoRefresco```, con características propias, y una superclase ```Producto``` con características comunes como un ```nombre``` y un ```precio```.
-3.	Crea unas constantes que definan los tamaños posibles de las palomitas y las bebidas: ```MEDIANO```, ```GRANDE```, ```GIGANTE```. Una solución posible es la definición de un tipo enumerado ```Tamaño```.
-4.	Las diferentes clases de productos deben implementar los métodos ```toString()``` y _getters_ y _setters_ necesarios. Los constructores de clases y superclases deben coordinarse según los requisitos del ejercicio. Ten presente que esta es una aplicación para gestionar las transacciones, no de constitución de la tienda y productos: por esta razón no se pasará el nombre ni el precio de los productos en su instanciación, sino que ya tendrán un nombre descriptivo y precio predefinidos. Parece aconsejable utilizar a tal fin campos estáticos como ```NOMBRE``` y ```PRECIO```, a falta del uso de una base de datos de productos. Utiliza el tipo double para manejar el precio de los productos.
-5.	Las palomitas y bebidas deben tener diferentes precios en función del tamaño. El constructor de la clase ```VasoRefresco```, además del ```Tamaño```, recibirá por parámetro el ```Sabor``` (```COLA```, ```COLA_LIGHT```, ```NARANJA```, ```LIMON```) para lo cual se recomienda el uso de un tipo Enum ```Sabor``` anidado en la clase. Existirá una clase ```Menu``` que permitirá la compra de la combinación de productos palomitas + bebida a precios especiales de promoción. Es aconsejable utilizar la composición para diseñar esta clase, que constará de objetos ```CajaPalomitas``` y ```VasoRefresco```.
-6.	<span id="yum-requisitos-6">El constructor</span> de ```Menu``` evaluará que las palomitas y bebidas pasadas por argumento sean del mismo ```Tamaño```. No se permiten menús con un caja de palomitas y un vaso de bebida de diferente ```Tamaño``` (p.ej. ```Palomitas``` ```MEDIANO``` y ```Refresco``` ```GRANDE```). Crea una excepción personalizada llamada ```ExcepcionTamañoIlegal``` que pueda ser arrojada en tales casos.
-7.	Las clases para ```BolsaChucherias``` y ```BolsaFrutosSecos```, que permiten la compra al peso, deben fijar un precio estático referido a 100g de ese producto, y su constructor recibirá por parámetro el peso concreto de la compra, que se multiplicará por aquel atributo para calcular el precio. Crea una interfaz denominada ```Pesable``` con un método ```calcularPrecio(double peso)``` para sea implementado por estas dos clases de productos que se venden a granel. Es aconsejable emplear alguna función de redondeo de 2 decimales para evitar la impresión de precios como 8.250000000000002.
-8.	<span id="yum-requisitos-8">Las clases</span> ```BolsaChucherias``` y ```BolsaFrutosSecos``` deben incorporar una lógica que arroje una excepción ```IllegalArgumentException``` si se intenta comprar una bolsa con un precio negativo o anormalmente bajo, menor de 20 g, para prevenir trampas con la balanza.
-9.	La clase ```Chocolatina``` será la más simple de todas: hereda de ```Producto```, tendrá un ```precio``` estático, el ```nombre``` estático del producto y un constructor que no recibe argumentos.
-10.	<span id="yum-requisitos-10">Crea una clase que ```Tienda``` almacene la información del establecimiento</span> que consideres necesaria y, como mínimo, su ```nombre``` y la ```fecha``` en que la tienda fue fundada. Utiliza preferiblemente alguna de las clases relativas a fechas de la API de Java 8 o superior. Debes crear un método que permita imprimir en consola un mensaje del tipo: "Bienvenido al programa de Yum Snack Bar, sirviendo palomitas, colesterol y alegría desde hace {x} años". Este número de años debe calcularse de manera dinámica en función de la ```fecha``` de fundación predefinida de la tienda y su diferencia con la fecha actual del sistema cuando se ejecute el programa.
-11.	Crea una clase ```Transaccion``` destinada a aglutinar todos los productos comprados por un solo cliente en una operación de caja (p. ej., un cliente compra un ```Menu```, una ```Chocolatina``` y una ```BolsaChucherias``` en una sola ```Transaccion```). Una ```Transaccion``` se compone de un entero ```id```, la ```fechaHora``` exacta de su creación, una ```lista``` de ```<Producto>``` (utiliza una colección dinámica) y el ```precioTotal``` de los productos que la conforman. Crea los métodos necesarios en la clase ```Transaccion```, incluyendo ```toString()``` para mostrar sus componentes en consola, y utiliza los métodos provistos por la clase ```Producto``` para implementar la lógica.
-12.	 <span id="yum-requisitos-12">Se necesita conocer cuál es</span> la ```Transaccion``` más cara (```precioTotal``` más elevado) de una lista de transacciones. Puede conseguirse este objetivo de diversas maneras, pero se recomiendo utilizar la interfaz ```Comparable``` o la interfaz ```Comparator``` para este propósito.
-13.	Crea una clase ```LogTransaccion``` destinada a almacenar en un fichero **log.txt** la información de todas las transacciones de una sesión del programa y capaz también de leer la información del _log_ y mostrarla por consola. El formato del _log_ y los detalles de implementación son libres, pero se recomienda guardar cada transacción en una línea, con un formato p. ej.: 'fecha-hora trans-id, producto, producto, producto: precio'.
-14.	Como ejercicio adicional, introduce en la clase ```LogTransaccion``` la lógica de comprobación necesaria para que la transacción más cara ([punto 12](#yum-requisitos-12)) se guarde en el fichero añadiendo al final de la línea el string “(!)”.
-15.	En una clase principal, en el método main(), invoca la frase de presentación de la tienda ([punto 10](#yum-requisitos-10)) y crea sucesivas ventas de productos y transacciones para someter el programa a prueba. Las operaciones a realizar en el método principal son las siguientes:
+1. Build an Object-Oriented solution including the different classes necessary to organize the program, using packaging to divide the code as best as possible, grouping the classes by related characteristics and purpose.
+2. The benefits of using inheritance to prevent redundances seem clear: for instance, it is possible to conceive a class ```PopcornBox``` and another class ```SodaCup``` with their own attributes, and a superclass ```Product``` with common attributes such as a ```name``` and ```price```.
+3. Create constants defining the available sizes of the popcorn and drinks: ```MEDIUM```, ```LARGE```, ```EXTRALARGE```. A good approach could be defining an enumerated type (enum) ```Size```.
+4. The different product classes must define the necessary ```toString()``` and _getter_ and _setter_ methods. The constructors of the classes and superclasses must be consistent with the project requirements. Keep in mind that this is an application for managing transactions, not for building the store and products. For this reason, the ```name``` and ```price``` of the objects won't be passed on instantiation, but they will already have a descriptive name and predefined price. It is advisable to use static fields for this purpose, in the absence of a proper product database. Use the double type to handle the ```price``` of the products.
+5. Popcorn and drinks should have different prices depending on their size. The constructor of the ```SodaCup``` class, in addition to the ```Size```, will receive the ```SodaType``` (```COLA```, ```LIGHT_COLA```, ```ORANGE```, ```LEMON```) as argument for which the use of a class-nested enum type ```SodaType``` is advisable. There will be a class ```Menu``` that will allow the purchase of the combination of Popcorn + Drink at a promotional price. It is highly recommended to use composition to design this class, which will comprise instances of ```PopcornBox``` and ```SodaCup```.
+6. <span id="yum-requirements-6">The constructor</span> of ```Menu``` will evaluate that the popcorn and beverage passed by argument are of the same ```Size```. Menus with a ```PopcornBox``` and a ```SodaCup``` of different size (e.g., ```PopcornBox``` ```MEDIUM``` and ```SodaCup``` ```LARGE```) are not allowed. Create a custom exception called ```IllegalSizeException``` that can be thrown in such cases.
+7. The classes ```CandyBag``` and ```MixedNutsBag```, which allow purchase by weight, must define a static price with reference to 100 g of product, and their constructor will receive the specific weight of the purchase as argument. This amount is to be be multiplied by the ```price``` attribute to calculate a double ```totalPrice```. Create an interface called ```Measurable``` with a method ```calculatePrice(double weightOrAmount)``` to be implemented by these two classes of products that are sold in bulk. It is advisable to use some rounding function up to 2 decimal places toin order to avoid printing prices like 8.250000000000002.
+8. <span id="yum-requirements-8">The classes</span> ```CandyBag``` and ```MixedNutsBag``` must incorporate include a logic to throw an ```IllegalArgumentException``` exception if an attempt is made to buy a bag with a negative or abnormally low ```price``` —less than 20 g— to prevent cheating with the scale.
+9. The class ```Snack``` will be the simplest of all: it inherits from ```Product```, has a static ```price```, a static ```name``` of the product, and a constructor without any parameters.
+10. <span id="yum-requirements-10">Create a class</span> ```Store``` that keeps the necessary information of the establishment that you consider necessary and, at a minimum, its ```name``` and the ```foundationDate``` of the snack kiosk. Use preferably one of the time-calendar classes in the Java 8+ API. You must create a method allowing to print a message on the console in the format: "Welcome to the Yum Snack Bar program. Serving popcorn, cholesterol, and joy for {x} years". The number of years must be calculated dynamically based on the predefined ```foundationDate``` of the store and its difference with the current system time when the program is executed.
+11. Create a class ```Transaction``` to combine all the products purchased by a single customer in a cash operation (e.g., a customer buys a ```Menu```, a ```Snack```, and a ```CandyBag``` in a single ```Transaction```). A ```Transaction``` has attributes of an integer ```id```, the exact ```timestamp``` (date and time) of its creation, a List of products (use a dynamic collection such as a ```List<Product>```), and the ```totalCost``` of the products that make it up. Create the necessary methods in the ```Transaction``` class for the business logic, including ```toString()``` to display the string representation of its components on the console. Use the methods provided by the ```Product``` class to implement the logic.
+12. <span id="yum-requirements-12">It is necessary to know</span> which is the most expensive ```Transaction``` —with the highest ```totalCost```— from a list of transactions. This goal can be achieved in various ways, but it is recommended to use the ```Comparable``` or ```Comparator``` interfaces for this purpose.
+13. Define a class ```LogTransaction``` to store in a **log.txt** file the information of all the transactions of a program session and also capable of reading the information from the log and displaying it on the console. The format of the log and the implementation details are free, but to keep it simple it is recommended to save each ```Transaction``` on a new line, with a format like the following: 'date-time transaction-id, product, product, product: price.'
+14. As an additional exercise, introduce in the ```LogTransaction``` class the necessary evaluation logic so that the most expensive ```Transaction``` ([point 12](#yum-requirements-12)) is saved in the file adding the string **(!)** to the end of its line.
+15. **OPTIONAL**: Create a Java Swing GUI (graphical user interface) to make the flow of purchasing and storing transactions easy and intuitive for the user in a point-of-sale POS-fashion application.
+16. In a main class, in the ```main()``` method, invoke the store's greeting phrase ([point 10](#yum-requirements-10)) and create successive sales of products and transactions to test the program. The operations to be performed in the main method are as follows:
+    1.	Six different purchases of type ```Transaction``` will be sequentially instantiated in order to save them in a list, pass them into ```LogTransaction``` to save them in the log file, and then read that file and print its contents on the console.
+    2. :white_check_mark: On the first transaction, purchase a ```LARGE``` ```PopcornBox``` and a ```Snack```, save the ```Transaction``` in the transaction list, and print it.
+    3. :white_check_mark: On the second transaction, purchase a ```MEDIUM``` ```SodaCup``` and a ```MixedNutsBag``` of 400 g, save the transaction in the transaction list and print the transaction.
+    4. :no_entry: On the third transaction, purchase a ```Menu``` made of an ```EXTRALARGE``` ```LIGHT_COLA``` ```SodaCup```, and a ```MEDIUM``` ```PopcornBox```, just to set off the throwing (and catching) of the ```IllegalSizeException``` ([point 6](#yum-requirements-6)). The exception should prevent this invalid ```Transaction``` from being saved, logged, or printed on the console.
+    5. :no_entry: On the fourth transaction, cheat the scale to buy a 6 g ```CandyBag```, and set off the throwing of an ```IllegalArgumentException``` from [point 8](#yum-requirements-8). The exception should prevent this invalid ```Transaction``` from being saved, logged, or printed on the console.
+    6. :white_check_mark: On the fifth transaction, purchase a 400 g ```CandyBag``` and a ```Menu``` made of an ```EXTRALARGE``` ```ORANGE``` ```SodaCup``` and an ```EXTRALARGE``` ```PopcornBox```. Try and instantiate the ```Transaction```, the ```Product``` objects, and the objects that make up the ```Menu``` in a single line of code (using _anonymous object instantiation_ or "on the fly" instantiation). Save the transaction and print it.
+    7. :white_check_mark: On the sixth and most expensive transaction, purchase a ```CandyBag``` of 750 g and an ```EXTRALARGE``` ```COLA``` ```SodaCup```, save the ```Transaction``` and print it.
+    8. :white_check_mark: Print on the console which ```Transaction``` was the most expensive of the entire session.
+    9. :white_check_mark: Finally, save the list of transactions to the log file and retrieve the information that has just been saved in this file to print it on the console.
 
-    1.	Se crearán secuencialmente seis transacciones diferentes (```Transaccion```) con el fin de guardarlas en una lista, pasarlas a ```LogTransaccion``` para guardarlas en el fichero de _log_ y a continuación leer ese fichero e imprimir su contenido en consola.
-    2. Para la primera transacción, crea las compras de una ```CajaPalomitas``` ```GRANDE``` y una ```Chocolatina```, guarda la transacción en la lista de transacciones e imprímela.
-    3. Para la segunda transacción, compra un ```VasoRefresco``` ```MEDIANO``` y una ```BolsaFrutosSecos``` de 400 g, guarda la transacción e imprímela.
-    4. Para la tercera transacción, compra un ```Menu``` compuesto de un ```VasoRefresco``` de ```COLA_LIGHT``` ```GIGANTE``` y una ```CajaPalomitas``` ```MEDIANO```, forzando el lanzamiento (y captura) de la ```ExcepcionTamañoIlegal``` ([punto 6](#yum-requisitos-6)). La excepción debe prevenir que esta transacción inválida se guarde, loguee o imprima en consola.
-    5. Para la cuarta transacción, compra una ```BolsaChucherias``` haciendo trampas con la balanza, por un peso de 6 g, forzando el lanzamiento de la ```IllegalArgumentException``` del [punto 8](#yum-requisitos-8). La excepción debe prevenir que esta transacción inválida se guarde, loguee o imprima en consola.
-    6. Para la quinta transacción, compra una ```BolsaChucherias``` de 400 g y un ```Menu``` compuesto de un ```VasoRefresco``` ```NARANJA``` ```GIGANTE``` y una ```CajaPalomitas``` ```GIGANTE```. Intenta instanciar el objeto ```Transaccion```, los objetos ```Producto``` y los objetos que componen el ```Menu``` en una sola instrucción de código (instanciación de objetos anónimos o instanciación “al vuelo”). Guarda la transacción e imprímela.
-    7. Para la sexta transacción, que será la más cara, compra una ```BolsaChucherias``` de 750 g y un ```VasoRefresco``` de ```COLA``` ```GIGANTE```, guarda la transacción e imprímela.
-    8. Imprime en consola cuál es la transacción más cara de toda la sesión.
-    9. Por último, guarda la lista de transacciones en el fichero de _log_ y recupera la información que se ha guardado en este fichero para imprimirla por consola.
-
-<h3 id="yum-precios">Guía de precios:</h3>
+<h3 id="yum-price-guide">2.4 Guía de precios:</h3>
 
 Se recomienda utilizar esta guía de precios para los productos de la tienda:
 
@@ -226,8 +251,16 @@ Se recomienda utilizar esta guía de precios para los productos de la tienda:
         </th>
     </tr>
     <tr>
+        <th align="center">
+            <b>Product</b>
+        </th>
+        <th align="center">
+            <b>Price</b>
+        </th>
+    </tr>
+    <tr>
         <td>
-            Palomitas MEDIANO / GRANDE / GIGANTE
+            PopcornBox MEDIUM / LARGE / EXTRALARGE
         </td>
         <td>
             5.0 / 7.0 / 9.0
@@ -235,7 +268,7 @@ Se recomienda utilizar esta guía de precios para los productos de la tienda:
     </tr>
     <tr>
         <td>
-            Refresco MEDIANO / GRANDE / GIGANTE
+            SodaCup MEDIUM / LARGE / EXTRALARGE
         </td>
         <td>
             4.5 / 6.0 / 7.5
@@ -243,7 +276,7 @@ Se recomienda utilizar esta guía de precios para los productos de la tienda:
     </tr>
     <tr>
         <td>
-            Menú MEDIANO / GRANDE / GIGANTE
+            Menu MEDIUM / LARGE / EXTRALARGE
         </td>
         <td>
             7.95 / 8.95 / 9.95
@@ -251,7 +284,7 @@ Se recomienda utilizar esta guía de precios para los productos de la tienda:
     </tr>
     <tr>
         <td>
-            Chocolatina
+            Snack
         </td>
         <td>
             2.0
@@ -259,7 +292,7 @@ Se recomienda utilizar esta guía de precios para los productos de la tienda:
     </tr>
     <tr>
         <td>
-            Bolsa de frutos secos (100 g)
+            MixedNutsBag (100 g)
         </td>
         <td>
             1.80
@@ -267,7 +300,7 @@ Se recomienda utilizar esta guía de precios para los productos de la tienda:
     </tr>
     <tr>
         <td>
-            Bolsa de chucherías (100 g)
+            CandyBag (100 g)
         </td>
         <td>
             1.10
@@ -275,7 +308,7 @@ Se recomienda utilizar esta guía de precios para los productos de la tienda:
     </tr>
 </table>
 
-<h3 id="yum-salida">Salida en consola:</h3>
+<h3 id="yum-output">2.5 Salida en consola:</h3>
 
 ```+------------------------+
 | Welcome to the Yum Snack Bar|
@@ -326,14 +359,39 @@ Transaction [ID=6,
 15/02/2023-15:00:33 ID=6, Gummy candy bag, Soda beverage cup; price=15.75 (!)
 ```
 
+<h3 id="yum-summary">2.6 Resumen:</h3>
+
+This Java project makes for the basis of a point-of-sale (POS)-like application to manage the activity
+of a movie theater snack bar business that sells different kinds of products, such as popcorn, beverages,
+snacks and candy or nuts bags sold by weight. The application registers purchases and transactions.
+
+To achieve this, the project requirements include building an object-oriented solution using composition and
+modularization into packages, creating constants to define the available types and sizes of certain products,
+defining necessary methods such as toString() and _getters_ and _setters_, implementing an interface to manage
+purchases of products sold by weight, using the Java 8+ time and calendar API and handling exceptions of various types,
+creating also an ad hoc IllegalSizeException that can be thrown in specific cases.
+
+The project also requires the creation of a Store class to keep necessary information of the establishment,
+a Transaction class to combine all the products purchased by a single customer, and a method to identify the most
+expensive transaction. Other project requirements include the creation and handling of exceptions, implementation
+of interfaces, and the use of the Java 8+ time and calendar API for information persistence.
+
+This project can be interesting and powerful to educate programming students because it covers a wide range of
+fundamental principles and concepts in object-oriented programming and software development. It provides students
+with the opportunity to practice implementing inheritance, composition, and modularization into packages, and also
+to work with dynamic collections, create and handle exceptions, and use the Java I/O API for reading and writing files.
+The project requires designing and implementing classes and interfaces to work together simulating a real-world business
+application. The use of good programming design patterns, and best practices and the develop of problem-solving skills
+to build robust and maintainable software are also encouraged.
+
 <br>
 
-<h2 id="biblioteca-filipinas">
-  Ejercicio tercero: Biblioteca Filipinas
-  <img src="https://github.githubassets.com/images/icons/emoji/unicode/1f4da.png?v8" alt="books" style="float:right;width:64px;height:64px;">
+<h2 id="filipinas-library">
+  3. Ejercicio tercero: Biblioteca Filipinas
+  <img src="https://github.githubassets.com/images/icons/emoji/unicode/1f4da.png?v8" alt="books" style="float:right;width:32px;height:32px;">
 </h2>
 
-<h3 id="biblioteca-conocimientos">Conocimientos necesarios:</h3>
+<h3 id="library-knowledge">3.1 Conocimientos necesarios:</h3>
 
 * Programación Orientada a Objetos en Java (composición y otras técnicas)
 * Colecciones en Java
@@ -349,48 +407,207 @@ Transaction [ID=6,
 * Captura de excepciones
 * Buenas prácticas en la escritura de código 
 
-<h3 id="biblioteca-requisitos">Requisitos:</h3>
+<h3 id="library-requirements">3.2 Requisitos:</h3>
 
-El objetivo de este ejercicio es crear un programa en Java con utilidad práctica capaz de administrar el servicio de préstamo de libros de una biblioteca de uso público. La aplicación realiza consultas y actualizaciones de una base de datos MySQL cuyas sentencias de creación e inserción de datos se proporcionan al final de este enunciado.
+The goal of this exercise is to create a Java program with practical utility capable of managing the book borrowing service of a public library. The application performs queries and updates to a MySQL database whose creation and data insertion statements are provided below.
 
-La base de datos almacena información en cuatro tablas: ```library``` con información y reglas generales de la biblioteca; ```book``` con información de los libros en los fondos de la biblioteca y su disponibilidad; ```reader``` con información sobre los lectores o usuarios abonados al servicio de préstamo de la biblioteca; y ```borrowing``` con información sobre los préstamos de libros a los lectores, que incluye claves foráneas que hacen referencia a las tablas ```book``` y ```reader```.
+The database stores information in four tables: ```library``` to keep general information and rules of the library; ```book``` containing information about the books in the library's collection and their availability; ```reader``` containing information about the readers or users of the library's borrowing service; and ```borrowing``` with information about book loans to readers, which includes foreign keys referencing the ```book``` and ```reader``` tables.
 
-Es importante conocer las **Normas de Préstamo** de la biblioteca para desarrollar el software de administración de manera congruente<sup>1</sup>. La biblioteca diseñada por defecto en las sentencias SQL que se ofrecen más abajo:
+It is important to be familiar with the **Library's Borrowing Rules** in order to develop the administration software consistently<sup>1</sup>. The default library designed in the SQL statements offered below implements the following rules regarding the maximum items allowed on borrowing, the period of borrowings and a penalty for overdue items, as it is customary of many public libraries in Spain, consisting of the suspension of borrowing privileges for a period of time.
 
-1. Permite a cada usuario tener en préstamo un máximo de 3 libros al mismo tiempo.
-2. Concede los préstamos por un plazo máximo de 15 días.
-3. Y por último, como es típico en muchas bibliotecas públicas de España, fija una penalización para los lectores que devuelvan libros más tarde del plazo máximo, en este caso una penalización de 3 días sin poder tomar prestados libros por cada día de retraso en la devolución de un libro (así, un retraso de 5 días supone una penalización de 15 días).
+<table align="center">
+    <tr>
+        <th colspan=2, align="center">
+            <b>Filipinas Library Borrowing Rules</b>
+        </th>
+    </tr>
+    <tr>
+        <td>
+            1.
+        </td>
+        <td>
+            The library allows each user to have a maximum of 3 books borrowed at the same time.
+        </td>
+    </tr>
+    <tr>
+        <td>
+            2.
+        </td>
+        <td>
+            The library grants the borrowing of its items for a maximum period of 15 days.
+        </td>
+    </tr>
+    <tr>
+        <td>
+            3.
+        </td>
+        <td>
+            The library will impose a penalty for readers with books overdue consisting of a suspension of borrowing privileges of 3 days for each day of delay in returning a book (e.g. a delay of 5 days results in a penalty of 15 days of suspension).
+        </td>
+    </tr>
+</table>
 
-Conociendo estos requisitos, realiza un programa en Java con las siguientes especificaciones:
+Taking these requirements into account, create a Java program with the following specifications:
 
-1. Crea un proyecto que incorpore en el _classpath_ el driver necesario para manejar una **base de datos MySQL** y define en el programa en Java la ruta, credenciales y otros valores necesarios para establecer la conexión con un servidor local.
-2. Crea la base de datos e inserta los valores que se proporcionan al final de este enunciado en un servidor local (_localhost_) MySQL (puedes utilizar p.ej. XAMPP-phpMyAdmin o MySQL Workbench). Los registros de ejemplo suministrados ofrecen una variedad de casos para poder someter el programa que desarrolles a prueba, incluyendo préstamos (“borrowings”) dinámicamente creados en fechas relativas a la fecha del sistema en el momento de inserción de los datos.
-3. Crea las clases necesarias en tu proyecto en Java para ofrecer una solución orientada a objetos con la suficiente modularidad. Esto significa que el programa debe tener clases “modelo” equivalentes a las entidades de la base de datos: ```Library```, ```Book```, ```Reader``` y ```Borrowing``` con los campos y miembros que corresponden a los campos de la tabla. Se recomienda dividir el código en clases y paquetes siguiendo un patrón de diseño MVC o arquitecturas modulares similares.
-4. El software de administración de una biblioteca como la presentada en este enunciado podría ofrecer muchas funcionalidades tales como operaciones CRUD de libros y lectores abonados, devolución de listas, búsquedas y comparaciones con filtros avanzados, etc. Sin embargo, en este ejercicio sólo debes programar la **funcionalidad necesaria para realizar préstamos de libros a lectores y registrar devoluciones de los libros prestados.** A pesar de que estas dos funciones parecen sencillas, implementarlas adecuadamente con arreglo a las reglas descritas al principio exigirá realizar consultas y comprobaciones en las cuatro tablas.
-5. El programa solicitará al usuario con un “menú” por consola, en un bucle infinito, qué opción quiere realizar —```PRESTAMO```, ```DEVOLUCION```, ```SALIR```— y a continuación solicitará los valores de ```ID``` del libro e ```ID``` del lector para llevar a cabo la operación seleccionada, si es posible realizarla, mediante métodos especializados.
-6. Debes poner especial atención en que el programa, para realizar préstamos y devoluciones, además de otras situaciones evalúe las reglas de número máximo de préstamos, plazo máximo de días de préstamo y días de sanción por día de retraso en el préstamo de la biblioteca, así como el número de préstamos que tiene un lector, si tiene o no días de sanción, el valor de disponibilidad (```available```) de un libro para saber si está prestado actualmente o no, etcétera.
-7. Debe controlarse un caso especial que consiste en el intento de devolver un libro actualmente prestado a un usuario por otro usuario diferente. Si se permitiera hacerlo, aunque el cambio en la disponibilidad del libro se registraría coherentemente, el sistema permitiría el caso indeseado de que un lector viera reducido su número de libros prestados incluso a valores negativos, alterando las normas de funcionamiento de la biblioteca. Para evitarlo, el método que maneja las devoluciones debe comprobar que hay un préstamo del libro especificado al lector introducido y que este préstamo está vigente (la fecha de devolución es nula).
-8. OPCIONAL: Puedes intentar implementar la lógica más compleja de este programa: haz que evalúe los días que un lector lleva de retraso en la devolución de libros que todavía tiene prestados y: 
-    1. Impida tomar prestados nuevos libros a ese lector si tiene retraso.
-    2. Aplique la penalización que le corresponde sumándola al valor del campo ```penalty_count``` de su registro en la tabla ```reader``` y al campo ```overdue_penalty``` del registro de ese préstamo en la tabla ```borrowing``` al tiempo de la devolución.
-10. OPCIONAL: Crea una interfaz gráfica con Java Swing u otro _framework_ similar para facilitar la gestión de préstamos y devoluciones de libros en un entorno gráfico.
-11. OPCIONAL: Añade otras funciones que consideres interesantes para la aplicación.
-12. **RECOMENDACIÓN**: Para buscar en la base de datos préstamos por su ID en orden a registrar una DEVOLUCIÓN, se recomienda limitar la _query_ a la base de datos al último resultado (cláusulas ```DESC LIMIT 1```) para evitar confusiones con préstamos antiguos del mismo libro al mismo lector que podrían producir un funcionamiento anómalo del programa.
-13. Para someter a prueba el programa, se realizará una ejecución dando las siguientes órdenes en el menú de selección de opciones:
+1. Create a project that includes the necessary driver in the classpath to manage a **MySQL database** and define in the Java program the path, credentials, and other values necessary to establish a connection with a local server.
+2. Create the database and insert the values provided below into a local MySQL server (you can use XAMPP-phpMyAdmin or MySQL Workbench). The sample records provided offer a variety of cases to test the program you are developing, including loans dynamically created on dates relative to the system date at the time of data insertion.
+3. Create the necessary classes in your Java project to provide an object-oriented solution with a convenient modularity. Therefore, the application should have "model" classes equivalent to the entities in the database: ```Library```, ```Book```, ```Reader```, and ```Borrowing```, with properties corresponding to the fields in the database tables. It is recommended to divide the code into classes and packages following an MVC design pattern or similar modular architectures.
+4. The library management software could provide many functions such as CRUD operations for books and subscribed readers, listing borrowings and returns, searching, comparisons with advanced filters, etc. However, in this exercise, you should only code the functionality necessary to approve item loans to readers and record returns of books. Although these two operations may seem simple, implementing them properly according to the rules described at the beginning will require making queries and perform checks in the four tables.
+5. The application will prompt the user with a console menu, in an infinite loop, to entenr the operation they want to perform — ```BORROW```, ```RETURN```, or ```EXIT``` — and then will request the values ```bookId``` and ```readerId``` to carry out the selected operation, if it is possible to perform, using specialized methods.
+6. You must pay special attention so the application, to carry out borrowings and returns, assess books, readers and borrowing situations according to the rules of the library: the maximum number of borrowings, the maximum borrowing period, the penalty days for each day overdue in ongoing borrowings, the number of borrowings a reader currently holds, whether the reader has a registered penalty, the availability value of a book to know if it is currently borrowed or not, etcetera.
+7. A particular case you must control consists of attempts to return a book that is currently borrowed to a user by a different user. If this was allowed, although the change in the book's availability would be registered correctly, the system would welcome the undesirable case where a reader's number of borrowed books could be decreased even to negative values, disrupting the library's operation rules. To prevent this, the method that handles the returns must check that there is a borrowing of the specified ```bookId``` to the specified ```readerId``` and that the borrowing is still valid (the ```returnDate``` is null).
+8. **OPTIONAL**: You can try to <span id="library-requirements-8">implement the most complex logic</span> in the application and make it check the days a reader is overdue in returning books that they still have borrowed. The program: 
+    1. Will prevent the reader from borrowing new books if they are overdue in any of their current borrowings.
+    2. Calculate and register the appropriate penalty by adding it to the value of the ```penalty_count``` field in their ```reader``` table record and the ```overdue_penalty``` field of that borrowing record in the ```borrowing``` table at the time of return.
+10. **OPTIONAL**: Create a graphical user interface with Java Swing or another framework to facilitate the management of book borrowings and returns in a graphical environment.
+11. **OPTIONAL**: Implement any other functionality that you consider interesting to the application.
+12. **TIP**: To search for borrowings by their ```borrowingId``` in order to register a ```RETURN``` in the database, it is recommended to limit the query to the last result (```DESC LIMIT 1``` clause) to avoid any confusion with old borrowings of the same book to the same reader that could result in application bugs.
+13. To test the application, an execution will be carried out by giving the following orders in the option selection menu:
 
-    1. La primera operación consistirá en registrar un ```PRÉSTAMO``` del libro con ID 1 (“El Quijote”) por el lector con ID 1 (George Stobbart). Se mostrará un mensaje de confirmación, se modificará la disponibilidad del libro y se incrementará el contador de libros prestados de este lector.
-    2. La segunda operación consistirá en practicar la ```DEVOLUCIÓN``` del libro con ID 3 (“Las aventuras de Huckleberry Finn”) prestado al lector con ID 1 (George Stobbart). Este préstamo viene preconstituido por las inserciones propuestas al final del enunciado, diseñadas para que se realice con fecha del día mismo de la inserción a las 08:34:05 horas. Se mostrará una confirmación de la devolución, se cambiará la disponibilidad del libro (```true```) , se insertará la fecha de devolución en el registro correspondiente de la tabla `borrowing` y se disminuirá el contador de libros prestados del lector.
-    3. La tercera operación consistirá en intentar registrar un ```PRÉSTAMO``` del libro con ID 1 (“El Quijote”) por el lector con ID 6 (Liam McGuire), debiendo mostrarse el mensaje de que no es posible realizar el préstamo tras comprobarse el estado no disponible del libro a causa de la primera operación.
-    4. La cuarta operación consistirá en intentar registrar un ```PRÉSTAMO``` del libro con ID 10 (“Vida y destino”) por el lector con ID 4 (Augustin Rosso), debiendo mostrarse el mensaje de que no es posible autorizar el préstamo porque el lector ya tiene 3 libros, el número máximo de préstamos permitidos. 
-    5. La quinta operación consistirá en intentar registrar un ```PRÉSTAMO``` del libro con ID 14 (“Los miserables”) por el lector con ID 15 (Gamal Khan), debiendo mostrarse el mensaje, a pesar de que el libro está disponible, de que no es posible autorizar el préstamo porque el lector tiene una penalización por retrasos vigente.
-    6. La sexta operación consistirá en intentar registrar la ```DEVOLUCIÓN``` del libro con ID 11 (“La invención de Morel”) por la lectora con ID 9 (Pearl Henderson). Este libro en realidad está prestado al lector con ID 4 (Augustin Rosso) y por lo tanto, el sistema no autorizará la operación informando de esta circunstancia.
-    7. La séptima operación consistirá en registrar la ```DEVOLUCIÓN``` del libro con ID 9 (“El perro de los Baskerville”) por el lector con ID 12 (François Plantard), debiendo autorizarse la operación, mostrarse confirmación y practicarse las debidas operaciones de actualización de la base de datos en cuanto al número de libros prestados del lector, la fecha de devolución del préstamo y la disponibilidad del libro devuelto.
-    8. OPCIONAL: la octava operación, si se ha implementado la lógica de control del punto 8 opcional, consistirá en intentar registrar el ```PRÉSTAMO``` del libro con ID 9 (“El perro de los Baskerville”) devuelto por otro lector por la lectora con ID 2 (Nicole Collard). Esta lectora no presenta todavía una sanción registrada, pero tiene en préstamo dos libro desde hace 19 y 17 días respectivamente conforme a los datos preconstituidos al final del enunciado, por tanto se ha retrasado en su devolución y se espera que el programa prohíba el nuevo préstamo por este motivo.
-    9. OPCIONAL: la novena operación, si se ha implementado la lógica de control del punto 8 opcional, consistirá en registrar la ```DEVOLUCIÓN``` del libro con ID 15 (“Las metamorfosis”) por el lector con ID 3 (André Lobineau), quien ya lleva 1 día de retraso en su devolución. La operación debe ser autorizada y se espera que el programa, además de modificar los campos de disponibilidad del libro, fecha de devolución del préstamo y número de libros prestados de este lector, actualice la base de datos incluyendo la penalización de 3 días por 1 día de retraso.
-    10. OPCIONAL: las operaciones décima y undécima, si se ha implementado la lógica de control del punto 8 opcional, consistirán en registrar la ```DEVOLUCIÓN``` de los libros con ID 7 y 12 (“Robinson Crusoe” y “The stand”) de la lectora con ID 2 (Nicole Collard). Al tener un retraso de 4 y 2 días respectivamente en su devolución, se espera que el programa las registre correctamente y actualice la base de datos poniendo a la lectora Nicole Collard una penalización de 12 + 6 = 18 días.
-    11. La última operación consistirá en elegir la opción ```SALIR```, que deberá terminar con la ejecución iterativa y finalizar el programa. Conviene comprobar en la base de datos MySQL del servidor si los datos de las tablas ```book```, ```borrowing``` y ```reader``` se han actualizado conforme a los préstamos y devoluciones tramitados durante el ejercicio.
+    1. :white_check_mark: The first operation will consist of registering a ```BORROWING``` of the book with ID 1 ("Don Quixote") to the reader with ID 1 (George Stobbart). A confirmation message will be displayed, the ```available``` status of the book will be updated, and the counter of ```borrowed_books``` of this reader will be incremented by 1.
+    2. :white_check_mark: The second operation will consist of carrying out the ```RETURN``` of the book with ID 3 ("The Adventures of Huckleberry Finn") borrowed by the reader with ID 1 (George Stobbart). This borrowing comes pre-constituted by the proposed insertions below, and is designed to be made on the same day of the data insertion at 08:34:05 hours. A confirmation of the return will be displayed, the ```available``` status of the book will be changed to true, the ```return_date``` will be inserted in the corresponding record of the ```borrowing``` table, and the counter of ```borrowed_books``` for the reader will be decreased by 1.
+    3. :no_entry: The third operation will consist of trying to register a ```BORROWING``` of the book with ID 1 ("Don Quixote") to the reader with ID 6 (Liam McGuire); a message must be displayed indicating that it is not possible to approve the borrowing after verifying the book's unavailable status due to the test's first operation.
+    4. :no_entry: The fourth operation will consist of trying to register a ```BORROWING``` of the book with ID 10 ("Life and Fate") to the reader with ID 4 (Augustin Rosso); a message must be displayed indicating that it is not possible to approve the borrowing because the reader already holds 3 books, the maximum number of borrowings allowed.
+    5. :no_entry: The fifth operation will consist of trying to register a ```BORROWING``` of the book with ID 14 ("Les Misérables") to the reader with ID 15 (Gamal Khan); a message must be displayed indicating, despite the book being available, that it is not possible to authorize the loan because the reader has an overdue penalty.
+    6. :no_entry: The sixth operation will consist of trying to register the ```RETURN``` of the book with ID 11 ("The Invention of Morel") by the reader with ID 9 (Pearl Henderson). This book is actually borrowed by the reader with ID 4 (Augustin Rosso), and therefore, the system must not authorize the operation, informing of this situation.
+    7. :white_check_mark: The seventh operation will consist of registering the ```RETURN``` of the book with ID 9 ("The Hound of the Baskervilles") by the reader with ID 12 (François Plantard). The operation must be authorized, a confirmation message must be shown, and the necessary database update operations must be performed regarding the ```borrowed_books``` reader counter decrease, the ```return_date``` of the borrowing, and the ```available``` status of the returned book.
+    8. :no_entry: **OPTIONAL**: The eighth operation, if the control logic of [optional point 8](#library-requirements-8) has been implemented, will consist of attempting to register the ```BORROWING``` of the book with ID 9 ("The Hound of the Baskervilles") returned by another reader, by the reader with ID 2 (Nicole Collard). This reader does not have a registered penalty yet, but has been holding the borrowing of two books for 19 and 17 days respectively according to the provided pre-constituted data, and she is therefore delayed in their return. Thus, the program must not allow the borrowing.
+    9. :white_check_mark: **OPTIONAL**: The ninth operation, if the control logic of [optional point 8](#library-requirements-8) has been implemented, will consist of registering the ```RETURN``` of the book with ID 15 ("Metamorphosis") by the reader with ID 3 (André Lobineau), who is already 1 day overdue in their return. The operation must be authorized and the program is expected to update the database, including a penalty of 3 days for 1 day of delay in the reader's ```penalty_count```, in addition to modifying the fields of the book's ```available``` status, the borrowing's ```return_date```, and the ```borrowed_books``` counter of this reader.
+    10. :white_check_mark: **OPTIONAL**: The tenth and eleventh operations, if the control logic of [optional point 8](#library-requirements-8) has been implemented, will consist of registering the ```RETURN``` of the books with ID 7 and 12 ("Robinson Crusoe" and "The Stand") by the reader with ID 2 (Nicole Collard). As they are overdue in their return by 4 and 2 days respectively, the program is expected to properly register and update the database ```return_date``` fields, setting a ```penalty_count``` of 12 + 6 = 18 days on the reader Nicole Collard.
+    11. :white_check_mark: The last operation will consist of selecting the ```EXIT``` option, which should end the iterative execution and terminate the application. It is advisable to check the MySQL database on the server to see if the data in the ```book```, ```borrowing```, and ```reader``` tables has been updated according to the borrowings and returns invoked during this test.
 
-<h3 id="biblioteca-salida">Salida en consola:</h3>
+<h3 id="library-design">3.3 Diseño de la base de datos:</h3>
+
+![Database design](/library_design.png)
+    
+<h3 id="library-db-creation">3.4 Sentencias CREATE de creación (DDL) de la base de datos:</h3>
+
+```DROP DATABASE IF EXISTS filipinas_library;
+CREATE DATABASE filipinas_library;
+USE filipinas_library;
+
+CREATE TABLE library (
+    library_id INT AUTO_INCREMENT PRIMARY KEY,
+    library_name VARCHAR(255),
+    library_address VARCHAR(255),
+    library_phone_number VARCHAR(20),
+    max_borrowings INT DEFAULT 3,
+    borrowing_period_days INT DEFAULT 15,
+    late_return_penalty_days INT DEFAULT 3
+);
+
+CREATE TABLE book (
+    book_id INT AUTO_INCREMENT PRIMARY KEY,
+    title VARCHAR(255),
+    author VARCHAR(255),
+    publication_year INT,
+    publisher VARCHAR(255),
+    ISBN VARCHAR(13),
+    number_of_pages INT,
+    available BOOLEAN DEFAULT TRUE
+);
+
+CREATE TABLE reader (
+    reader_id INT AUTO_INCREMENT PRIMARY KEY,
+    first_name VARCHAR(255),
+    last_name VARCHAR(255),
+    email VARCHAR(255),
+    phone_number VARCHAR(20),
+    date_of_birth DATE,
+    borrowed_books INT DEFAULT 0,
+    penalty_count INT DEFAULT 0
+);
+
+CREATE TABLE borrowing (
+    borrowing_id INT AUTO_INCREMENT PRIMARY KEY,
+    book_id INT,
+    reader_id INT,
+    borrowing_date DATETIME,
+    return_date DATETIME,
+    overdue_penalty INT DEFAULT 0,
+    FOREIGN KEY (book_id) REFERENCES book(book_id),
+    FOREIGN KEY (reader_id) REFERENCES reader(reader_id)
+);
+```
+
+<h3 id="library-db-population">3.5 Sentencias INSERT-VALUES de manipulación (DML) para llenar la base de datos:</h3>
+
+```INSERT INTO library (library_name, library_address, library_phone_number, max_borrowings, borrowing_period_days, late_return_penalty_days)
+VALUES 
+    ('Biblioteca Islas Filipinas', 'Calle Jesús Maestro, 3', '915800811', 3, 15, 3);
+
+INSERT INTO book (title, author, publication_year, publisher, ISBN, number_of_pages, available)
+VALUES
+    ('El Quijote', 'Miguel de Cervantes', 1605, 'Francisco de Robles', '9788424921862', 863, true),
+    ('Moby Dick', 'Herman Melville', 1851, 'Harper & Brothers', '9781593080275', 635, false),
+    ('Las aventuras de Huckleberry Finn', 'Mark Twain', 1884, 'Chatto & Windus', '9780486280615', 224, false),
+    ('Fundación', 'Isaac Asimov', 1951, 'Gnome Press', '9780553293357', 244, false),
+    ('El Señor de los Anillos', 'J.R.R. Tolkien', 1954, 'George Allen & Unwin', '9780618260584', 1178, true),
+    ('El doctor Jekyll y Mr. Hyde', 'Robert L. Stevenson', 1886, 'Longmans, Green, and Co.', '9780141389509', 144, false),
+    ('Robinson Crusoe', 'Daniel Defoe', 1719, 'W. Taylor', '9780060771504', 320, false),
+    ('No es país para viejos', 'Cormac McCarthy', 2005, 'Vintage', '9780307387134', 320, true),
+    ('El perro de los Baskerville', 'Arthur Conan Doyle', 1902, 'George Newnes Ltd', '9780143122065', 256, false),
+    ('Vida y destino', 'Vasily Grossman', 1980, 'Ediciones Destino', '9788432209469', 896, true),
+    ('La invención de Morel', 'Adolfo Bioy Casares', 1940, 'Editorial Losada', '9789500301429', 144, false),
+    ('The stand', 'Stephen King', 1978, 'Doubleday', '9780385121682', 823, false),
+    ('Rebelión en la granja', 'George Orwell', 1945, 'Secker and Warburg', '9780451526342', 112, true),
+    ('Los miserables', 'Victor Hugo', 1862, 'A. Lacroix, Verboeckhoven & Cie', '9780192839983', 1232, true),
+    ('Las metamorfosis', 'Ovidio', 8, 'Varios', '9780140447897', 723, false);
+    
+INSERT INTO reader (first_name, last_name, email, phone_number, date_of_birth, borrowed_books, penalty_count)
+VALUES 
+    ('George', 'Stobbart', 'george.stobbart@gmail.com', '626461866', '1979-06-18', 1, 0),
+    ('Nicole', 'Collard', 'nico.collard@yahoo.com', '612445112', '1984-10-03', 2, 0),
+    ('André', 'Lobineau', 'andre.lobineau@gmail.com', '691557349', '1985-12-29', 1, 0),
+    ('Augustin', 'Rosso', 'augustin.rosso@yahoo.com', '680220093', '1971-04-05', 3, 0),
+    ('Pierre', 'Carchon', 'pierre.carchon@bbc.co.uk', '616596154', '1999-01-12', 0, 0),
+    ('Liam', 'McGuire', 'liam.mcguire@facebook.com', '677916387', '2002-07-30', 0, 0),
+    ('Clarissa', 'Piermont', 'clarissa.piermont@altavista.com', '648915477', '1956-09-02', 0, 0),
+    ('Duane', 'Henderson', 'duane.penderson@hotmail.com', '610468251', '1982-03-21', 0, 0),
+    ('Pearl', 'Henderson', 'pearl.henderson@hotmail.com', '691465003', '1983-12-01', 1, 0),
+    ('Bruno', 'Ostvalt', 'bruno.ostvalt@yahoo.com', '611025916', '1965-08-08', 0, 0),
+    ('Nigel', 'Peagram', 'nigel.peagram@lycos.com', '696163171', '1991-02-17', 0, 0),
+    ('François', 'Plantard', 'francois.plantard@google.com', '625526744', '1970-01-10', 1, 5),
+    ('Jacques', 'Marquet', 'jacques.marquet@yahoo.com', '682412110', '1968-12-31', 0, 0),
+    ('Antoine', 'Eklund', 'antoine.eklund@gmail.com', '646826952', '1975-06-10', 0, 0),
+    ('Gamal', 'Khan', 'khan@google.com', '600168163', '1986-07-27', 0, 26);
+    
+INSERT INTO borrowing (book_id, reader_id, borrowing_date, return_date, overdue_penalty)
+VALUES 
+    (2, 2, '2022-09-02 11:43:03', '2022-09-13 10:16:19', 0),
+    (13, 2, '2022-09-02 11:43:36', '2022-09-13 18:30:26', 0),
+    (4, 1, '2022-09-13 18:31:18', '2022-09-21 13:01:06', 0),
+    (8, 6, '2022-09-27 12:20:25', '2022-10-11 15:50:31', 0),
+    (9, 8, '2022-10-02 17:00:42', '2022-10-18 11:09:12', 3),
+    (3, 2, '2022-10-07 09:37:26', '2022-10-20 11:00:43', 0),
+    (12, 2, '2022-10-07 09:37:40', '2022-10-20 11:00:59', 0),
+    (1, 4, '2022-10-30 16:11:56', '2022-11-21 12:40:41', 21),
+    (15, 7, '2022-12-02 15:50:42', '2022-12-19 15:15:16', 6),
+    (5, 3, '2022-12-11 18:47:01', '2022-12-30 12:01:24', 12),
+    (10, 2, '2022-12-11 10:13:43', '2022-12-25 13:30:20', 0),
+    (11, 2, '2022-12-11 10:14:04', '2022-12-25 13:30:33', 0),
+    (13, 8, '2022-12-13 14:04:30', '2022-12-28 11:00:33', 0),
+
+    # Insertions relative to present day for penalties and current borrowings to make sense:
+    (6, 15, DATE_SUB(NOW(), INTERVAL 33 DAY), DATE_SUB(NOW(), INTERVAL 7 DAY), 
+        (((33 - 7) - (SELECT borrowing_period_days FROM library)) * (SELECT late_return_penalty_days FROM library))),
+    (7, 2, DATE_SUB(NOW(), INTERVAL 19 DAY), NULL, 
+        ((19 - (SELECT borrowing_period_days FROM library)) * (SELECT late_return_penalty_days FROM library))),
+    (12, 2, DATE_SUB(NOW(), INTERVAL 17 DAY), NULL, 
+        ((17 - (SELECT borrowing_period_days FROM library)) * (SELECT late_return_penalty_days FROM library))),
+    (15, 3, DATE_SUB(NOW(), INTERVAL 16 DAY), NULL, 
+        ((16 - (SELECT borrowing_period_days FROM library)) * (SELECT late_return_penalty_days FROM library))),
+    (5, 12, DATE_SUB(NOW(), INTERVAL 18 DAY), CONCAT(CURDATE() - INTERVAL 1 DAY, ' 16:07:07'),
+        (((18 - 1) - (SELECT borrowing_period_days FROM library)) * (SELECT late_return_penalty_days FROM library))),
+    (6, 4, DATE_SUB(NOW(), INTERVAL 10 DAY), NULL, 0),
+    (4, 4, DATE_SUB(NOW(), INTERVAL 13 DAY), NULL, 0),
+    (11, 4, DATE_SUB(NOW(), INTERVAL 13 DAY), NULL, 0),
+    (9, 12, DATE_SUB(NOW(), INTERVAL 7 DAY), NULL, 0),
+    (2, 9, DATE_SUB(NOW(), INTERVAL 4 DAY), NULL, 0),
+    (3, 1, CONCAT(CURRENT_DATE(), ' 08:34:05'), NULL, 0);
+```
+
+<h3 id="library-output">3.6 Salida en consola:</h3>
 
 ```+--------------------------------------------------------------+
 | Do you want to borrow or return a book? (Borrow/Return/Exit) |
@@ -479,9 +696,42 @@ exit
 Exiting program...
 ```
 
-<h3 id="biblioteca-insert">Sentencias INSERT de creación de registros de ejemplo en la base de datos:</h3>
+<h3 id="library-summary">3.7 Resumen:</h3>
 
-## Licencia
+The Filipinas Library Java coding exercise is a project aimed at training programming students in coding software applications with a practical utility: a tool for managing the books borrowing service of a public library. To complete this exercise, students will need to have knowledge of Object-Oriented Programming in Java, Collections API, Java JDBC API, relational databases, MySQL language, CRUD operations, and best practices in code writing.
+
+The project requires building from scratch an application that includes the necessary driver in the classpath to connect to and manage a MySQL database in a local server. You must make use of "model" classes equivalent to the entities in the database: Library, Book, Reader, and Borrowing, with properties mapped to the fields in the database tables. The application provides console menu prompts in an infinite loop to enter the operation the user wants to perform (BORROW, RETURN, or EXIT) and request the values bookId and readerId to carry out the selected operation. The program must then perform checks in the four tables to ensure that the borrower's request and other conditions are in accordance with the library's borrowing rules.
+
+Implementing these rules and restrictions requires a strong understanding of conditional logic evaluation, as the program must evaluate multiple conditions to determine whether a borrowing or return operation can be carried out. These conditions include the maximum number of books allowed for simultaneous borrowing, the maximum borrowing period in days, the penalty for overdue items, the availability of a book, the books a reader currently holds, and whether the reader has a registered penalty. Additionally, the program includes optional features such as calculating penalties for overdue items, adding an extra layer of complexity to the conditional logic evaluation. It's possible to develop a graphical user interface with Java Swing or another framework to streamline the management of book borrowings.
+
+By completing this project, students can gain a deeper understanding of how to evaluate multiple conditions and apply these evaluations to manage complex operations effectively, which are essential skills for developing reliable and maintainable software, particularly relevant for applications that require complex rule-based operations such as financial software or logistics management systems.
+
+<br>
+
+<h2 id="grade-curriculum">
+  4. Currículum del curso:
+</h2>
+
+- [Higher Technician in Multi-platform Applications Development (English)][1]
+- [Técnico Superior en Desarrollo de Aplicaciones Multiplataforma (Español)][2]
+
+[1]: https://www.todofp.es/dam/jcr:7655e32d-08a3-47a7-a479-ddb6f032c63e/n-tsdesarrolloaplicacionesmultiplataformaen-pdf.pdf
+[2]: https://www.todofp.es/dam/jcr:c03b0ca3-58e3-4b1d-ac13-b2c006a9d5f2/n-tsdesarrolloaplicacionesmultiplataformaes-pdf.pdf
+
+<br>
+
+<h2 id="thanks">
+  5. Agradecimientos:
+</h2>
+
+Me gustaría agradecer por su valioso apoyo y colaboración a mis profesores y compañeros del IES Islas Filipinas de Madrid.
+
+<br>
+
+<h2 id="license">
+  6. Licencia:
+</h2>
+
 ```diff
 Copyright © 2023 Alejandro M. González
     
