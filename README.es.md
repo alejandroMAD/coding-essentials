@@ -214,29 +214,29 @@ El establecimiento "Yum Snack Bar" ofrece a sus clientes los siguientes producto
 
 1. Construye una solución Orientada a Objetos que contemple las diferentes clases necesarias para organizar el programa, utilizando paquetería para dividir lo mejor posible el código, agrupando las clases por sus características y finalidad.
 2. Parece clara la conveniencia de utilizar herencia: por ejemplo, es posible concebir una clase ```Palomitas``` y otra clase ```Refresco```, con características propias, y una superclase ```Producto``` con características comunes como un ```nombre``` y un ```precio```.
-3. Create constants defining the available sizes of the popcorn and drinks: ```MEDIUM```, ```LARGE```, ```EXTRALARGE```. A good approach could be defining an enumerated type (enum) ```Size```.
-4. The different product classes must define the necessary ```toString()``` and _getter_ and _setter_ methods. The constructors of the classes and superclasses must be consistent with the project requirements. Keep in mind that this is an application for managing transactions, not for building the store and products. For this reason, the ```name``` and ```price``` of the objects won't be passed on instantiation, but they will already have a descriptive name and predefined price. It is advisable to use static fields for this purpose, in the absence of a proper product database. Use the double type to handle the ```price``` of the products.
-5. Popcorn and drinks should have different prices depending on their size. The constructor of the ```SodaCup``` class, in addition to the ```Size```, will receive the ```SodaType``` (```COLA```, ```LIGHT_COLA```, ```ORANGE```, ```LEMON```) as argument for which the use of a class-nested enum type ```SodaType``` is advisable. There will be a class ```Menu``` that will allow the purchase of the combination of Popcorn + Drink at a promotional price. It is highly recommended to use composition to design this class, which will comprise instances of ```PopcornBox``` and ```SodaCup```.
-6. <span id="yum-requirements-6">The constructor</span> of ```Menu``` will evaluate that the popcorn and beverage passed by argument are of the same ```Size```. Menus with a ```PopcornBox``` and a ```SodaCup``` of different size (e.g., ```PopcornBox``` ```MEDIUM``` and ```SodaCup``` ```LARGE```) are not allowed. Create a custom exception called ```IllegalSizeException``` that can be thrown in such cases.
-7. The classes ```CandyBag``` and ```MixedNutsBag```, which allow purchase by weight, must define a static price with reference to 100 g of product, and their constructor will receive the specific weight of the purchase as argument. This amount is to be be multiplied by the ```price``` attribute to calculate a double ```totalPrice```. Create an interface called ```Measurable``` with a method ```calculatePrice(double weightOrAmount)``` to be implemented by these two classes of products that are sold in bulk. It is advisable to use some rounding function up to 2 decimal places toin order to avoid printing prices like 8.250000000000002.
-8. <span id="yum-requirements-8">The classes</span> ```CandyBag``` and ```MixedNutsBag``` must incorporate include a logic to throw an ```IllegalArgumentException``` exception if an attempt is made to buy a bag with a negative or abnormally low ```price``` —less than 20 g— to prevent cheating with the scale.
-9. The class ```Snack``` will be the simplest of all: it inherits from ```Product```, has a static ```price```, a static ```name``` of the product, and a constructor without any parameters.
-10. <span id="yum-requirements-10">Create a class</span> ```Store``` that keeps the necessary information of the establishment that you consider necessary and, at a minimum, its ```name``` and the ```foundationDate``` of the snack kiosk. Use preferably one of the time-calendar classes in the Java 8+ API. You must create a method allowing to print a message on the console in the format: "Welcome to the Yum Snack Bar program. Serving popcorn, cholesterol, and joy for {x} years". The number of years must be calculated dynamically based on the predefined ```foundationDate``` of the store and its difference with the current system time when the program is executed.
-11. Create a class ```Transaction``` to combine all the products purchased by a single customer in a cash operation (e.g., a customer buys a ```Menu```, a ```Snack```, and a ```CandyBag``` in a single ```Transaction```). A ```Transaction``` has attributes of an integer ```id```, the exact ```timestamp``` (date and time) of its creation, a List of products (use a dynamic collection such as a ```List<Product>```), and the ```totalCost``` of the products that make it up. Create the necessary methods in the ```Transaction``` class for the business logic, including ```toString()``` to display the string representation of its components on the console. Use the methods provided by the ```Product``` class to implement the logic.
-12. <span id="yum-requirements-12">It is necessary to know</span> which is the most expensive ```Transaction``` —with the highest ```totalCost```— from a list of transactions. This goal can be achieved in various ways, but it is recommended to use the ```Comparable``` or ```Comparator``` interfaces for this purpose.
-13. Define a class ```LogTransaction``` to store in a **log.txt** file the information of all the transactions of a program session and also capable of reading the information from the log and displaying it on the console. The format of the log and the implementation details are free, but to keep it simple it is recommended to save each ```Transaction``` on a new line, with a format like the following: 'date-time transaction-id, product, product, product: price.'
-14. As an additional exercise, introduce in the ```LogTransaction``` class the necessary evaluation logic so that the most expensive ```Transaction``` ([point 12](#yum-requirements-12)) is saved in the file adding the string **(!)** to the end of its line.
-15. **OPTIONAL**: Create a Java Swing GUI (graphical user interface) to make the flow of purchasing and storing transactions easy and intuitive for the user in a point-of-sale POS-fashion application.
-16. In a main class, in the ```main()``` method, invoke the store's greeting phrase ([point 10](#yum-requirements-10)) and create successive sales of products and transactions to test the program. The operations to be performed in the main method are as follows:
-    1.	Six different purchases of type ```Transaction``` will be sequentially instantiated in order to save them in a list, pass them into ```LogTransaction``` to save them in the log file, and then read that file and print its contents on the console.
-    2. :white_check_mark: On the first transaction, purchase a ```LARGE``` ```PopcornBox``` and a ```Snack```, save the ```Transaction``` in the transaction list, and print it.
-    3. :white_check_mark: On the second transaction, purchase a ```MEDIUM``` ```SodaCup``` and a ```MixedNutsBag``` of 400 g, save the transaction in the transaction list and print the transaction.
-    4. :no_entry: On the third transaction, purchase a ```Menu``` made of an ```EXTRALARGE``` ```LIGHT_COLA``` ```SodaCup```, and a ```MEDIUM``` ```PopcornBox```, just to set off the throwing (and catching) of the ```IllegalSizeException``` ([point 6](#yum-requirements-6)). The exception should prevent this invalid ```Transaction``` from being saved, logged, or printed on the console.
-    5. :no_entry: On the fourth transaction, cheat the scale to buy a 6 g ```CandyBag```, and set off the throwing of an ```IllegalArgumentException``` from [point 8](#yum-requirements-8). The exception should prevent this invalid ```Transaction``` from being saved, logged, or printed on the console.
-    6. :white_check_mark: On the fifth transaction, purchase a 400 g ```CandyBag``` and a ```Menu``` made of an ```EXTRALARGE``` ```ORANGE``` ```SodaCup``` and an ```EXTRALARGE``` ```PopcornBox```. Try and instantiate the ```Transaction```, the ```Product``` objects, and the objects that make up the ```Menu``` in a single line of code (using _anonymous object instantiation_ or "on the fly" instantiation). Save the transaction and print it.
-    7. :white_check_mark: On the sixth and most expensive transaction, purchase a ```CandyBag``` of 750 g and an ```EXTRALARGE``` ```COLA``` ```SodaCup```, save the ```Transaction``` and print it.
-    8. :white_check_mark: Print on the console which ```Transaction``` was the most expensive of the entire session.
-    9. :white_check_mark: Finally, save the list of transactions to the log file and retrieve the information that has just been saved in this file to print it on the console.
+3. Crea unas constantes que definan los tamaños disponibles de palomitas y bebidas: ```MEDIANO```, ```GRANDE```, ```GIGANTE```. Una solución posible es la definición de un tipo enumerado enum ```Tamaño```.
+4. Las diferentes clases de productos deben implementar los métodos ```toString()``` y _getters_ y _setters_ necesarios. Los constructores de clases y superclases deben coordinarse según los requisitos del ejercicio. Ten presente que esta es una aplicación para gestionar las transacciones, no de creación o constitución de la tienda y sus productos: por esta razón no se pasará el nombre ni el precio de los productos al instanciarlos en tiempo de ejecución, sino que ya tendrán un nombre descriptivo y precio predefinidos. Parece aconsejable utilizar a tal fin constantes estáticas ```NOMBRE``` y ```PRECIO```, a falta del uso de una base de datos de productos. Utiliza el tipo double para manejar el precio de los productos.
+5. Las palomitas y bebidas deben tener diferentes precios en función del tamaño. El constructor de la clase ```Refresco```, además del ```Tamaño```, recibirá por parámetro el ```Sabor``` (```COLA```, ```COLA_LIGHT```, ```NARANJA```, ```LIMON```) para lo cual se recomienda el uso de un tipo enum ```Sabor``` anidado en la clase. Existirá asimismo una clase ```Menu``` que permitirá la compra de la combinación de productos palomitas + refresco a precios especiales de promoción. Es aconsejable utilizar la **composición** para diseñar esta clase, que constará de objetos ```Palomitas``` y ```Refresco```.
+6. <span id="yum-requirements-6">El constructor</span> de ```Menu``` evaluará que las palomitas y bebida pasadas por argumento sean del mismo ```Tamaño```. No se permiten menús con un cartón de palomitas y un vaso de bebida de diferente ```Tamaño``` (p.ej. ```Palomitas``` ```MEDIANO``` y ```Refresco``` ```GRANDE```). Crea una excepción personalizada llamada ```TamañoIlegalException``` que pueda ser arrojada en tales casos.
+7. Las clases para ```BolsaChucherias``` y ```BolsaFrutosSecos```, que permiten la compra al peso, deben fijar un precio estático referido a 100 g de ese producto, y su constructor recibirá por parámetro el peso concreto de la compra a resultas del pesaje de la bolsa, que se multiplicará por aquel atributo para calcular el ```precioTotal```. Crea una interfaz denominada ```Pesable``` con un método ```calcularPrecio(double pesaje)``` para ser implementado por estas dos clases de productos que se venden a granel. Es aconsejable emplear alguna función de redondeo de 2 decimales para evitar la impresión de precios como 8.250000000000002.
+8. <span id="yum-requirements-8">Las clases</span> ```BolsaChucherias``` y ```BolsaFrutosSecos``` deben incorporar una lógica de control que arroje una excepción ```IllegalArgumentException``` si se intenta comprar una bolsa con un peso negativo o anormalmente bajo —menor de 20 g— para prevenir trampas con la balanza.
+9. La clase ```Chocolatina``` será la más simple de todas: hereda de ```Producto```, tendrá un ```precio``` estático y el ```nombre``` estático del producto y un constructor sin parámetros.
+10. <span id="yum-requirements-10">Crea una clase</span> ```Tienda``` que almacene la información del establecimiento que consideres necesaria y, como mínimo, su ```NOMBRE``` y la ```FECHA_FUNDACION```, que contiene la fecha de inicio de la actividad del negocio. Utiliza preferiblemente alguna de las clases relativas a fechas de la API de Java 8 o superior. Debes crear un método en esta clase que permita imprimir en consola un mensaje del tipo: "Bienvenido al programa de Yum Snack Bar, sirviendo palomitas, colesterol y alegría desde hace {x} años". Este número de años debe calcularse de manera dinámica en función de la ```FECHA_FUNDACION``` de la tienda predefinida y su diferencia con la fecha actual del sistema cuando se ejecute el programa.
+11. Crea una clase ```Transaccion``` destinada a aglutinar todos los productos comprados por un solo cliente en una operación de caja (p. ej., un cliente compra un ```Menu```, una ```Chocolatina``` y una ```BolsaChucherias``` en una sola ```Transaccion```). Una ```Transaccion``` se compone de un entero ```ID```, la ```fechaHora``` exacta de su creación, una lista ```items``` de tipo ```<Producto>``` (utiliza una colección dinámica) y el ```precioTotal``` de los productos que la conforman. Crea los métodos necesarios en la clase ```Transaccion```, incluyendo ```toString()``` para mostrar sus componentes en consola, y utiliza los métodos provistos por la clase ```Producto``` para implementar la lógica necesaria de una transacción.
+12. <span id="yum-requirements-12">Se necesita conocer cuál es</span> la ```Transaccion``` más cara —cuyo ```precioTotal``` es el más elevado— de una lista de transacciones. Puede conseguirse este objetivo de diversas maneras, pero se recomiendo utilizar la interfaz ```Comparable``` o la interfaz ```Comparator``` para este propósito.
+13. Crea una clase ```LogTransaccion``` destinada a almacenar en un fichero **log.txt** la información de todas las transacciones de una sesión del programa y capaz también de leer la información del _log_ y mostrarla por consola. El formato del _log_ y los detalles de implementación son libres, pero se recomienda guardar cada transacción en una línea, con un formato p. ej.: 'fecha-hora trans-id, producto, producto, producto: precio'.
+14. Como ejercicio adicional, introduce en la clase ```LogTransaccion``` la lógica de comprobación necesaria para que la ```Transaccion``` más cara ([punto 12](#yum-requirements-12)) se guarde en el fichero añadiendo al final de la línea correspondiente el string “(!)”.
+15. **OPCIONAL**: Crea una interfaz gráfica de usuario (GUI) mediante la API de Java Swing para facilitar el uso de la aplicación en el registro de compras y transacciones haciéndolo más intuitivo para el usuario, siguiendo el estilo de diseño típico de una aplicación de tipo TPV (Terminal de Punto de Venta).
+16. En una clase principal, en el método main(), invoca la frase de presentación de la tienda ([punto 10](#yum-requirements-10)) y crea sucesivas ventas de productos y transacciones para someter el programa a prueba. Las operaciones a realizar en el método principal son las siguientes:
+    1.	Se crearán secuencialmente seis transacciones diferentes (tipo ```Transaccion```) con el fin de almacenarlas en una lista, enviarlas a ```LogTransaccion``` para guardarlas en el fichero de _log_ y a continuación leer ese fichero e imprimir su contenido en consola.
+    2. :white_check_mark: Para la primera transacción, crea las compras de un cartón de ```Palomitas``` ```GRANDE``` y una ```Chocolatina```, guarda la ```Transaccion``` en la lista de transacciones e imprímela.
+    3. :white_check_mark: Para la segunda transacción, compra un ```Refresco``` ```MEDIANO``` y una ```BolsaFrutosSecos``` de 400 g, guarda la ```Transaccion``` e imprímela.
+    4. :no_entry: Para la tercera transacción, compra un ```Menu``` compuesto de un ```Refresco``` de ```COLA_LIGHT``` ```GIGANTE``` y unas ```Palomitas``` ```MEDIANO```, forzando el lanzamiento (y captura) de la ```TamañoIlegalException``` ([punto 6](#yum-requirements-6)). La excepción debe prevenir que esta ```Transaccion``` inválida llegue a constituirse, guardarse, loguearse o imprimirse en consola.
+    5. :no_entry: Para la cuarta transacción, compra una ```BolsaChucherias``` haciendo trampas con la balanza, por un peso de 6 g, forzando el lanzamiento de la ```IllegalArgumentException``` del [punto 8](#yum-requisitos-8). La excepción debe prevenir que esta ```Transaccion``` inválida llegue a instanciarse, guardarse, loguearse o imprimirse en consola.
+    6. :white_check_mark: Para la quinta transacción, compra una ```BolsaChucherias``` de 400 g y un ```Menu``` compuesto de un ```Refresco``` de ```NARANJA``` ```GIGANTE``` y unas ```Palomitas``` ```GIGANTE```. Intenta instanciar el objeto ```Transaccion```, los objetos ```Producto``` y los objetos que componen el ```Menu``` con una sintaxis de una sola instrucción de código (instanciación de _objetos anónimos_ o instanciación “al vuelo”). Guarda la transacción e imprímela.
+    7. :white_check_mark: Para la sexta transacción, que será la más cara, compra una ```BolsaChucherias``` de 750 g y un ```Refresco``` de ```COLA``` ```GIGANTE```, guarda la ```Transaccion``` e imprímela.
+    8. :white_check_mark: Imprime en consola cuál es la ```Transaccion``` más cara de toda la sesión.
+    9. :white_check_mark: Por último, guarda la lista de transacciones en el fichero de _log_ y recupera la información que se ha guardado en este fichero para imprimirla en consola.
 
 <h3 id="yum-price-guide">2.4 Guía de precios:</h3>
 
@@ -252,15 +252,15 @@ Se recomienda utilizar esta guía de precios para los productos de la tienda:
     </tr>
     <tr>
         <th align="center">
-            <b>Product</b>
+            <b>Producto</b>
         </th>
         <th align="center">
-            <b>Price</b>
+            <b>Precio</b>
         </th>
     </tr>
     <tr>
         <td>
-            PopcornBox MEDIUM / LARGE / EXTRALARGE
+            Palomitas MEDIANO / GRANDE / GIGANTE
         </td>
         <td>
             5.0 / 7.0 / 9.0
@@ -268,7 +268,7 @@ Se recomienda utilizar esta guía de precios para los productos de la tienda:
     </tr>
     <tr>
         <td>
-            SodaCup MEDIUM / LARGE / EXTRALARGE
+            Refresco MEDIANO / GRANDE / GIGANTE
         </td>
         <td>
             4.5 / 6.0 / 7.5
@@ -276,7 +276,7 @@ Se recomienda utilizar esta guía de precios para los productos de la tienda:
     </tr>
     <tr>
         <td>
-            Menu MEDIUM / LARGE / EXTRALARGE
+            Menu MEDIANO / GRANDE / GIGANTE
         </td>
         <td>
             7.95 / 8.95 / 9.95
@@ -284,7 +284,7 @@ Se recomienda utilizar esta guía de precios para los productos de la tienda:
     </tr>
     <tr>
         <td>
-            Snack
+            Chocolatina
         </td>
         <td>
             2.0
@@ -292,7 +292,7 @@ Se recomienda utilizar esta guía de precios para los productos de la tienda:
     </tr>
     <tr>
         <td>
-            MixedNutsBag (100 g)
+            BolsaFrutosSecos (100 g)
         </td>
         <td>
             1.80
@@ -300,7 +300,7 @@ Se recomienda utilizar esta guía de precios para los productos de la tienda:
     </tr>
     <tr>
         <td>
-            CandyBag (100 g)
+            BolsaChucherias (100 g)
         </td>
         <td>
             1.10
@@ -361,28 +361,13 @@ Transaction [ID=6,
 
 <h3 id="yum-summary">2.6 Resumen:</h3>
 
-This Java project makes for the basis of a point-of-sale (POS)-like application to manage the activity
-of a movie theater snack bar business that sells different kinds of products, such as popcorn, beverages,
-snacks and candy or nuts bags sold by weight. The application registers purchases and transactions.
+Este proyecto escrito en Java sirve como base para crear una aplicación similar a un software de terminal de punto de venta (TPV) para gestionar la actividad del negocio de un snack bar de cine que vende diferentes tipos de productos, tales como palomitas, bebidas, chocolatinas y bolsas de chucherías al peso y bolsas de frutos secos vendidos también a granel. La aplicación registra compras y transacciones.
 
-To achieve this, the project requirements include building an object-oriented solution using composition and
-modularization into packages, creating constants to define the available types and sizes of certain products,
-defining necessary methods such as toString() and _getters_ and _setters_, implementing an interface to manage
-purchases of products sold by weight, using the Java 8+ time and calendar API and handling exceptions of various types,
-creating also an ad hoc IllegalSizeException that can be thrown in specific cases.
+Para alcanzar este resultado, los requisitos del proyecto incluyen la construcción de una solución orientada a objetos utilizando la composición y modularización en clases y paquetes, la creación de constantes para definir los sabores y tamaños disponibles de ciertos productos, la definición de métodos necesarios como toString() y _getters_ y _setters_, la implementación de una interfaz para gestionar las compras de productos vendidos al peso, el uso de la API de tiempo y calendario de Java 8+ y la gestión de excepciones de varios tipos, creando también una excepción ad hoc llamada ```TamañoIlegalException``` para arrojarla en casos específicos.
 
-The project also requires the creation of a Store class to keep necessary information of the establishment,
-a Transaction class to combine all the products purchased by a single customer, and a method to identify the most
-expensive transaction. Other project requirements include the creation and handling of exceptions, implementation
-of interfaces, and the use of the Java 8+ time and calendar API for information persistence.
+El proyecto también requiere la creación de una clase ```Tienda``` que alberga la información básica del establecimiento, una clase ```Transaccion``` para combinar todos los productos comprados por un solo cliente y un método para identificar la transacción más cara.
 
-This project can be interesting and powerful to educate programming students because it covers a wide range of
-fundamental principles and concepts in object-oriented programming and software development. It provides students
-with the opportunity to practice implementing inheritance, composition, and modularization into packages, and also
-to work with dynamic collections, create and handle exceptions, and use the Java I/O API for reading and writing files.
-The project requires designing and implementing classes and interfaces to work together simulating a real-world business
-application. The use of good programming design patterns, and best practices and the develop of problem-solving skills
-to build robust and maintainable software are also encouraged.
+Este proyecto puede ser una herramienta interesante y valiosa para educar a los estudiantes de programación porque cubre una amplia gama de principios y conceptos fundamentales en programación orientada a objetos y desarrollo de software. Proporciona a los estudiantes la oportunidad de practicar la implementación de la herencia, la composición y la modularización, y también trabajar con colecciones dinámicas, crear y manejar excepciones y utilizar la API de Java I/O para leer y escribir archivos. El proyecto requiere el diseño e implementación de clases e interfaces que trabajen conjuntamente simulando una aplicación de negocio del mundo real. Los requisitos del proyecto pretenden fomentar el uso de buenos patrones de diseño en programación, buenas prácticas y el desarrollo de habilidades para resolver problemas complejos, aptitudes esenciales para construir software de calidad y fácil de mantener.
 
 <br>
 
@@ -409,16 +394,16 @@ to build robust and maintainable software are also encouraged.
 
 <h3 id="library-requirements">3.2 Requisitos:</h3>
 
-The goal of this exercise is to create a Java program with practical utility capable of managing the book borrowing service of a public library. The application performs queries and updates to a MySQL database whose creation and data insertion statements are provided below.
+El objetivo de este ejercicio es crear un programa en Java con utilidad práctica capaz de administrar el servicio de préstamo de libros de una biblioteca pública. La aplicación realiza consultas y actualizaciones de una base de datos MySQL cuyas sentencias de creación e inserción de datos se proporcionan al final de este enunciado.
 
-The database stores information in four tables: ```library``` to keep general information and rules of the library; ```book``` containing information about the books in the library's collection and their availability; ```reader``` containing information about the readers or users of the library's borrowing service; and ```borrowing``` with information about book loans to readers, which includes foreign keys referencing the ```book``` and ```reader``` tables.
+La base de datos almacena información en cuatro tablas: ```library``` con información y reglas generales de la biblioteca; ```book``` con información de los libros en los fondos de la biblioteca y su disponibilidad; ```reader``` con información sobre los lectores o usuarios abonados al servicio de préstamo de la biblioteca; y ```borrowing``` con información sobre los préstamos de libros a los lectores, que incluye claves foráneas que hacen referencia a las tablas ```book``` y ```reader```.
 
-It is important to be familiar with the **Library's Borrowing Rules** in order to develop the administration software consistently<sup>1</sup>. The default library designed in the SQL statements offered below implements the following rules regarding the maximum items allowed on borrowing, the period of borrowings and a penalty for overdue items, as it is customary of many public libraries in Spain, consisting of the suspension of borrowing privileges for a period of time.
+Es importante conocer las **Normas de Préstamo** de la biblioteca para desarrollar el software de administración de manera congruente<sup>1</sup>. La biblioteca diseñada por defecto en las sentencias SQL que se ofrecen más abajo implementa las siguientes reglas de funcionamiento concernientes al número máximo de libros que se puede tener en préstamo al mismo tiempo, el periodo máximo en días de los préstamos y la penalización por la devolución tardía de libros que, como es costumbre en muchas bibliotecas públicas de España, consistirá en la suspensión de los privilegios para poder tomar préstamos durante un determinado periodo de tiempo.
 
 <table align="center">
     <tr>
         <th colspan=2, align="center">
-            <b>Filipinas Library Borrowing Rules</b>
+            <b>Normas de Préstamo de la Biblioteca Filipinas</b>
         </th>
     </tr>
     <tr>
@@ -426,7 +411,7 @@ It is important to be familiar with the **Library's Borrowing Rules** in order t
             1.
         </td>
         <td>
-            The library allows each user to have a maximum of 3 books borrowed at the same time.
+            La biblioteca permite a cada usuario tener en préstamo un máximo de 3 libros al mismo tiempo.
         </td>
     </tr>
     <tr>
@@ -434,7 +419,7 @@ It is important to be familiar with the **Library's Borrowing Rules** in order t
             2.
         </td>
         <td>
-            The library grants the borrowing of its items for a maximum period of 15 days.
+            La biblioteca concede préstamos de los libros en sus fondos por un plazo máximo de 15 días.
         </td>
     </tr>
     <tr>
@@ -442,39 +427,39 @@ It is important to be familiar with the **Library's Borrowing Rules** in order t
             3.
         </td>
         <td>
-            The library will impose a penalty for readers with books overdue consisting of a suspension of borrowing privileges of 3 days for each day of delay in returning a book (e.g. a delay of 5 days results in a penalty of 15 days of suspension).
+	    La biblioteca impone una penalización a los lectores por el retraso en la devolución de libros de 3 días por cada día de retraso (p. ej., un retraso de 5 días en la devolución de un libro conllevará 15 días de suspensión).
         </td>
     </tr>
 </table>
 
-Taking these requirements into account, create a Java program with the following specifications:
+Conociendo estos requisitos, realiza un programa en Java con las siguientes especificaciones:
 
-1. Create a project that includes the necessary driver in the classpath to manage a **MySQL database** and define in the Java program the path, credentials, and other values necessary to establish a connection with a local server.
-2. Create the database and insert the values provided below into a local MySQL server (you can use XAMPP-phpMyAdmin or MySQL Workbench). The sample records provided offer a variety of cases to test the program you are developing, including loans dynamically created on dates relative to the system date at the time of data insertion.
-3. Create the necessary classes in your Java project to provide an object-oriented solution with a convenient modularity. Therefore, the application should have "model" classes equivalent to the entities in the database: ```Library```, ```Book```, ```Reader```, and ```Borrowing```, with properties corresponding to the fields in the database tables. It is recommended to divide the code into classes and packages following an MVC design pattern or similar modular architectures.
-4. The library management software could provide many functions such as CRUD operations for books and subscribed readers, listing borrowings and returns, searching, comparisons with advanced filters, etc. However, in this exercise, you should only code the functionality necessary to approve item loans to readers and record returns of books. Although these two operations may seem simple, implementing them properly according to the rules described at the beginning will require making queries and perform checks in the four tables.
-5. The application will prompt the user with a console menu, in an infinite loop, to entenr the operation they want to perform — ```BORROW```, ```RETURN```, or ```EXIT``` — and then will request the values ```bookId``` and ```readerId``` to carry out the selected operation, if it is possible to perform, using specialized methods.
-6. You must pay special attention so the application, to carry out borrowings and returns, assess books, readers and borrowing situations according to the rules of the library: the maximum number of borrowings, the maximum borrowing period, the penalty days for each day overdue in ongoing borrowings, the number of borrowings a reader currently holds, whether the reader has a registered penalty, the availability value of a book to know if it is currently borrowed or not, etcetera.
-7. A particular case you must control consists of attempts to return a book that is currently borrowed to a user by a different user. If this was allowed, although the change in the book's availability would be registered correctly, the system would welcome the undesirable case where a reader's number of borrowed books could be decreased even to negative values, disrupting the library's operation rules. To prevent this, the method that handles the returns must check that there is a borrowing of the specified ```bookId``` to the specified ```readerId``` and that the borrowing is still valid (the ```returnDate``` is null).
-8. **OPTIONAL**: You can try to <span id="library-requirements-8">implement the most complex logic</span> in the application and make it check the days a reader is overdue in returning books that they still have borrowed. The program: 
-    1. Will prevent the reader from borrowing new books if they are overdue in any of their current borrowings.
-    2. Calculate and register the appropriate penalty by adding it to the value of the ```penalty_count``` field in their ```reader``` table record and the ```overdue_penalty``` field of that borrowing record in the ```borrowing``` table at the time of return.
-10. **OPTIONAL**: Create a graphical user interface with Java Swing or another framework to facilitate the management of book borrowings and returns in a graphical environment.
-11. **OPTIONAL**: Implement any other functionality that you consider interesting to the application.
-12. **TIP**: To search for borrowings by their ```borrowingId``` in order to register a ```RETURN``` in the database, it is recommended to limit the query to the last result (```DESC LIMIT 1``` clause) to avoid any confusion with old borrowings of the same book to the same reader that could result in application bugs.
-13. To test the application, an execution will be carried out by giving the following orders in the option selection menu:
+1. Crea un proyecto que incorpore en el _classpath_ el driver necesario para manejar una **base de datos MySQL** y define en el programa en Java la ruta, credenciales y otros valores necesarios para establecer la conexión con un servidor local.
+2. Crea la base de datos e inserta los valores que se proporcionan al final de este enunciado en un servidor local (_localhost_) MySQL (puedes utilizar p.ej. XAMPP-phpMyAdmin o MySQL Workbench). Los registros de ejemplo suministrados ofrecen una variedad de casos para poder someter el programa que desarrolles a prueba, incluyendo préstamos (“borrowings”) dinámicamente creados en fechas relativas a la fecha del sistema en el momento de inserción de los datos.
+3. Crea las clases necesarias en tu proyecto en Java para ofrecer una solución orientada a objetos con la suficiente modularidad. Esto significa que el programa debe tener clases “modelo” equivalentes a las entidades de la base de datos: ```Library```, ```Book```, ```Reader``` y ```Borrowing``` con los campos y miembros que corresponden a los campos de la tabla. Se recomienda dividir el código en clases y paquetes siguiendo un patrón de diseño MVC o arquitecturas modulares similares.
+4. El software de administración de una biblioteca como la presentada en este enunciado podría ofrecer muchas funcionalidades tales como operaciones CRUD de libros y lectores abonados, devolución de listas, búsquedas y comparaciones con filtros avanzados, etc. Sin embargo, en este ejercicio sólo debes programar la **funcionalidad necesaria para realizar préstamos de libros a lectores y registrar devoluciones de los libros prestados.** A pesar de que estas dos funciones parecen sencillas, implementarlas adecuadamente con arreglo a las reglas descritas al principio exigirá realizar consultas y comprobaciones en las cuatro tablas.
+5. El programa solicitará al usuario con un “menú” por consola, en un bucle infinito, qué opción quiere realizar —```PRESTAMO```, ```DEVOLUCION```, ```SALIR```— y a continuación solicitará los valores de ```ID``` del libro e ```ID``` del lector para llevar a cabo la operación seleccionada, si es posible realizarla, mediante métodos especializados.
+6. Debes poner especial atención en que el programa, para realizar préstamos y devoluciones, además de otras situaciones evalúe las reglas de número máximo de préstamos, plazo máximo de días de préstamo y días de sanción por día de retraso en el préstamo de la biblioteca, así como el número de préstamos que tiene un lector, si tiene o no días de sanción, el valor de disponibilidad (```available```) de un libro para saber si está prestado actualmente o no, etcétera.
+7. Debe controlarse un caso especial que consiste en el intento de devolver un libro actualmente prestado a un usuario por otro usuario diferente. Si se permitiera hacerlo, aunque el cambio en la disponibilidad del libro se registraría coherentemente, el sistema permitiría el caso indeseado de que un lector viera reducido su número de libros prestados incluso a valores negativos, alterando las normas de funcionamiento de la biblioteca. Para evitarlo, el método que maneja las devoluciones debe comprobar que hay un préstamo del libro especificado al lector introducido y que este préstamo está vigente (la fecha de devolución es nula).
+8. **OPCIONAL**: Puedes intentar <span id="library-requirements-8">implementar la lógica más compleja</span>  de este programa: haz que evalúe los días que un lector lleva de retraso en la devolución de libros que todavía tiene prestados y: 
+    1. Impida tomar prestados nuevos libros a ese lector si tiene algún retraso.
+    2. Aplique la penalización que le corresponde sumándola al valor del campo ```penalty_count``` de su registro en la tabla ```reader``` y al campo ```overdue_penalty``` del registro de ese préstamo en la tabla ```borrowing``` al tiempo de la devolución.
+10. **OPCIONAL**: Crea una interfaz gráfica con Java Swing u otro _framework_ similar para facilitar la gestión de préstamos y devoluciones de libros en un entorno gráfico.
+11. **OPCIONAL**: Añade otras funciones que consideres interesantes para la aplicación.
+12. **RECOMENDACIÓN**: Para buscar en la base de datos préstamos por su ID en orden a registrar una DEVOLUCIÓN, se recomienda limitar la _query_ a la base de datos al último resultado (cláusulas ```DESC LIMIT 1```) para evitar confusiones con préstamos antiguos del mismo libro al mismo lector que podrían producir un bug o funcionamiento anómalo del programa.
+13. Para someter a prueba el programa, se realizará una ejecución dando sucesivas órdenes del menú de selección de opciones para realizar las siguientes operaciones:
 
-    1. :white_check_mark: The first operation will consist of registering a ```BORROWING``` of the book with ID 1 ("Don Quixote") to the reader with ID 1 (George Stobbart). A confirmation message will be displayed, the ```available``` status of the book will be updated, and the counter of ```borrowed_books``` of this reader will be incremented by 1.
-    2. :white_check_mark: The second operation will consist of carrying out the ```RETURN``` of the book with ID 3 ("The Adventures of Huckleberry Finn") borrowed by the reader with ID 1 (George Stobbart). This borrowing comes pre-constituted by the proposed insertions below, and is designed to be made on the same day of the data insertion at 08:34:05 hours. A confirmation of the return will be displayed, the ```available``` status of the book will be changed to true, the ```return_date``` will be inserted in the corresponding record of the ```borrowing``` table, and the counter of ```borrowed_books``` for the reader will be decreased by 1.
-    3. :no_entry: The third operation will consist of trying to register a ```BORROWING``` of the book with ID 1 ("Don Quixote") to the reader with ID 6 (Liam McGuire); a message must be displayed indicating that it is not possible to approve the borrowing after verifying the book's unavailable status due to the test's first operation.
-    4. :no_entry: The fourth operation will consist of trying to register a ```BORROWING``` of the book with ID 10 ("Life and Fate") to the reader with ID 4 (Augustin Rosso); a message must be displayed indicating that it is not possible to approve the borrowing because the reader already holds 3 books, the maximum number of borrowings allowed.
-    5. :no_entry: The fifth operation will consist of trying to register a ```BORROWING``` of the book with ID 14 ("Les Misérables") to the reader with ID 15 (Gamal Khan); a message must be displayed indicating, despite the book being available, that it is not possible to authorize the loan because the reader has an overdue penalty.
-    6. :no_entry: The sixth operation will consist of trying to register the ```RETURN``` of the book with ID 11 ("The Invention of Morel") by the reader with ID 9 (Pearl Henderson). This book is actually borrowed by the reader with ID 4 (Augustin Rosso), and therefore, the system must not authorize the operation, informing of this situation.
-    7. :white_check_mark: The seventh operation will consist of registering the ```RETURN``` of the book with ID 9 ("The Hound of the Baskervilles") by the reader with ID 12 (François Plantard). The operation must be authorized, a confirmation message must be shown, and the necessary database update operations must be performed regarding the ```borrowed_books``` reader counter decrease, the ```return_date``` of the borrowing, and the ```available``` status of the returned book.
-    8. :no_entry: **OPTIONAL**: The eighth operation, if the control logic of [optional point 8](#library-requirements-8) has been implemented, will consist of attempting to register the ```BORROWING``` of the book with ID 9 ("The Hound of the Baskervilles") returned by another reader, by the reader with ID 2 (Nicole Collard). This reader does not have a registered penalty yet, but has been holding the borrowing of two books for 19 and 17 days respectively according to the provided pre-constituted data, and she is therefore delayed in their return. Thus, the program must not allow the borrowing.
-    9. :white_check_mark: **OPTIONAL**: The ninth operation, if the control logic of [optional point 8](#library-requirements-8) has been implemented, will consist of registering the ```RETURN``` of the book with ID 15 ("Metamorphosis") by the reader with ID 3 (André Lobineau), who is already 1 day overdue in their return. The operation must be authorized and the program is expected to update the database, including a penalty of 3 days for 1 day of delay in the reader's ```penalty_count```, in addition to modifying the fields of the book's ```available``` status, the borrowing's ```return_date```, and the ```borrowed_books``` counter of this reader.
-    10. :white_check_mark: **OPTIONAL**: The tenth and eleventh operations, if the control logic of [optional point 8](#library-requirements-8) has been implemented, will consist of registering the ```RETURN``` of the books with ID 7 and 12 ("Robinson Crusoe" and "The Stand") by the reader with ID 2 (Nicole Collard). As they are overdue in their return by 4 and 2 days respectively, the program is expected to properly register and update the database ```return_date``` fields, setting a ```penalty_count``` of 12 + 6 = 18 days on the reader Nicole Collard.
-    11. :white_check_mark: The last operation will consist of selecting the ```EXIT``` option, which should end the iterative execution and terminate the application. It is advisable to check the MySQL database on the server to see if the data in the ```book```, ```borrowing```, and ```reader``` tables has been updated according to the borrowings and returns invoked during this test.
+    1. :white_check_mark: La primera operación consistirá en registrar un ```PRÉSTAMO``` del libro con ID 1 (“El Quijote”) por el lector con ID 1 (George Stobbart). Se mostrará un mensaje de confirmación, se modificará la disponibilidad del libro y se incrementará el contador de libros prestados de este lector.
+    2. :white_check_mark: La segunda operación consistirá en practicar la ```DEVOLUCIÓN``` del libro con ID 3 (“Las aventuras de Huckleberry Finn”) prestado al lector con ID 1 (George Stobbart). Este préstamo viene preconstituido por las inserciones propuestas al final del enunciado, diseñadas para que se realice con fecha del día mismo de la inserción a las 08:34:05 horas. Se mostrará una confirmación de la devolución, se cambiará la disponibilidad del libro (```true```) , se insertará la fecha de devolución en el registro correspondiente de la tabla `borrowing` y se disminuirá en 1 el contador de libros prestados del lector.
+    3. :no_entry: La tercera operación consistirá en intentar registrar un ```PRÉSTAMO``` del libro con ID 1 (“El Quijote”) por el lector con ID 6 (Liam McGuire), debiendo mostrarse el mensaje de que no es posible realizar el préstamo tras comprobarse el estado no disponible del libro a causa de la primera operación.
+    4. :no_entry: La cuarta operación consistirá en intentar registrar un ```PRÉSTAMO``` del libro con ID 10 (“Vida y destino”) por el lector con ID 4 (Augustin Rosso), debiendo mostrarse el mensaje de que no es posible autorizar el préstamo porque el lector ya tiene 3 libros, el número máximo de préstamos permitidos.
+    5. :no_entry: La quinta operación consistirá en intentar registrar un ```PRÉSTAMO``` del libro con ID 14 (“Los miserables”) por el lector con ID 15 (Gamal Khan), debiendo mostrarse el mensaje, a pesar de que el libro está disponible, de que no es posible autorizar el préstamo porque el lector tiene una penalización por retrasos vigente.
+    6. :no_entry: La sexta operación consistirá en intentar registrar la ```DEVOLUCIÓN``` del libro con ID 11 (“La invención de Morel”) por la lectora con ID 9 (Pearl Henderson). Este libro en realidad está prestado al lector con ID 4 (Augustin Rosso) y por lo tanto, el sistema no autorizará la operación informando de esta circunstancia.
+    7. :white_check_mark: La séptima operación consistirá en registrar la ```DEVOLUCIÓN``` del libro con ID 9 (“El perro de los Baskerville”) por el lector con ID 12 (François Plantard), debiendo autorizarse la operación, mostrarse confirmación y practicarse las debidas operaciones de actualización de la base de datos en cuanto al número de libros prestados del lector, la fecha de devolución del préstamo y la disponibilidad del libro devuelto.
+    8. :no_entry: **OPCIONAL**: La octava operación, si se ha implementado la lógica de control del [punto opcional 8](#library-requirements-8), consistirá en intentar registrar el ```PRÉSTAMO``` del libro con ID 9 (“El perro de los Baskerville”) devuelto por otro lector por la lectora con ID 2 (Nicole Collard). Esta lectora no presenta todavía una sanción registrada, pero tiene en préstamo dos libro desde hace 19 y 17 días respectivamente conforme a los datos preconstituidos al final del enunciado, por tanto se ha retrasado en su devolución y se espera que el programa prohíba el nuevo préstamo por este motivo.
+    9. :white_check_mark: **OPCIONAL**: La novena operación, si se ha implementado la lógica de control del [punto opcional 8](#library-requirements-8), consistirá en registrar la ```DEVOLUCIÓN``` del libro con ID 15 (“Las metamorfosis”) por el lector con ID 3 (André Lobineau), quien ya lleva 1 día de retraso en su devolución. La operación debe ser autorizada y se espera que el programa, además de modificar los campos de disponibilidad del libro, fecha de devolución del préstamo y número de libros prestados de este lector, actualice la base de datos incluyendo la penalización de 3 días por 1 día de retraso.
+    10. :white_check_mark: **OPCIONAL**: las operaciones décima y undécima, si se ha implementado la lógica de control del [punto opcional 8](#library-requirements-8), consistirán en registrar la ```DEVOLUCIÓN``` de los libros con ID 7 y 12 (“Robinson Crusoe” y “The stand”) de la lectora con ID 2 (Nicole Collard). Al tener un retraso de 4 y 2 días respectivamente en su devolución, se espera que el programa las registre correctamente y actualice la base de datos poniendo a la lectora Nicole Collard una penalización de 12 + 6 = 18 días.
+    11. :white_check_mark: La última operación consistirá en elegir la opción ```SALIR```, que deberá terminar con la ejecución iterativa y finalizar el programa. Conviene comprobar en la base de datos MySQL del servidor si los datos de las tablas ```book```, ```borrowing``` y ```reader``` se han actualizado conforme a los préstamos y devoluciones tramitados durante el ejercicio.
 
 <h3 id="library-design">3.3 Diseño de la base de datos:</h3>
 
@@ -588,7 +573,7 @@ VALUES
     (11, 2, '2022-12-11 10:14:04', '2022-12-25 13:30:33', 0),
     (13, 8, '2022-12-13 14:04:30', '2022-12-28 11:00:33', 0),
 
-    # Insertions relative to present day for penalties and current borrowings to make sense:
+    # Inserciones relativas a la fecha actual para dar coherencia a préstamos y penalizaciones vigentes:
     (6, 15, DATE_SUB(NOW(), INTERVAL 33 DAY), DATE_SUB(NOW(), INTERVAL 7 DAY), 
         (((33 - 7) - (SELECT borrowing_period_days FROM library)) * (SELECT late_return_penalty_days FROM library))),
     (7, 2, DATE_SUB(NOW(), INTERVAL 19 DAY), NULL, 
@@ -698,13 +683,15 @@ Exiting program...
 
 <h3 id="library-summary">3.7 Resumen:</h3>
 
-The Filipinas Library Java coding exercise is a project aimed at training programming students in coding software applications with a practical utility: a tool for managing the books borrowing service of a public library. To complete this exercise, students will need to have knowledge of Object-Oriented Programming in Java, Collections API, Java JDBC API, relational databases, MySQL language, CRUD operations, and best practices in code writing.
+El ejercicio de de programación en Java "Biblioteca Filipinas" es un proyecto dirigido a la formación de estudiantes de programación en la creación de aplicaciones de software con utilidad real: se trata de una solución o herramienta para administrar el servicio de préstamo de libros de una biblioteca pública. Para completar este ejercicio, los estudiantes necesitarán tener conocimientos de Programación Orientada a Objetos en Java, la API de Colecciones, la API de Java JDBC, bases de datos relacionales, el lenguaje MySQL, operaciones CRUD y buenas prácticas en la escritura de código.
 
-The project requires building from scratch an application that includes the necessary driver in the classpath to connect to and manage a MySQL database in a local server. You must make use of "model" classes equivalent to the entities in the database: Library, Book, Reader, and Borrowing, with properties mapped to the fields in the database tables. The application provides console menu prompts in an infinite loop to enter the operation the user wants to perform (BORROW, RETURN, or EXIT) and request the values bookId and readerId to carry out the selected operation. The program must then perform checks in the four tables to ensure that the borrower's request and other conditions are in accordance with the library's borrowing rules.
+El proyecto requiere la construcción desde cero de una aplicación que incluya el controlador necesario en el _classpath_ para conectarse y gestionar una base de datos MySQL en un servidor local. Debe hacer uso de clases "modelo" equivalentes a las entidades en la base de datos: Biblioteca, Libro, Lector y Préstamo, con propiedades mapeadas a los campos en las tablas de la base de datos. La aplicación muestra mensajes de consola en un bucle infinito solicitando que el usuario especifique la operación que desea realizar (PRESTAMO, DEVOLUCIÓN o SALIR) y solicita los valores de ID de libros y lectores para llevar a cabo la operación seleccionada. El programa debe entonces realizar comprobaciones en las cuatro tablas para asegurarse de que la solicitud del usuario y otras condiciones se ajustan a las reglas de préstamo de la biblioteca.
 
 Implementing these rules and restrictions requires a strong understanding of conditional logic evaluation, as the program must evaluate multiple conditions to determine whether a borrowing or return operation can be carried out. These conditions include the maximum number of books allowed for simultaneous borrowing, the maximum borrowing period in days, the penalty for overdue items, the availability of a book, the books a reader currently holds, and whether the reader has a registered penalty. Additionally, the program includes optional features such as calculating penalties for overdue items, adding an extra layer of complexity to the conditional logic evaluation. It's possible to develop a graphical user interface with Java Swing or another framework to streamline the management of book borrowings.
 
-By completing this project, students can gain a deeper understanding of how to evaluate multiple conditions and apply these evaluations to manage complex operations effectively, which are essential skills for developing reliable and maintainable software, particularly relevant for applications that require complex rule-based operations such as financial software or logistics management systems.
+La implementación de estas normas y restricciones requiere una comprensión sólida del flujo de control de la lógica condicional, ya que el programa debe evaluar múltiples condiciones para determinar si una operación de préstamo o devolución puede ser realizada o no. Estas condiciones incluyen el número máximo de libros permitidos para préstamo simultáneo, el periodo máximo de préstamo en días, la penalización por artículos vencidos, la disponibilidad de un libro, los libros que un lector tiene actualmente y si el lector tiene una penalización en vigor. Además, el programa incluye características opcionales como el cálculo de la penalización que corresponde por los retrasos en la devolución de libros, lo que agrega una capa más de complejidad a la evaluación condicional. Es posible desarrollar una interfaz gráfica de usuario con Java Swing u otro framework para agilizar la gestión de préstamos de libros y mejorar la experiencia del usuario.
+
+Realizando este proyecto, los estudiantes pueden adquirir una comprensión más profunda de cómo evaluar múltiples condiciones y aplicar estas evaluaciones para gestionar operaciones complejas de manera efectiva, habilidades esenciales para desarrollar software funcional y fácil de mantener, y especialmente relevantes en el desarrollo de aplicaciones que requieren operaciones basadas en reglas complejas como software financiero o sistemas de gestión logística.
 
 <br>
 
