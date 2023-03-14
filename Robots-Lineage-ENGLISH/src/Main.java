@@ -1,9 +1,21 @@
 import java.util.Arrays;
 
+/**
+ * Main class responsible for testing the application by instantiating Robot objects
+ * and invoking their methods. It demonstrates the functionality of the CuttingRobot,
+ * PrimeRobot, PainterRobot, and PoetRobot specialized classes. The main method creates
+ * and prints various Robot objects with their respective names and serial numbers,
+ * and then invokes different methods from them for processing numbers or strings,
+ * drawing shapes, and reciting verses.
+ * 
+ * @author Alejandro M. González
+ *
+ */
 public class Main {
 	
 	public static void main(String[] args) {
 		
+		// Instantiating objects
 		CuttingRobot cuttingRobot = new CuttingRobot("Bender", "1010011010BU22");
 		PrimeRobot primeRobot = new PrimeRobot("Euclid", "E213002248G");
 		PainterRobot painterRobot1 = new PainterRobot("Frida", "K15019071954L");
@@ -11,6 +23,7 @@ public class Main {
 		PoetRobot poetRobot1 = new PoetRobot("Byron", "E18091849AP");
 		PoetRobot poetRobot2 = new PoetRobot("3DG4R-4LL4N-P03", "E18091849AP", ArtsRobot.Behavior.RANDOM);
 		
+		// Printing objects' information
 		System.out.println(cuttingRobot);
 		System.out.println(primeRobot);
 		System.out.println(painterRobot1);
@@ -18,6 +31,7 @@ public class Main {
 		System.out.println(poetRobot1);
 		System.out.println(poetRobot2);
 		
+		// Invoking robots methods
     	System.out.println("\n+--------------------+");
 		System.out.println("|     Operations     |");
 		System.out.println("+--------------------+");
@@ -42,6 +56,7 @@ public class Main {
 		poetRobot1.recite();
 		poetRobot2.recite();
 		
+		// Printing the count of instantiated robots
 		System.out.println("===== Built robots total: [" + Robot.getRobotCount() + "] =====");
 
 	}

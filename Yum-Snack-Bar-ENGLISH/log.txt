@@ -1,0 +1,28 @@
+10/03/2023-13:20:20 ID=1, Popcorn box, Chocolate snack; price=9.0
+10/03/2023-13:20:20 ID=2, Soda beverage cup, Mixed nuts bag; price=11.7
+10/03/2023-13:20:20 ID=5, Gummy candy bag, Soda cup + Popcorn box at menu price; price=14.35
+10/03/2023-13:20:20 ID=6, Gummy candy bag, Soda beverage cup; price=15.75 (!)
+10/03/2023-13:32:30 ID=1, Popcorn box, Chocolate snack; price=9.0
+10/03/2023-13:32:30 ID=2, Soda beverage cup, Mixed nuts bag; price=11.7
+10/03/2023-13:32:30 ID=5, Gummy candy bag, Soda cup + Popcorn box at menu price; price=14.35
+10/03/2023-13:32:30 ID=6, Gummy candy bag, Soda beverage cup; price=15.75 (!)
+10/03/2023-13:32:38 ID=1, Popcorn box, Chocolate snack; price=9.0
+10/03/2023-13:32:38 ID=2, Soda beverage cup, Mixed nuts bag; price=11.7
+10/03/2023-13:32:38 ID=5, Gummy candy bag, Soda cup + Popcorn box at menu price; price=14.35
+10/03/2023-13:32:38 ID=6, Gummy candy bag, Soda beverage cup; price=15.75 (!)
+10/03/2023-13:33:00 ID=1, Popcorn box, Chocolate snack; price=9.0
+10/03/2023-13:33:00 ID=2, Soda beverage cup, Mixed nuts bag; price=11.7
+10/03/2023-13:33:00 ID=5, Gummy candy bag, Soda cup + Popcorn box at menu price; price=14.35
+10/03/2023-13:33:00 ID=6, Gummy candy bag, Soda beverage cup; price=15.75 (!)
+10/03/2023-13:33:29 ID=1, Popcorn box, Chocolate snack; price=9.0
+10/03/2023-13:33:29 ID=2, Soda beverage cup, Mixed nuts bag; price=11.7
+10/03/2023-13:33:29 ID=5, Gummy candy bag, Soda cup + Popcorn box at menu price; price=14.35
+10/03/2023-13:33:29 ID=6, Gummy candy bag, Soda beverage cup; price=15.75 (!)
+10/03/2023-13:33:59 ID=1, Popcorn box, Chocolate snack; price=9.0
+10/03/2023-13:33:59 ID=2, Soda beverage cup, Mixed nuts bag; price=11.7
+10/03/2023-13:33:59 ID=5, Gummy candy bag, Soda cup + Popcorn box at menu price; price=14.35
+10/03/2023-13:33:59 ID=6, Gummy candy bag, Soda beverage cup; price=15.75 (!)
+10/03/2023-13:36:08 ID=1, Popcorn box, Chocolate snack; price=9.0
+10/03/2023-13:36:08 ID=2, Soda beverage cup, Mixed nuts bag; price=11.7
+10/03/2023-13:36:08 ID=5, Gummy candy bag, Soda cup + Popcorn box at menu price; price=14.35
+10/03/2023-13:36:08 ID=6, Gummy candy bag, Soda beverage cup; price=15.75 (!)

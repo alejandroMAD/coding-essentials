@@ -14,7 +14,7 @@ public class SodaCup extends Product {
 		COLA, LIGHT_COLA, ORANGE, LEMON
 	}
 
-	private final static String name = "Soda beverage cup";
+	private final static String NAME = "Soda beverage cup";
 	private final static double MEDIUM_PRICE = 4.5;
 	private final static double LARGE_PRICE = 6.0;
 	private final static double EXTRALARGE_PRICE = 7.5;
@@ -28,7 +28,7 @@ public class SodaCup extends Product {
 	 * @param sodaType the type or flavor of the beverage (cola, light cola, orange, lemon)
 	 */
 	public SodaCup(Size size, SodaType sodaType) {
-		super(MEDIUM_PRICE, name);
+		super(MEDIUM_PRICE, NAME);
 		this.size = size;
 		this.sodaType = sodaType;
 		
@@ -42,7 +42,7 @@ public class SodaCup extends Product {
 	
 	@Override
 	public String toString() {
-		return name + " '" + size + "' - price=" + price + "]";
+		return NAME + " '" + size + "' - price=" + price + "]";
 	}
 
 	// Getters and setters

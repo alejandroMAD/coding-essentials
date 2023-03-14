@@ -14,7 +14,7 @@ import java.util.Locale;
  */
 public class MixedNutsBag extends Product implements Measurable {
 
-	private final static String name = "Mixed nuts bag";
+	private final static String NAME = "Mixed nuts bag";
 	private final static double PRICE_PER_100_MG = 1.80;
 	private double weight;
 	private double totalPrice;
@@ -25,7 +25,7 @@ public class MixedNutsBag extends Product implements Measurable {
 	 * @throws IllegalArgumentException if the given weight is less than 20g.
 	 */
 	public MixedNutsBag(double weight) {
-		super(PRICE_PER_100_MG, name);
+		super(PRICE_PER_100_MG, NAME);
 		
 	    if (weight < 20) {
 	        throw new IllegalArgumentException("MixedNutsBag weight must be 20g or higher");

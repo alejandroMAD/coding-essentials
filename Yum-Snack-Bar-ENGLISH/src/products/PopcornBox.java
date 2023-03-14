@@ -11,7 +11,7 @@ package products;
  */
 public class PopcornBox extends Product {
 	
-	private final static String name = "Popcorn box";
+	private final static String NAME = "Popcorn box";
 	private final static double MEDIUM_PRICE = 5.0;
 	private final static double LARGE_PRICE = 7.0;
 	private final static double EXTRALARGE_PRICE = 9.0;
@@ -25,7 +25,7 @@ public class PopcornBox extends Product {
 	 * @param size The size of the PopcornBox.
 	 */
 	public PopcornBox(Size size) {
-		super(MEDIUM_PRICE, name);
+		super(MEDIUM_PRICE, NAME);
 		this.size = size;
 		
 		if (size.equals(Size.LARGE)) {
@@ -38,7 +38,7 @@ public class PopcornBox extends Product {
 
 	@Override
 	public String toString() {
-		return name + " '" + size + "' - price=" + price + "]";
+		return NAME + " '" + size + "' - price=" + price + "]";
 	}
 
 	// Getters and setters
