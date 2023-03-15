@@ -484,7 +484,7 @@ CREATE TABLE libro (
     libro_id INT AUTO_INCREMENT PRIMARY KEY,
     titulo VARCHAR(255),
     autor VARCHAR(255),
-    fecha INT,
+    fecha_edicion INT,
     editor VARCHAR(255),
     ISBN VARCHAR(13),
     numero_paginas INT,
