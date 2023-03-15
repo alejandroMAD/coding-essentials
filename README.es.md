@@ -465,7 +465,8 @@ Conociendo estos requisitos, realiza un programa en Java con las siguientes espe
     
 <h3 id="library-db-creation">3.4 Sentencias CREATE de creación (DDL) de la base de datos:</h3>
 
-```DROP DATABASE IF EXISTS biblioteca_filipinas;
+```
+DROP DATABASE IF EXISTS biblioteca_filipinas;
 CREATE DATABASE biblioteca_filipinas;
 USE biblioteca_filipinas;
 
@@ -515,7 +516,8 @@ CREATE TABLE prestamo (
 
 <h3 id="library-db-population">3.5 Sentencias INSERT-VALUES de manipulación (DML) para llenar la base de datos:</h3>
 
-```INSERT INTO biblioteca (biblioteca_nombre, biblioteca_direccion, biblioteca_telefono, prestamos_simultaneos, dias_prestamo, dias_penalizacion)
+```
+INSERT INTO biblioteca (biblioteca_nombre, biblioteca_direccion, biblioteca_telefono, prestamos_simultaneos, dias_prestamo, dias_penalizacion)
 VALUES 
     ('Biblioteca Islas Filipinas', 'Calle Jesús Maestro, 3', '915800811', 3, 15, 3);
 
@@ -592,7 +594,8 @@ VALUES
 
 <h3 id="library-output">3.6 Salida en consola:</h3>
 
-```+--------------------------------------------------------------+
+```diff
++--------------------------------------------------------------+
 | Do you want to borrow or return a book? (Borrow/Return/Exit) |
 +--------------------------------------------------------------+
 borrow
