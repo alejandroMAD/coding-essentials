@@ -465,61 +465,61 @@ Conociendo estos requisitos, realiza un programa en Java con las siguientes espe
     
 <h3 id="library-db-creation">3.4 Sentencias CREATE de creación (DDL) de la base de datos:</h3>
 
-```DROP DATABASE IF EXISTS filipinas_library;
-CREATE DATABASE filipinas_library;
-USE filipinas_library;
+```DROP DATABASE IF EXISTS biblioteca_filipinas;
+CREATE DATABASE biblioteca_filipinas;
+USE biblioteca_filipinas;
 
-CREATE TABLE library (
-    library_id INT AUTO_INCREMENT PRIMARY KEY,
-    library_name VARCHAR(255),
-    library_address VARCHAR(255),
-    library_phone_number VARCHAR(20),
-    max_borrowings INT DEFAULT 3,
-    borrowing_period_days INT DEFAULT 15,
-    late_return_penalty_days INT DEFAULT 3
+CREATE TABLE biblioteca (
+    biblioteca_id INT AUTO_INCREMENT PRIMARY KEY,
+    biblioteca_nombre VARCHAR(255),
+    biblioteca_direccion VARCHAR(255),
+    biblioteca_telefono VARCHAR(20),
+    prestamos_simultaneos INT DEFAULT 3,
+    dias_prestamo INT DEFAULT 15,
+    dias_penalizacion INT DEFAULT 3
 );
 
-CREATE TABLE book (
-    book_id INT AUTO_INCREMENT PRIMARY KEY,
-    title VARCHAR(255),
-    author VARCHAR(255),
-    publication_year INT,
-    publisher VARCHAR(255),
+CREATE TABLE libro (
+    libro_id INT AUTO_INCREMENT PRIMARY KEY,
+    titulo VARCHAR(255),
+    autor VARCHAR(255),
+    fecha INT,
+    editor VARCHAR(255),
     ISBN VARCHAR(13),
-    number_of_pages INT,
-    available BOOLEAN DEFAULT TRUE
+    numero_paginas INT,
+    disponible BOOLEAN DEFAULT TRUE
 );
 
-CREATE TABLE reader (
-    reader_id INT AUTO_INCREMENT PRIMARY KEY,
-    first_name VARCHAR(255),
-    last_name VARCHAR(255),
+CREATE TABLE lector (
+    lector_id INT AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(255),
+    apellido VARCHAR(255),
     email VARCHAR(255),
-    phone_number VARCHAR(20),
-    date_of_birth DATE,
-    borrowed_books INT DEFAULT 0,
-    penalty_count INT DEFAULT 0
+    telefono VARCHAR(20),
+    fecha_nacimiento DATE,
+    libros_prestados INT DEFAULT 0,
+    dias_penalizacion INT DEFAULT 0
 );
 
-CREATE TABLE borrowing (
-    borrowing_id INT AUTO_INCREMENT PRIMARY KEY,
-    book_id INT,
-    reader_id INT,
-    borrowing_date DATETIME,
-    return_date DATETIME,
-    overdue_penalty INT DEFAULT 0,
-    FOREIGN KEY (book_id) REFERENCES book(book_id),
-    FOREIGN KEY (reader_id) REFERENCES reader(reader_id)
+CREATE TABLE prestamo (
+    prestamo_id INT AUTO_INCREMENT PRIMARY KEY,
+    libro_id INT,
+    lector_id INT,
+    fecha_prestamo DATETIME,
+    fecha_devolucion DATETIME,
+    penalizacion INT DEFAULT 0,
+    FOREIGN KEY (libro_id) REFERENCES libro(libro_id),
+    FOREIGN KEY (lector_id) REFERENCES lector(lector_id)
 );
 ```
 
 <h3 id="library-db-population">3.5 Sentencias INSERT-VALUES de manipulación (DML) para llenar la base de datos:</h3>
 
-```INSERT INTO library (library_name, library_address, library_phone_number, max_borrowings, borrowing_period_days, late_return_penalty_days)
+```INSERT INTO biblioteca (biblioteca_nombre, biblioteca_direccion, biblioteca_telefono, prestamos_simultaneos, dias_prestamo, dias_penalizacion)
 VALUES 
     ('Biblioteca Islas Filipinas', 'Calle Jesús Maestro, 3', '915800811', 3, 15, 3);
 
-INSERT INTO book (title, author, publication_year, publisher, ISBN, number_of_pages, available)
+INSERT INTO libro (titulo, autor, fecha, editor, ISBN, numero_paginas, disponible)
 VALUES
     ('El Quijote', 'Miguel de Cervantes', 1605, 'Francisco de Robles', '9788424921862', 863, true),
     ('Moby Dick', 'Herman Melville', 1851, 'Harper & Brothers', '9781593080275', 635, false),
@@ -537,7 +537,7 @@ VALUES
     ('Los miserables', 'Victor Hugo', 1862, 'A. Lacroix, Verboeckhoven & Cie', '9780192839983', 1232, true),
     ('Las metamorfosis', 'Ovidio', 8, 'Varios', '9780140447897', 723, false);
     
-INSERT INTO reader (first_name, last_name, email, phone_number, date_of_birth, borrowed_books, penalty_count)
+INSERT INTO lector (nombre, apellido, email, telefono, fecha_nacimiento, libros_prestados, dias_penalizacion)
 VALUES 
     ('George', 'Stobbart', 'george.stobbart@gmail.com', '626461866', '1979-06-18', 1, 0),
     ('Nicole', 'Collard', 'nico.collard@yahoo.com', '612445112', '1984-10-03', 2, 0),
@@ -555,7 +555,7 @@ VALUES
     ('Antoine', 'Eklund', 'antoine.eklund@gmail.com', '646826952', '1975-06-10', 0, 0),
     ('Gamal', 'Khan', 'khan@google.com', '600168163', '1986-07-27', 0, 26);
     
-INSERT INTO borrowing (book_id, reader_id, borrowing_date, return_date, overdue_penalty)
+INSERT INTO prestamo (libro_id, lector_id, fecha_prestamo, fecha_devolucion, penalizacion)
 VALUES 
     (2, 2, '2022-09-02 11:43:03', '2022-09-13 10:16:19', 0),
     (13, 2, '2022-09-02 11:43:36', '2022-09-13 18:30:26', 0),
@@ -573,15 +573,15 @@ VALUES
 
     # Inserciones relativas a la fecha actual para dar coherencia a préstamos y penalizaciones vigentes:
     (6, 15, DATE_SUB(NOW(), INTERVAL 33 DAY), DATE_SUB(NOW(), INTERVAL 7 DAY), 
-        (((33 - 7) - (SELECT borrowing_period_days FROM library)) * (SELECT late_return_penalty_days FROM library))),
+        (((33 - 7) - (SELECT dias_prestamo FROM biblioteca)) * (SELECT dias_penalizacion FROM biblioteca))),
     (7, 2, DATE_SUB(NOW(), INTERVAL 19 DAY), NULL, 
-        ((19 - (SELECT borrowing_period_days FROM library)) * (SELECT late_return_penalty_days FROM library))),
+        ((19 - (SELECT dias_prestamo FROM biblioteca)) * (SELECT dias_penalizacion FROM biblioteca))),
     (12, 2, DATE_SUB(NOW(), INTERVAL 17 DAY), NULL, 
-        ((17 - (SELECT borrowing_period_days FROM library)) * (SELECT late_return_penalty_days FROM library))),
+        ((17 - (SELECT dias_prestamo FROM biblioteca)) * (SELECT dias_penalizacion FROM biblioteca))),
     (15, 3, DATE_SUB(NOW(), INTERVAL 16 DAY), NULL, 
-        ((16 - (SELECT borrowing_period_days FROM library)) * (SELECT late_return_penalty_days FROM library))),
+        ((16 - (SELECT dias_prestamo FROM biblioteca)) * (SELECT dias_penalizacion FROM biblioteca))),
     (5, 12, DATE_SUB(NOW(), INTERVAL 18 DAY), CONCAT(CURDATE() - INTERVAL 1 DAY, ' 16:07:07'),
-        (((18 - 1) - (SELECT borrowing_period_days FROM library)) * (SELECT late_return_penalty_days FROM library))),
+        (((18 - 1) - (SELECT dias_prestamo FROM biblioteca)) * (SELECT dias_penalizacion FROM biblioteca))),
     (6, 4, DATE_SUB(NOW(), INTERVAL 10 DAY), NULL, 0),
     (4, 4, DATE_SUB(NOW(), INTERVAL 13 DAY), NULL, 0),
     (11, 4, DATE_SUB(NOW(), INTERVAL 13 DAY), NULL, 0),
