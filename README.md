@@ -126,7 +126,8 @@ Write a program in the Java programming language, using Eclipse or another IDE, 
 
 <h3 id="lineage-output">1.3 Console Output:</h3>
 
-```I am a Robot of: [name=Bender, serialNumber=1010011010BU22, discipline=Science]
+```
+I am a Robot of: [name=Bender, serialNumber=1010011010BU22, discipline=Science]
 I am a Robot of: [name=Euclid, serialNumber=E213002248G, discipline=Science]
 I am a Robot of: [name=Frida, serialNumber=K15019071954L, discipline=Arts]
 I am a Robot of: [name=Salvador, serialNumber=D1904858585A, discipline=Arts]
@@ -310,7 +311,8 @@ The following price guide is recommended for the products in the store:
 
 <h3 id="yum-output">2.5 Console Output:</h3>
 
-```+------------------------+
+```
++------------------------+
 | Welcome to the Yum Snack Bar|
 | Puerta del Sol, Km. 0, 28013 Madrid, Spain|
 | Serving popcorn, cholesterol, and joy for 37  years. |
@@ -482,7 +484,8 @@ Taking these requirements into account, create a Java program with the following
     
 <h3 id="library-db-creation">3.4 Database DDL creation with CREATE statements:</h3>
 
-```DROP DATABASE IF EXISTS filipinas_library;
+```
+DROP DATABASE IF EXISTS filipinas_library;
 CREATE DATABASE filipinas_library;
 USE filipinas_library;
 
@@ -532,7 +535,8 @@ CREATE TABLE borrowing (
 
 <h3 id="library-db-population">3.5 Database DML data population with INSERT-VALUES statements:</h3>
 
-```INSERT INTO library (library_name, library_address, library_phone_number, max_borrowings, borrowing_period_days, late_return_penalty_days)
+```
+INSERT INTO library (library_name, library_address, library_phone_number, max_borrowings, borrowing_period_days, late_return_penalty_days)
 VALUES 
     ('Biblioteca Islas Filipinas', 'Calle Jesús Maestro, 3', '915800811', 3, 15, 3);
 
@@ -609,7 +613,8 @@ VALUES
 
 <h3 id="library-output">3.6 Console-Output:</h3>
 
-```+--------------------------------------------------------------+
+```
++--------------------------------------------------------------+
 | Do you want to borrow or return a book? (Borrow/Return/Exit) |
 +--------------------------------------------------------------+
 borrow
