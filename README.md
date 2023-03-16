@@ -698,7 +698,7 @@ Enter reader ID: 2
 | Do you want to borrow or return a book? (Borrow/Return/Exit) |
 |--------------------------------------------------------------|
 exit
-Exiting program...
++ Exiting program...
 ```
 
 <h3 id="library-summary">3.7 Summary:</h3>
