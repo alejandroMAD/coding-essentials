@@ -311,11 +311,11 @@ Se recomienda utilizar esta guía de precios para los productos de la tienda:
 <h3 id="yum-output">2.5 Salida en consola:</h3>
 
 ```diff
-+----------------------------------------------------------------+
+|----------------------------------------------------------------|
 | Bienvenido/a al Yum Snack Bar                                  |
 | Puerta del Sol, Km. 0, 28013 Madrid, España                    |
 | Sirviendo palomitas, colesterol y alegría desde hace 37  años. |
-+----------------------------------------------------------------+
+|----------------------------------------------------------------|
 Transacción [ID=1,
 	fechaHora=14/03/2023-22:32:43,
 	ítems=[Cartón de palomitas 'GRANDE' - precio=7.0], Producto: 'Chocolatina individual' - precio=2.0],
@@ -326,13 +326,13 @@ Transacción [ID=2,
 	ítems=[Vaso de refresco 'MEDIANO' - precio=4.5], Producto: 'Bolsa de frutos secos' - precio=7.2],
 	precioTotal=11.7]
 	
-productos.TamañoIlegalException: El Refresco y Palomitas deben ser del mismo tamaño.
-	at productos.Menu.<init>(Menu.java:36)
-	at tienda.Main.main(Main.java:57)
+- productos.TamañoIlegalException: El Refresco y Palomitas deben ser del mismo tamaño.
+-	at productos.Menu.<init>(Menu.java:36)
+-	at tienda.Main.main(Main.java:57)
 	
-java.lang.IllegalArgumentException: El peso del objeto debe ser 20 g o superior
-	at productos.BolsaChucherias.<init>(BolsaChucherias.java:35)
-	at tienda.Main.main(Main.java:70)
+- java.lang.IllegalArgumentException: El peso del objeto debe ser 20 g o superior
+-	at productos.BolsaChucherias.<init>(BolsaChucherias.java:35)
+-	at tienda.Main.main(Main.java:70)
 	
 Transacción [ID=5,
 	fechaHora=14/03/2023-22:32:43,
