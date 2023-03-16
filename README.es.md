@@ -595,91 +595,91 @@ VALUES
 <h3 id="library-output">3.6 Salida en consola:</h3>
 
 ```diff
-+--------------------------------------------------------------+
-| Do you want to borrow or return a book? (Borrow/Return/Exit) |
-+--------------------------------------------------------------+
-borrow
-Enter book ID: 1
-Enter reader ID: 1
-Book El Quijote borrowed successfully by George Stobbart and set 'unavailable'.
-+--------------------------------------------------------------+
-| Do you want to borrow or return a book? (Borrow/Return/Exit) |
-+--------------------------------------------------------------+
-return
-Enter book ID: 3
-Enter reader ID: 1
-Book 'Las aventuras de Huckleberry Finn' returned successfully and set 'available'.
-+--------------------------------------------------------------+
-| Do you want to borrow or return a book? (Borrow/Return/Exit) |
-+--------------------------------------------------------------+
-borrow
-Enter book ID: 1
-Enter reader ID: 6
-The book 'El Quijote' is already borrowed.
-+--------------------------------------------------------------+
-| Do you want to borrow or return a book? (Borrow/Return/Exit) |
-+--------------------------------------------------------------+
-borrow
-Enter book ID: 10
-Enter reader ID: 4
-Reader Augustin Rosso has already the maximum borrowings.
-+--------------------------------------------------------------+
-| Do you want to borrow or return a book? (Borrow/Return/Exit) |
-+--------------------------------------------------------------+
-borrow
-Enter book ID: 14
-Enter reader ID: 15
-Reader Gamal Khan has a late return or penalty and can't borrow books.
-+--------------------------------------------------------------+
-| Do you want to borrow or return a book? (Borrow/Return/Exit) |
-+--------------------------------------------------------------+
-return
-Enter book ID: 11
-Enter reader ID: 9
-No borrowing found for the specified book and reader IDs.
-+--------------------------------------------------------------+
-| Do you want to borrow or return a book? (Borrow/Return/Exit) |
-+--------------------------------------------------------------+
-return
-Enter book ID: 9
-Enter reader ID: 12
-Book 'El perro de los Baskerville' returned successfully and set 'available'.
-+--------------------------------------------------------------+
-| Do you want to borrow or return a book? (Borrow/Return/Exit) |
-+--------------------------------------------------------------+
-borrow
-Enter book ID: 9
-Enter reader ID: 2
-Reader Nicole Collard has a late return or penalty and can't borrow books.
-+--------------------------------------------------------------+
-| Do you want to borrow or return a book? (Borrow/Return/Exit) |
-+--------------------------------------------------------------+
-return
-Enter book ID: 15
-Enter reader ID: 3
-Book 'Las metamorfosis' returned successfully and set 'available'.
-Late return penalty applied: 3 days.
-+--------------------------------------------------------------+
-| Do you want to borrow or return a book? (Borrow/Return/Exit) |
-+--------------------------------------------------------------+
-return
-Enter book ID: 7
-Enter reader ID: 2
-Book 'Robinson Crusoe' returned successfully and set 'available'.
-Late return penalty applied: 12 days.
-+--------------------------------------------------------------+
-| Do you want to borrow or return a book? (Borrow/Return/Exit) |
-+--------------------------------------------------------------+
-return
-Enter book ID: 12
-Enter reader ID: 2
-Book 'The stand' returned successfully and set 'available'.
-Late return penalty applied: 6 days.
-+--------------------------------------------------------------+
-| Do you want to borrow or return a book? (Borrow/Return/Exit) |
-+--------------------------------------------------------------+
-exit
-Exiting program...
+|-----------------------------------------------------------------------|
+| ¿Realizar préstamo o devolución de un libro? (PRESTAR/DEVOLVER/SALIR) |
+|-----------------------------------------------------------------------|
+prestar
+Introduzca el ID del libro: 1
+Introduzca el ID del lector: 1
++ El libro El Quijote se ha prestado correctamente a George Stobbart y se ha registrado como 'no disponible'.
+|-----------------------------------------------------------------------|
+| ¿Realizar préstamo o devolución de un libro? (PRESTAR/DEVOLVER/SALIR) |
+|-----------------------------------------------------------------------|
+devolver
+Introduzca el ID del libro: 3
+Introduzca el ID del lector: 1
++ El libro 'Las aventuras de Huckleberry Finn' se ha devuelto correctamente y se ha registrado como 'disponible'.
+|-----------------------------------------------------------------------|
+| ¿Realizar préstamo o devolución de un libro? (PRESTAR/DEVOLVER/SALIR) |
+|-----------------------------------------------------------------------|
+prestar
+Introduzca el ID del libro: 1
+Introduzca el ID del lector: 6
+- El libro 'El Quijote' ya está prestado.
+|-----------------------------------------------------------------------|
+| ¿Realizar préstamo o devolución de un libro? (PRESTAR/DEVOLVER/SALIR) |
+|-----------------------------------------------------------------------|
+prestar
+Introduzca el ID del libro: 10
+Introduzca el ID del lector: 4
+- El lector Augustin Rosso ya posee el número máximo de libros prestados.
+|-----------------------------------------------------------------------|
+| ¿Realizar préstamo o devolución de un libro? (PRESTAR/DEVOLVER/SALIR) |
+|-----------------------------------------------------------------------|
+prestar
+Introduzca el ID del libro: 14
+Introduzca el ID del lector: 15
+- El lector Gamal Khan se ha retrasado en una devolución o tiene una penalización y no puede tomar préstamos.
+|-----------------------------------------------------------------------|
+| ¿Realizar préstamo o devolución de un libro? (PRESTAR/DEVOLVER/SALIR) |
+|-----------------------------------------------------------------------|
+devolver
+Introduzca el ID del libro: 11
+Introduzca el ID del lector: 9
+- No se ha encontrado un préstamo del libro y lector especificados.
+|-----------------------------------------------------------------------|
+| ¿Realizar préstamo o devolución de un libro? (PRESTAR/DEVOLVER/SALIR) |
+|-----------------------------------------------------------------------|
+devolver
+Introduzca el ID del libro: 9
+Introduzca el ID del lector: 12
++ El libro 'El perro de los Baskerville' se ha devuelto correctamente y se ha registrado como 'disponible'.
+|-----------------------------------------------------------------------|
+| ¿Realizar préstamo o devolución de un libro? (PRESTAR/DEVOLVER/SALIR) |
+|-----------------------------------------------------------------------|
+prestar
+Introduzca el ID del libro: 9
+Introduzca el ID del lector: 2
+- El lector Nicole Collard se ha retrasado en una devolución o tiene una penalización y no puede tomar préstamos.
+|-----------------------------------------------------------------------|
+| ¿Realizar préstamo o devolución de un libro? (PRESTAR/DEVOLVER/SALIR) |
+|-----------------------------------------------------------------------|
+devolver
+Introduzca el ID del libro: 15
+Introduzca el ID del lector: 3
++ El libro 'Las metamorfosis' se ha devuelto correctamente y se ha registrado como 'disponible'.
++ Aplicada una penalización por retraso en la devolución de: 3 días.
+|-----------------------------------------------------------------------|
+| ¿Realizar préstamo o devolución de un libro? (PRESTAR/DEVOLVER/SALIR) |
+|-----------------------------------------------------------------------|
+devolver
+Introduzca el ID del libro: 7
+Introduzca el ID del lector: 2
++ El libro 'Robinson Crusoe' se ha devuelto correctamente y se ha registrado como 'disponible'.
++ Aplicada una penalización por retraso en la devolución de: 12 días.
+|-----------------------------------------------------------------------|
+| ¿Realizar préstamo o devolución de un libro? (PRESTAR/DEVOLVER/SALIR) |
+|-----------------------------------------------------------------------|
+devolver
+Introduzca el ID del libro: 12
+Introduzca el ID del lector: 2
++ El libro 'The stand' se ha devuelto correctamente y se ha registrado como 'disponible'.
++ Aplicada una penalización por retraso en la devolución de: 6 días.
+|-----------------------------------------------------------------------|
+| ¿Realizar préstamo o devolución de un libro? (PRESTAR/DEVOLVER/SALIR) |
+|-----------------------------------------------------------------------|
+salir
++ Abandonando la aplicación...
 ```
 
 <h3 id="library-summary">3.7 Resumen:</h3>
