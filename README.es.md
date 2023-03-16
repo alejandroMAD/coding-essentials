@@ -4,7 +4,7 @@
 [![English](https://img.shields.io/badge/lang-English-red.svg)](https://github.com/alejandroMAD/coding-essentials/blob/main/README.md)
 [![Español](https://img.shields.io/badge/lang-Español-yellow.svg)](https://github.com/alejandroMAD/coding-essentials/blob/main/README.es.md)
 
-![Application logo](/coding_essentials_banner.png)
+![Application logo](/images/coding_essentials_banner.png)
 
 Conjunto de tres proyectos independientes de programación en Java que abarcan el uso de algoritmos básicos, fundamentos de la Programación Orientada a Objetos (POO) y conexión a bases de datos (JDBC), diseñados para que estudiantes de 1º de Programación del CFGS de Desarrollo de Aplicaciones Multiplataforma puedan repasar y superar el curso.
 
@@ -461,7 +461,7 @@ Conociendo estos requisitos, realiza un programa en Java con las siguientes espe
 
 <h3 id="library-design">3.3 Diseño de la base de datos:</h3>
 
-![Database design](/library_design.png)
+![Database design](/images/library_design_es.png)
     
 <h3 id="library-db-creation">3.4 Sentencias CREATE de creación (DDL) de la base de datos:</h3>
 
