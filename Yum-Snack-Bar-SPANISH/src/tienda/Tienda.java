@@ -20,14 +20,14 @@ public class Tienda {
      * Imprime un mensaje de bienvenida con cadenas formateadas que incluyen el nombre
      * la dirección y los años que el establecimiento lleva funcionando desde su fundación.
      */
-    public static void printGreeting() {
-        String decoracion = "+------------------------+";
+    public static void imprimirBienvenida() {
+        String decoracion = "+----------------------------------------------------------------+";
         LocalDate fechaPresente = LocalDate.now();
         int años = Period.between(FECHA_FUNDACION, fechaPresente).getYears();
 
         System.out.println(decoracion);
-        System.out.printf("| Bienvenido/a al %-12s|\n", NOMBRE);
-        System.out.printf("| %-24s|\n", DIRECCION);
+        System.out.printf("| Bienvenido/a al %-12s                                  |\n", NOMBRE);
+        System.out.printf("| %-24s                    |\n", DIRECCION);
         System.out.printf("| Sirviendo palomitas, colesterol y alegría desde hace %-3d años. |\n", años);
         System.out.println(decoracion);
     }

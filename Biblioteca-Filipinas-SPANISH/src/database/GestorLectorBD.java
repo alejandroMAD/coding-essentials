@@ -6,111 +6,117 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.*;
 
-import model.Lector;
+import modelo.Lector;
 
 /**
- * The `DbReaderManager` class handles the database operations related to the entries
- * in the reader table mapped to Reader objects in an ORM-fashion.
+ * La clase GestorLectorBD gestiona las interacciones con la tabla `lector` en la
+ * base de datos. Proporciona métodos para crear, obtener, actualizar y borrar
+ * registros de lectores, que son mapeados a objetos Lector como en un framework ORM.
+ * 
+ * (Los métodos de creación y eliminación no se incluyen en el código fuente por
+ * no ser necesarios para la solución propuesta en el proyecto).
  * 
  * @author Alejandro M. González
  */
 public class GestorLectorBD {
 
     /**
-     * Gets all the readers in the reader table from the database.
-     * @return A list of Reader objects representing all the readers in the database.
+     * Obtiene una lista con todos los lectores de la tabla `lector` de la base de datos.
+     * @return Una lista de objetos Lector que representa todos los lectores en la base de datos.
      */
-    public static List<Lector> getAllReaders() {
-        List<Lector> readers = new ArrayList<>();
-        String query = "SELECT * FROM reader";
+    public static List<Lector> getLectores() {
+        List<Lector> lectores = new ArrayList<>();
+        String query = "SELECT * FROM lector";
         
-        try (Connection dbConnection = ConexionBD.getDBConnection();
-             PreparedStatement statement = dbConnection.prepareStatement(query);
+        try (Connection conexion = ConexionBD.getDBConnection();
+             PreparedStatement statement = conexion.prepareStatement(query);
              ResultSet resultSet = statement.executeQuery()) {
             while (resultSet.next()) {
-                Lector reader = new Lector();
-                reader.setReaderId(resultSet.getInt("reader_id"));
-                reader.setFirstName(resultSet.getString("first_name"));
-                reader.setLastName(resultSet.getString("last_name"));
-                reader.setEmail(resultSet.getString("email"));
-                reader.setPhoneNumber(resultSet.getString("phone_number"));
-                reader.setDateOfBirth(resultSet.getDate("date_of_birth").toLocalDate());
-                reader.setBorrowedBooks(resultSet.getInt("borrowed_books"));
-                reader.setPenaltyCount(resultSet.getInt("penalty_count"));
-                readers.add(reader);
+                Lector lector = new Lector();
+                lector.setLectorId(resultSet.getInt("lector_id"));
+                lector.setNombre(resultSet.getString("nombre"));
+                lector.setApellido(resultSet.getString("apellido"));
+                lector.setEmail(resultSet.getString("email"));
+                lector.setTelefono(resultSet.getString("telefono"));
+                lector.setFechaNacimiento(resultSet.getDate("fecha_nacimiento").toLocalDate());
+                lector.setLibrosPrestados(resultSet.getInt("libros_prestados"));
+                lector.setDiasPenalizacion(resultSet.getInt("dias_penalizacion"));
+                lectores.add(lector);
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
 
-        return readers;
+        return lectores;
     }
 
     /**
-     * Gets a Reader object retrieving its information from the database by its readerId.
-     * @param  readerId The id of the reader to retrieve.
-     * @return A Reader object representing the reader with the given readerId, or null if no such reader exists.
+     * Obtiene un objeto Lector recuperando los datos de un registro de lector
+     * de la base de datos a partir del ID del lector.
+     * @param  lectorId El ID del lector buscado.
+     * @return un objeto Lector que representa al lector cuyo identificador coincide
+     *         con el ID especificado, o null si no se encuentra el lector.
      */
-    public static Lector getReaderById(int readerId) {
-        Lector reader = null;
-        String query = "SELECT * FROM reader WHERE reader_id = ?";
+    public static Lector getLectorPorId(int lectorId) {
+        Lector lector = null;
+        String query = "SELECT * FROM lector WHERE lector_id = ?";
         
-        try (Connection dbConnection = ConexionBD.getDBConnection();
-             PreparedStatement statement = dbConnection.prepareStatement(query)) {
-            statement.setInt(1, readerId);
+        try (Connection conexion = ConexionBD.getDBConnection();
+             PreparedStatement statement = conexion.prepareStatement(query)) {
+            statement.setInt(1, lectorId);
             ResultSet resultSet = statement.executeQuery();
             if (resultSet.next()) {
-                reader = new Lector();
-                reader.setReaderId(resultSet.getInt("reader_id"));
-                reader.setFirstName(resultSet.getString("first_name"));
-                reader.setLastName(resultSet.getString("last_name"));
-                reader.setEmail(resultSet.getString("email"));
-                reader.setPhoneNumber(resultSet.getString("phone_number"));
-                reader.setDateOfBirth(resultSet.getDate("date_of_birth").toLocalDate());
-                reader.setBorrowedBooks(resultSet.getInt("borrowed_books"));
-                reader.setPenaltyCount(resultSet.getInt("penalty_count"));
+                lector = new Lector();
+                lector.setLectorId(resultSet.getInt("lector_id"));
+                lector.setNombre(resultSet.getString("nombre"));
+                lector.setApellido(resultSet.getString("apellido"));
+                lector.setEmail(resultSet.getString("email"));
+                lector.setTelefono(resultSet.getString("telefono"));
+                lector.setFechaNacimiento(resultSet.getDate("fecha_nacimiento").toLocalDate());
+                lector.setLibrosPrestados(resultSet.getInt("libros_prestados"));
+                lector.setDiasPenalizacion(resultSet.getInt("dias_penalizacion"));
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return reader;
+        return lector;
     }
     
     /**
-     * Returns the count of the number of books borrowed by a reader.
-     * @param  readerId the ID of the reader
-     * @return the number of books borrowed by the reader
+     * Devuelve el número de libros que tiene en préstamo el lector especificado.
+     * @param  lectorId el ID del lector.
+     * @return el número de libros que tiene en préstamo el lector especificado.
      */
-    public static int getReaderBorrowedBooks(int readerId) {
-        int borrowedBooks = 0;
-        String query = "SELECT borrowed_books FROM reader WHERE reader_id = ?";
+    public static int getLibrosPrestados(int lectorId) {
+        int librosPrestados = 0;
+        String query = "SELECT libros_prestados FROM lector WHERE lector_id = ?";
         
-        try (Connection connection = ConexionBD.getDBConnection();
-             PreparedStatement statement = connection.prepareStatement(query)) {
-            statement.setInt(1, readerId);
+        try (Connection conexion = ConexionBD.getDBConnection();
+             PreparedStatement statement = conexion.prepareStatement(query)) {
+            statement.setInt(1, lectorId);
             ResultSet resultSet = statement.executeQuery();
             if (resultSet.next()) {
-                borrowedBooks = resultSet.getInt("borrowed_books");
+                librosPrestados = resultSet.getInt("libros_prestados");
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return borrowedBooks;
+        return librosPrestados;
     }
     
     /**
-     * Updates the number of books borrowed by a reader with an increment
-     * or decrement by the positive or negative integer passed as argument
-     * @param readerId the ID of the reader
-     * @param delta the change, increment or decrement in the number of borrowed books
+     * Actualiza el contador de libros prestados de un lector con un incremento
+     * o disminución según el entero positivo o negativo pasado como argumento.
+     * @param lectorId el ID del lector.
+     * @param delta el incremento o disminución del número de libros prestados.
      */
-    public static void updateReaderBorrowedBooks(int readerId, int delta) {
-    	String query = "UPDATE reader SET borrowed_books = borrowed_books + ? WHERE reader_id = ?";
+    public static void actualizarLibrosPrestados(int lectorId, int delta) {
+    	String query = "UPDATE lector SET libros_prestados = libros_prestados + ? WHERE lector_id = ?";
     	
-    	try (Connection connection = ConexionBD.getDBConnection();
-	         PreparedStatement statement = connection.prepareStatement(query)) {
+    	try (Connection conexion = ConexionBD.getDBConnection();
+	         PreparedStatement statement = conexion.prepareStatement(query)) {
             statement.setInt(1, delta);
-            statement.setInt(2, readerId);
+            statement.setInt(2, lectorId);
             statement.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -118,39 +124,40 @@ public class GestorLectorBD {
     }
     
     /**
-     * Gets the penalty days count of a reader given their reader ID.
-     * @param  readerId the ID of the reader
-     * @return the penalty days count of the reader
+     * Obtiene el contador de días de penalización del lector de ID especificado.
+     * @param  lectorId el ID del lector.
+     * @return el contador de días de penalización del lector.
      */
-    public static int getReaderPenaltyCount(int readerId) {
-        int penaltyCount = 0;
-        String query = "SELECT penalty_count FROM reader WHERE reader_id = ?";
+    public static int getDiasPenalizacion(int lectorId) {
+        int diasPenalizacion = 0;
+        String query = "SELECT dias_penalizacion FROM lector WHERE lector_id = ?";
         
-        try (Connection dbConnection = ConexionBD.getDBConnection();
-    		 PreparedStatement statement = dbConnection.prepareStatement(query)) {
-            statement.setInt(1, readerId);
+        try (Connection conexion = ConexionBD.getDBConnection();
+    		 PreparedStatement statement = conexion.prepareStatement(query)) {
+            statement.setInt(1, lectorId);
             ResultSet resultSet = statement.executeQuery();
             if (resultSet.next()) {
-                penaltyCount = resultSet.getInt("penalty_count");
+                diasPenalizacion = resultSet.getInt("dias_penalizacion");
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return penaltyCount;
+        return diasPenalizacion;
     }
 
     /**
-     * Updates the penalty days count of a reader given their reader ID.
-     * @param readerId     the ID of the reader
-     * @param penaltyCount the new penalty count of the reader
+     * Actualiza el contador de días de penalización del lector de ID especificado con 
+     * un incremento o disminución según el entero positivo o negativo pasado como argumento.
+     * @param lectorId     el ID del lector.
+     * @param delta el incremento o disminución de los días de penalización del lector.
      */
-    public static void updateReaderPenaltyCount(int readerId, int delta) {
-        String query = "UPDATE reader SET penalty_count = penalty_count + ? WHERE reader_id = ?";
+    public static void actualizarDiasPenalizacion(int lectorId, int delta) {
+        String query = "UPDATE lector SET dias_penalizacion = dias_penalizacion + ? WHERE lector_id = ?";
         
-        try (Connection dbConnection = ConexionBD.getDBConnection();
-    		 PreparedStatement statement = dbConnection.prepareStatement(query)) {
+        try (Connection conexion = ConexionBD.getDBConnection();
+    		 PreparedStatement statement = conexion.prepareStatement(query)) {
             statement.setInt(1, delta);
-            statement.setInt(2, readerId);
+            statement.setInt(2, lectorId);
             statement.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();

@@ -5,40 +5,42 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 /**
- * The DatabaseConnection class provides a static method to establish a connection 
- * to the library database to be used by the specific database managing classes.
+ * La clase ConexionBD proporciona el método estático para establecer una
+ * conexión a la base de datos de la biblioteca, que es invocado por las
+ * clases específicas de gestión de la información de la base de datos.
  * 
  * @author Alejandro M. González
  */
 public class ConexionBD {
 
-    // Driver for the MySQL database, path and credentials.
-	// Default MySQL configurations and a local database server are assumed for this program
-    private static final String DB_DRIVER = "com.mysql.cj.jdbc.Driver";
-    private static final String DB_PATH = "jdbc:mysql://localhost:3306/filipinas_library";
-    private static final String DB_USER = "root";
-    private static final String DB_PASSWORD = "";
+    // Driver para la base de datos MySQL, ruta y credenciales de acceso
+	// Se asume el uso de la configuración por defecto de una base de datos en servidor local MySQL
+    private static final String DRIVER_DB = "com.mysql.cj.jdbc.Driver";
+    private static final String RUTA_DB = "jdbc:mysql://localhost:3306/biblioteca_filipinas";
+    private static final String USUARIO_DB = "root";
+    private static final String CONTRASEÑA_DB = "";
 
     /**
-     * Static method which establishes a connection to the library database
-     * to be used by the specific database managing classes
-     * @return a connection object to the library database
+     * Método estático que establece la conexión a la base de datos de
+     * la biblioteca, que es invocado por las clases específicas de gestión
+     * de la información de la base de datos.
+     * @return un objeto Connection de conexión a la base de datos
      */
     public static Connection getDBConnection() {
-        Connection dbConnection = null;
+        Connection connectionDb = null;
         try {
-            Class.forName(DB_DRIVER);
+            Class.forName(DRIVER_DB);
         } catch (ClassNotFoundException e) {
             System.out.println(e.getMessage());
         }
 
         try {
-            dbConnection = DriverManager.getConnection(DB_PATH, DB_USER, DB_PASSWORD);
-            return dbConnection;
+            connectionDb = DriverManager.getConnection(RUTA_DB, USUARIO_DB, CONTRASEÑA_DB);
+            return connectionDb;
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
-        return dbConnection;
+        return connectionDb;
     }
 }
 

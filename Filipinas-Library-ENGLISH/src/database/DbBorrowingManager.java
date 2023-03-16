@@ -64,7 +64,6 @@ public class DbBorrowingManager {
      * Retrieves all borrowings by a specific reader from the borrowing table in the database.
      * @param readerId the id of the reader whose borrowings are to be retrieved.
      * @return a list of Borrowing objects representing the borrowings by the specified reader.
-     * @throws SQLException if there is an error executing the SQL query.
      */
     public static List<Borrowing> getBorrowingsByReaderId(int readerId) {
         List<Borrowing> borrowings = new ArrayList<>();
@@ -103,7 +102,6 @@ public class DbBorrowingManager {
      * @param bookId the ID of the book borrowed
      * @param readerId the ID of the borrower reader
      * @return the ID of the last borrowing for the given book ID and reader ID, or -1 if not found
-     * @throws SQLException if there is an error executing the SQL query.
      */
     public static int getBorrowingId(int bookId, int readerId) {
         String query = "SELECT borrowing_id FROM borrowing " 

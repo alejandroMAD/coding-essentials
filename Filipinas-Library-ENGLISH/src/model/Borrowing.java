@@ -7,7 +7,7 @@ import java.sql.Timestamp;
  * the borrowing id, the Book object, the Reader object, the borrowing date, the return date, and the
  * overdue penalty in days charged in case of a late return.
  * 
- * The Reader attributes are to be mapped to the fields in the table `reader` of the database and
+ * The Borrowing attributes are to be mapped to the fields in the table `borrowing` of the database and
  * are related to the objects Book and Reader of the system by means of composition.
  * 
  * @author Alejandro M. González

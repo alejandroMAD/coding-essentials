@@ -4,21 +4,22 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 
-import fichero.TransactionLogger;
+import fichero.LogTransaccion;
 import productos.*;
 import productos.Refresco.Sabor;
 
 /**
- * Main class responsible for testing the store application by performing
- * purchases and transactions. The class creates multiple transactions with various
- * products such as popcorn, soda, candy, and nuts. Each transaction is stored
- * in an ArrayList of Transactions. The highest transaction is found by using the
- * Collections.max method, and the result is printed to the console.
+ * Clase principal destinada a pruebas de la aplicación de la tienda donde
+ * se realizan las compras y transacciones. En el método main() se instancian
+ * múltiples transacciones compuesta de varios productos de los tipos Palomitas,
+ * Refresco, Chocolatina, BolsaChucherias y BolsaFrutosSecos. Cada Transaccion
+ * es almacenada en un ArrayList y la Transaccion más cara es hallada por medio
+ * del método Collections.max, imprimiéndose el resultado en consola.
  * 
- * The class also logs all the transactions by using the TransactionLogger class,
- * which writes the details of each transaction to a log file. The log file is read
- * afterwards using the loadTransactions method of the TransactionLogger class,
- * which prints the contents of the log file to the console.
+ * Asimismo, en el flujo de ejecución se guardan todas las transacciones en un
+ * fichero de log utilizando la clase LogTransaccion, que escribe los detalles
+ * de cada Transaccion en el fichero. Finalmente, el fichero de log es leído
+ * y su contenido se imprime en consola.
  * 
  * @author Alejandro M. González
  */
@@ -26,57 +27,57 @@ public class Main {
 
 	public static void main(String[] args) {
 		
-		Tienda.printGreeting();
+		Tienda.imprimirBienvenida();
 		
-		// ArrayList to store the transactions
-		ArrayList<Transaccion> listTransactions = new ArrayList<Transaccion>();
+		// ArrayList para almacenar las transacciones de la sesión
+		ArrayList<Transaccion> listaTransacciones = new ArrayList<Transaccion>();
 
-		// First transaction
-		Palomitas popcornBox001 = new Palomitas(Tamaño.GRANDE);
-		Chocolatina snack001 = new Chocolatina();	
-		Transaccion transaction001 = new Transaccion(
-				1, Arrays.asList(popcornBox001, snack001));
-		listTransactions.add(transaction001);
-		System.out.println(transaction001);
+		// Primera transacción
+		Palomitas palomitas001 = new Palomitas(Tamaño.GRANDE);
+		Chocolatina chocolatina001 = new Chocolatina();	
+		Transaccion transaccion001 = new Transaccion(
+				1, Arrays.asList(palomitas001, chocolatina001));
+		listaTransacciones.add(transaccion001);
+		System.out.println(transaccion001);
 
-		// Second transaction
+		// Segunda transacción
 		try {
-			Refresco sodaCup001 = new Refresco(Tamaño.MEDIANO, Sabor.COLA_LIGHT);
-			BolsaFrutosSecos mixedNutsBag001 = new BolsaFrutosSecos(400);
-			Transaccion transaction002 = new Transaccion(
-					2, Arrays.asList(sodaCup001, mixedNutsBag001));
-			listTransactions.add(transaction002);
-			System.out.println(transaction002);		
+			Refresco refresco001 = new Refresco(Tamaño.MEDIANO, Sabor.COLA_LIGHT);
+			BolsaFrutosSecos bolsaFrutosSecos001 = new BolsaFrutosSecos(400);
+			Transaccion transaccion002 = new Transaccion(
+					2, Arrays.asList(refresco001, bolsaFrutosSecos001));
+			listaTransacciones.add(transaccion002);
+			System.out.println(transaccion002);		
 		} catch (IllegalArgumentException e) {
 			e.printStackTrace();
 		}
 		
-		// Third transaction (invalid menu test)
+		// Tercera transacción (inválida por Menu prohibido)
 		try {
 			Menu menu = new Menu(
 					new Refresco(Tamaño.GIGANTE, Sabor.COLA_LIGHT),
 					new Palomitas(Tamaño.MEDIANO)
 			);
-			Transaccion transaction003 = new Transaccion(
+			Transaccion transaccion003 = new Transaccion(
 					3, Arrays.asList(menu));
-			listTransactions.add(transaction003);
+			listaTransacciones.add(transaccion003);
 		} catch (TamañoIlegalException e) {
 			e.printStackTrace();
 		}
 		
-		// Fourth transaction (invalid weight argument)
+		// Cuarta transacción (inválida por peso prohibido)
 		try {
-			BolsaChucherias candyBag001 = new BolsaChucherias(6);
-			Transaccion transaction004 = new Transaccion(
-					4, Arrays.asList(candyBag001));
-			listTransactions.add(transaction004);		
+			BolsaChucherias bolsaChucherias001 = new BolsaChucherias(6);
+			Transaccion transaccion004 = new Transaccion(
+					4, Arrays.asList(bolsaChucherias001));
+			listaTransacciones.add(transaccion004);		
 		} catch (IllegalArgumentException e) {
 			e.printStackTrace();
 		}
 		
-		// Fifth transaction (anonymous objects or object creation 'on the fly')
+		// Quinta transacción (objetos anónimos o instanciación de objetos "al vuelo")
 		try {
-			Transaccion transaction005 = new Transaccion(
+			Transaccion transaccion005 = new Transaccion(
 					5,
 					Arrays.asList(
 							new BolsaChucherias(400),
@@ -86,31 +87,31 @@ public class Main {
 							)
 					)
 			);
-			listTransactions.add(transaction005);
-			System.out.println(transaction005);
+			listaTransacciones.add(transaccion005);
+			System.out.println(transaccion005);
 		} catch (TamañoIlegalException e) {
 			e.printStackTrace();
 		}
 		
-		// Sixth transaction
+		// Sexta transacción
 		try {
-			BolsaChucherias candyBag002 = new BolsaChucherias(750);
-			Refresco sodaCup002 = new Refresco(Tamaño.GIGANTE, Sabor.COLA);
-			Transaccion transaction006 = new Transaccion(
-					6, Arrays.asList(candyBag002, sodaCup002));	
-			listTransactions.add(transaction006);
-			System.out.println(transaction006);
+			BolsaChucherias bolsaChucherias002 = new BolsaChucherias(750);
+			Refresco refresco002 = new Refresco(Tamaño.GIGANTE, Sabor.COLA);
+			Transaccion transaccion006 = new Transaccion(
+					6, Arrays.asList(bolsaChucherias002, refresco002));	
+			listaTransacciones.add(transaccion006);
+			System.out.println(transaccion006);
 		} catch (IllegalArgumentException e) {
 			e.printStackTrace();
 		}
 		
-		Transaccion highestTransaction = Collections.max(listTransactions);
-		System.out.println("\nThe most expensive transaction (!) is:\n" + highestTransaction);
+		Transaccion transaccionMasCara = Collections.max(listaTransacciones);
+		System.out.println("\nLa transacción más cara de la sesión (!) es:\n" + transaccionMasCara);
 		
-		// Logging and reading transactions log
-		TransactionLogger.logTransactions(listTransactions);
-		System.out.println("\n==== Transactions in the log file ====");
-		TransactionLogger.loadTransactions();
+		// Almacenamiento de las transacciones en un fichero y lectura de las transacciones almacenadas
+		LogTransaccion.guardarTransacciones(listaTransacciones);
+		System.out.println("\n==== Transacciones en el fichero de log ====");
+		LogTransaccion.cargarTransacciones();
 	}
 	
 }

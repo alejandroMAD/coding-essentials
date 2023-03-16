@@ -19,13 +19,13 @@ public class Store {
      * Prints a formatted greeting message with the name, address, and years of service of the store.
      */
     public static void printGreeting() {
-        String decoration = "+------------------------+";
+        String decoration = "+------------------------------------------------------+";
         LocalDate now = LocalDate.now();
         int years = Period.between(FOUNDATION_DATE, now).getYears();
 
         System.out.println(decoration);
-        System.out.printf("| Welcome to the %-12s|\n", NAME);
-        System.out.printf("| %-24s|\n", ADDRESS);
+        System.out.printf("| Welcome to the %-12s                         |\n", NAME);
+        System.out.printf("| %-24s           |\n", ADDRESS);
         System.out.printf("| Serving popcorn, cholesterol, and joy for %-3d years. |\n", years);
         System.out.println(decoration);
     }

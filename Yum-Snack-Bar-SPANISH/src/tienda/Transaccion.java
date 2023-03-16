@@ -42,7 +42,7 @@ public class Transaccion implements Comparable<Transaccion> {
 
 	@Override
 	public String toString() {
-		return "Transacción [ID=" + ID + ",\n\tformattedTimestamp=" + getFechaHoraFormateadas()
+		return "Transacción [ID=" + ID + ",\n\tfechaHora=" + getFechaHoraFormateadas()
 				+ ",\n\títems=" + items + ",\n\tprecioTotal=" + precioTotal + "]";
 	}
 

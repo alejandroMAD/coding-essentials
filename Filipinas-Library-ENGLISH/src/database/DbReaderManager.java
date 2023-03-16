@@ -12,6 +12,9 @@ import model.Reader;
  * The `DbReaderManager` class handles the database operations related to the entries
  * in the reader table mapped to Reader objects in an ORM-fashion.
  * 
+ * (Methods for creation and deletion of books are not provided because they are not
+ * required by the project requirements).
+ * 
  * @author Alejandro M. González
  */
 public class DbReaderManager {
@@ -142,7 +145,7 @@ public class DbReaderManager {
     /**
      * Updates the penalty days count of a reader given their reader ID.
      * @param readerId     the ID of the reader
-     * @param penaltyCount the new penalty count of the reader
+     * @param delta the change, increment or decrement in the penalty count of the reader
      */
     public static void updateReaderPenaltyCount(int readerId, int delta) {
         String query = "UPDATE reader SET penalty_count = penalty_count + ? WHERE reader_id = ?";

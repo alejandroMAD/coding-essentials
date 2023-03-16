@@ -11,6 +11,9 @@ import model.Book;
  * It provides methods for retrieving, creating, updating, and deleting books, mapped to
  * Book objects in an ORM-fashion.
  * 
+ * (Methods for creation and deletion of books are not provided because they are not
+ * required by the project requirements).
+ * 
  * @author Alejandro M. González
  */
 public class DbBookManager {
@@ -94,6 +97,7 @@ public class DbBookManager {
 
     /**
      * Get the available boolean status of a book from the database by its book ID
+     * @param  bookId the ID of the book whose availability is the subject of the query
      * @return true if the book is available (not borrowed), false otherwise
      */
     public static boolean getBookAvailability(int bookId) {

@@ -9,7 +9,7 @@ import java.sql.*;
  */
 public class DbLibraryManager {
 
-	/*
+	/**
 	 * Retrieves the maximum number of borrowings allowed from the rules in the library table.
 	 * @return an integer representing the maximum number of borrowings allowed.
 	 */
@@ -32,7 +32,6 @@ public class DbLibraryManager {
 	/**
 	 * Retrieves the borrowing period in days from the rules in the library table.
 	 * @return an integer representing the borrowing period in days.
-	 * @throws SQLException if a database access error occurs.
 	 */
 	public static int getBorrowingPeriodDays() {
 		int borrowingPeriodDays = 0;
@@ -53,7 +52,6 @@ public class DbLibraryManager {
 	/**
 	 * Retrieves the late return penalty period in days from the library.
 	 * @return an integer representing the late return penalty period in days.
-	 * @throws SQLException if a database access error occurs.
 	 */
 	public static int getLateReturnPenaltyDays() {
 		int lateReturnPenaltyDays = 0;
@@ -106,8 +104,8 @@ public class DbLibraryManager {
 	}
 
 	/**
-	 * Sets the number of days a reader can be late in returning a book before incurring a penalty.
-	 * @param lateReturnPenaltyDays the new number of days for late return penalty
+	 * Sets the penalty in number of days of suspension for readers with overdue items.
+	 * @param lateReturnPenaltyDays the new penalty in number of days for late returns
 	 */
 	public static void setLateReturnPenaltyDays(int lateReturnPenaltyDays) {
 		String query = "UPDATE library SET late_return_penalty_days = ?";

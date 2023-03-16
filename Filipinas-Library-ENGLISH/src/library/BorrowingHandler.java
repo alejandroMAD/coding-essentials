@@ -69,11 +69,11 @@ public class BorrowingHandler {
      * the book availability to false and increases the borrowed books count of the reader by 1.
      */
     private static void handleBorrowing() {
-        System.out.println("Enter book ID:");
+        System.out.println("Enter book ID: ");
         int bookId = scanner.nextInt();
         scanner.nextLine();
 
-        System.out.println("Enter reader ID:");
+        System.out.println("Enter reader ID: ");
         int readerId = scanner.nextInt();
         scanner.nextLine();
         

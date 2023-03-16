@@ -32,7 +32,7 @@ public class BolsaFrutosSecos extends Producto implements Pesable {
 		super(PRECIO_POR_100_MG, NOMBRE);
 		
 	    if (pesaje < 20) {
-	        throw new IllegalArgumentException("El precio del objeto debe ser 20 g o superior");
+	        throw new IllegalArgumentException("El peso del objeto debe ser 20 g o superior");
 	    }
 		this.peso = pesaje;
 		this.precioTotal = calcularPrecio(pesaje);

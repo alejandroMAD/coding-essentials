@@ -4,127 +4,135 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-import model.Libro;
+import modelo.Libro;
 
 /**
- * The `DbBookManager` class handles the interaction with the book table in the database,
- * It provides methods for retrieving, creating, updating, and deleting books, mapped to
- * Book objects in an ORM-fashion.
+ * La clase GestorLibroBD gestiona las interacciones con la tabla `libro` en la
+ * base de datos. Proporciona métodos para crear, obtener, actualizar y borrar
+ * registros de libros, que son mapeados a objetos Libro como en un framework ORM.
+ * 
+ * (Los métodos de creación y eliminación no se incluyen en el código fuente por
+ * no ser necesarios para la solución propuesta en el proyecto).
  * 
  * @author Alejandro M. González
  */
 public class GestorLibroBD {
 
     /**
-     * Get a list of all books in the book table from the database.
-     * @return A list of Book objects representing all the books in the database.
+     * Obtiene una lista de todos los registros en la tabla `libro` de la base de datos.
+     * @return Una lista de objetos Libro que representa todos los libros en la base de datos.
+     * @throws SQLException si se produce un error en el acceso a la base de datos.
      */
-    public static List<Libro> getAllBooks() throws SQLException {
-        List<Libro> books = new ArrayList<>();
-        String query = "SELECT * FROM book";
+    public static List<Libro> getLibros() throws SQLException {
+        List<Libro> libros = new ArrayList<>();
+        String query = "SELECT * FROM libro";
 
         try (Connection connection = ConexionBD.getDBConnection();
              Statement stmt = connection.createStatement();
              ResultSet rs = stmt.executeQuery(query)) {
             while (rs.next()) {
-                Libro book = new Libro(rs.getInt("book_id"), rs.getString("title"),
-                        rs.getString("author"), rs.getInt("publication_year"),
-                        rs.getString("publisher"), rs.getString("ISBN"),
-                        rs.getInt("number_of_pages"), rs.getBoolean("available"));
+                Libro libro = new Libro(rs.getInt("libro_id"), rs.getString("titulo"),
+                        rs.getString("autor"), rs.getInt("fecha_edicion"),
+                        rs.getString("editor"), rs.getString("ISBN"),
+                        rs.getInt("numero_paginas"), rs.getBoolean("disponible"));
 
-                books.add(book);
+                libros.add(libro);
             }
         }
 
-        return books;
+        return libros;
     }
 
     /**
-     * Get a book from the database by its ID.
-     * @param  id The ID of the book.
-     * @return The Book object with the given ID, or null if not found.
+     * Encuentra un libro en la base de datos por su identificador único o ID.
+     * @param  id El identificador único o ID del libro buscado.
+     * @return el objeto Libro al que corresponde el ID, o null si no es encontrado.
      */
-    public static Libro getBookById(int id) {
-    	Libro book = null;
-    	String query = "SELECT * FROM book WHERE book_id = ?";
+    public static Libro getLibroPorId(int id) {
+    	Libro libro = null;
+    	String query = "SELECT * FROM libro WHERE libro_id = ?";
     	
-        try (Connection connection = ConexionBD.getDBConnection();
-             PreparedStatement stmt = connection.prepareStatement(query)) {
+        try (Connection conexion = ConexionBD.getDBConnection();
+             PreparedStatement stmt = conexion.prepareStatement(query)) {
             stmt.setInt(1, id);
             ResultSet rs = stmt.executeQuery();
             if (rs.next()) {
-                book = new Libro(rs.getInt("book_id"), rs.getString("title"),
-                        rs.getString("author"), rs.getInt("publication_year"),
-                        rs.getString("publisher"), rs.getString("ISBN"),
-                        rs.getInt("number_of_pages"), rs.getBoolean("available"));
+                libro = new Libro(rs.getInt("libro_id"), rs.getString("titulo"),
+                        rs.getString("autor"), rs.getInt("fecha_edicion"),
+                        rs.getString("editor"), rs.getString("ISBN"),
+                        rs.getInt("numero_paginas"), rs.getBoolean("disponible"));
             }
         } catch (SQLException e) {
 			e.printStackTrace();
 		}
-		return book;
+		return libro;
     }
 
     /**
-     * Gets a list of books from the database by the author's name.
-     * @param  author The author's name.
-     * @return A list of Book objects by the given author.
+     * Obtiene una lista de libros de la base de datos cuyo autor coincide
+     * con el autor especificado.
+     * @param  autor El nombre del autor del libro.
+     * @return Una lista de objetos Libro del autor especificado.
      */
-    public static List<Libro> getBooksByAuthor(String author) {
-        List<Libro> books = new ArrayList<>();
-        String query = "SELECT * FROM book WHERE author = ?";
+    public static List<Libro> getBooksByAuthor(String autor) {
+        List<Libro> libros = new ArrayList<>();
+        String query = "SELECT * FROM libro WHERE autor = ?";
 
-        try (Connection connection = ConexionBD.getDBConnection();
-             PreparedStatement stmt = connection.prepareStatement(query)) {
-            stmt.setString(1, author);
+        try (Connection conexion = ConexionBD.getDBConnection();
+             PreparedStatement stmt = conexion.prepareStatement(query)) {
+            stmt.setString(1, autor);
             ResultSet rs = stmt.executeQuery();
             while (rs.next()) {
-                Libro book = new Libro(rs.getInt("book_id"), rs.getString("title"),
-                        rs.getString("author"), rs.getInt("publication_year"),
-                        rs.getString("publisher"), rs.getString("ISBN"),
-                        rs.getInt("number_of_pages"), rs.getBoolean("available"));
+                Libro libro = new Libro(rs.getInt("libro_id"), rs.getString("titulo"),
+                        rs.getString("autor"), rs.getInt("fecha_edicion"),
+                        rs.getString("editor"), rs.getString("ISBN"),
+                        rs.getInt("numero_paginas"), rs.getBoolean("disponible"));
 
-                books.add(book);
+                libros.add(libro);
             }
         } catch (SQLException e) {
 			e.printStackTrace();
 		}
 
-        return books;
+        return libros;
     }
 
     /**
-     * Get the available boolean status of a book from the database by its book ID
-     * @return true if the book is available (not borrowed), false otherwise
+     * Obtiene el valor booleano de disponibilidad de un libro de la base de datos
+     * por su ID.
+     * @param  libroId El ID del libro cuya disponibilidad es consultada.
+     * @return true si el libro está disponible (no está prestado), false en caso contrario.
      */
-    public static boolean getBookAvailability(int bookId) {
-        boolean available = false;
-        String query = "SELECT available FROM book WHERE book_id = ?"; 
+    public static boolean getDisponibilidadLibro(int libroId) {
+        boolean disponible = false;
+        String query = "SELECT disponible FROM libro WHERE libro_id = ?"; 
         
-        try (Connection conn = ConexionBD.getDBConnection();
-    		 PreparedStatement stmt = conn.prepareStatement(query)) {
-            stmt.setInt(1, bookId);
+        try (Connection conexion = ConexionBD.getDBConnection();
+    		 PreparedStatement stmt = conexion.prepareStatement(query)) {
+            stmt.setInt(1, libroId);
             try (ResultSet rs = stmt.executeQuery()) {
                 if (rs.next()) {
-                    available = rs.getBoolean("available");
+                    disponible = rs.getBoolean("disponible");
                 }
             }
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
-        return available;
+        return disponible;
     }
     
     /**
-    * Updates the available boolean status of a book with the given bookId in the database.
-    * @param bookId       The id of the book to update the availability of.
-    * @param availability The new availability value to set for the book.
-    */
-    public static void setBookAvailability(int bookId, boolean availability) {
-    	String query = "UPDATE book SET available = ? WHERE book_id = ?";
-        try (Connection connection = ConexionBD.getDBConnection();
-    		 PreparedStatement statement = connection.prepareStatement(query)) {
-            statement.setBoolean(1, availability);
-            statement.setInt(2, bookId);
+     * Actualiza el valor booleano de disponibilidad de un libro en la base de datos
+     * con el ID especificado, estableciendo su estado según el valor pasado como argumento.
+     * @param libroId        El ID del libro cuya disponibilidad es objeto de la actualización.
+     * @param disponibilidad El nuevo estado de disponibilidad del libro.
+     */
+    public static void setDisponibilidadLibro(int libroId, boolean disponibilidad) {
+    	String query = "UPDATE libro SET disponible = ? WHERE libro_id = ?";
+        try (Connection conexion = ConexionBD.getDBConnection();
+    		 PreparedStatement statement = conexion.prepareStatement(query)) {
+            statement.setBoolean(1, disponibilidad);
+            statement.setInt(2, libroId);
             statement.executeUpdate();
         } catch (SQLException ex) {
             ex.printStackTrace();

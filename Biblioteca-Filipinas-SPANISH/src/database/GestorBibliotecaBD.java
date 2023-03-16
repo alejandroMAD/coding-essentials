@@ -3,121 +3,125 @@ package database;
 import java.sql.*;
 
 /**
- * This class provides static methods to manage the library data and rules in the database.
+ * Esta clase proporciona métodos estáticos para gestionar la información
+ * y reglas de funcionamiento de la biblioteca en la base de datos.
  * 
  * @author Alejandro M. González
  */
 public class GestorBibliotecaBD {
 
-	/*
-	 * Retrieves the maximum number of borrowings allowed from the rules in the library table.
-	 * @return an integer representing the maximum number of borrowings allowed.
+	/**
+	 * Obtiene el número máximo de préstamos simultáneos permitidos de las reglas
+	 * en la tabla `biblioteca` de la base de datos.
+	 * @return un entero que representa el número máximo de préstamos simultáneos permitidos.
 	 */
-	public static int getMaxBorrowings() {
-		int maxBorrowings = 0;
-		String query = "SELECT max_borrowings FROM library";
+	public static int getPrestamosSimultaneos() {
+		int prestamosSimultaneos = 0;
+		String query = "SELECT prestamos_simultaneos FROM biblioteca";
 		
-		try (Connection connection = ConexionBD.getDBConnection();
-			 PreparedStatement statement = connection.prepareStatement(query);
+		try (Connection conexion = ConexionBD.getDBConnection();
+			 PreparedStatement statement = conexion.prepareStatement(query);
 			 ResultSet resultSet = statement.executeQuery()) {
 			if (resultSet.next()) {
-				maxBorrowings = resultSet.getInt("max_borrowings");
+				prestamosSimultaneos = resultSet.getInt("prestamos_simultaneos");
 			}
 		} catch (SQLException e) {
-			System.err.println("Error retrieving max_borrowings from the library table.");
+			System.err.println("Error al obtener prestamos_simultaneos de la tabla `biblioteca`");
 		}
-		return maxBorrowings;
+		return prestamosSimultaneos;
 	}
 
 	/**
-	 * Retrieves the borrowing period in days from the rules in the library table.
-	 * @return an integer representing the borrowing period in days.
-	 * @throws SQLException if a database access error occurs.
+	 * Obtiene el periodo máximo en días de un préstamo de las reglas en la tabla
+	 * `biblioteca` de la base de datos.
+	 * @return un entero que representa el periodo máximo de días de un préstamo.
 	 */
-	public static int getBorrowingPeriodDays() {
-		int borrowingPeriodDays = 0;
-		String query = "SELECT borrowing_period_days FROM library";
+	public static int getDiasPrestamo() {
+		int diasPrestamo = 0;
+		String query = "SELECT dias_prestamo FROM biblioteca";
 		
-		try (Connection connection = ConexionBD.getDBConnection();
-			 PreparedStatement statement = connection.prepareStatement(query);
+		try (Connection conexion = ConexionBD.getDBConnection();
+			 PreparedStatement statement = conexion.prepareStatement(query);
 			 ResultSet resultSet = statement.executeQuery()) {
 			if (resultSet.next()) {
-				borrowingPeriodDays = resultSet.getInt("borrowing_period_days");
+				diasPrestamo = resultSet.getInt("dias_prestamo");
 			}
 		} catch (SQLException e) {
-			System.err.println("Error retrieving borrowing_period_days from the library table.");
+			System.err.println("Error al obtener dias_prestamo de la tabla `biblioteca`");
 		}
-		return borrowingPeriodDays;
+		return diasPrestamo;
 	}
 
 	/**
-	 * Retrieves the late return penalty period in days from the library.
-	 * @return an integer representing the late return penalty period in days.
-	 * @throws SQLException if a database access error occurs.
+	 * Obtiene el número de días de penalización por devolución tardía de
+	 * las reglas en la tabla `biblioteca` de la base de datos.
+	 * @return un entero que representa los días de penalización por devolución tardía.
 	 */
-	public static int getLateReturnPenaltyDays() {
-		int lateReturnPenaltyDays = 0;
-		String query = "SELECT late_return_penalty_days FROM library";
+	public static int getDiasPenalizacion() {
+		int diasPenalizacion = 0;
+		String query = "SELECT dias_penalizacion FROM biblioteca";
 		
-		try (Connection connection = ConexionBD.getDBConnection();
-			 PreparedStatement statement = connection.prepareStatement(query);
+		try (Connection conexion = ConexionBD.getDBConnection();
+			 PreparedStatement statement = conexion.prepareStatement(query);
 			 ResultSet resultSet = statement.executeQuery()) {
 			if (resultSet.next()) {
-				lateReturnPenaltyDays = resultSet.getInt("late_return_penalty_days");
+				diasPenalizacion = resultSet.getInt("dias_penalizacion");
 			}
 		} catch (SQLException e) {
-			System.err.println("Error retrieving late_return_penalty_days from the library table.");
+			System.err.println("Error al obtener dias_penalizacion de la tabla `biblioteca`");
 		}
-		return lateReturnPenaltyDays;
+		return diasPenalizacion;
 	}
 
 	/**
-	 * Sets the maximum number of borrowings that a reader can have at once.
-	 * @param maxBorrowings the new maximum number of borrowings allowed per reader
+	 * Establece el número máximo de préstamos que un lector puede disfrutar simultáneamente.
+	 * @param prestamosSimultaneos el nuevo número máximo de préstamos
+	 *                             simultáneos por lector permitidos.
 	 */
-	public static void setMaxBorrowings(int maxBorrowings) {
-		String query = "UPDATE library SET max_borrowings = ?";
+	public static void setPrestamosSimultaneos(int prestamosSimultaneos) {
+		String query = "UPDATE biblioteca SET prestamos_simultaneos = ?";
 		
-	    try (Connection conn = ConexionBD.getDBConnection();
-	         PreparedStatement statement = conn.prepareStatement(query)) {
-	        statement.setInt(1, maxBorrowings);
+	    try (Connection conexion = ConexionBD.getDBConnection();
+	         PreparedStatement statement = conexion.prepareStatement(query)) {
+	        statement.setInt(1, prestamosSimultaneos);
 	        statement.executeUpdate();
 	    } catch (SQLException e) {
-	    	System.err.println("Error updating the max_borrowings value in the library table.");
+	    	System.err.println("Error al actualizar prestamos_simultaneos en la tabla `biblioteca`");
 	        e.printStackTrace();
 	    }
 	}
 
 	/**
-	 * Sets the borrowing period in days for each library book borrowing.
-	 * @param borrowingPeriodDays the new borrowing period in days per library book
+	 * Establece el periodo máximo en días de un préstamo de la biblioteca.
+	 * @param diasPrestamo el nuevo periodo máximo en días de un préstamo de la biblioteca.
 	 */
-	public static void setBorrowingPeriodDays(int borrowingPeriodDays) {
-		String query = "UPDATE library SET borrowing_period_days = ?";
+	public static void setDiasPrestamo(int diasPrestamo) {
+		String query = "UPDATE biblioteca SET dias_prestamo = ?";
 		
-	    try (Connection conn = ConexionBD.getDBConnection();
-	         PreparedStatement statement = conn.prepareStatement(query)) {
-	        statement.setInt(1, borrowingPeriodDays);
+	    try (Connection conexion = ConexionBD.getDBConnection();
+	         PreparedStatement statement = conexion.prepareStatement(query)) {
+	        statement.setInt(1, diasPrestamo);
 	        statement.executeUpdate();
 	    } catch (SQLException e) {
-	    	System.err.println("Error updating borrowing_period_days in the library table.");
+	    	System.err.println("Error al actualizar dias_prestamo en la tabla `biblioteca`");
 	        e.printStackTrace();
 	    }
 	}
 
 	/**
-	 * Sets the number of days a reader can be late in returning a book before incurring a penalty.
-	 * @param lateReturnPenaltyDays the new number of days for late return penalty
+	 * Establece el número de días de penalización por devolución tardía de un libro
+	 * en las reglas de la biblioteca almacenadas en la base de datos.
+	 * @param diasPenalizacion el nuevo número de días de penalización por devolución tardía.
 	 */
-	public static void setLateReturnPenaltyDays(int lateReturnPenaltyDays) {
-		String query = "UPDATE library SET late_return_penalty_days = ?";
+	public static void setDiasPenalizacion(int diasPenalizacion) {
+		String query = "UPDATE biblioteca SET dias_penalizacion = ?";
 		
-	    try (Connection conn = ConexionBD.getDBConnection();
-	         PreparedStatement statement = conn.prepareStatement(query)) {
-	        statement.setInt(1, lateReturnPenaltyDays);
+	    try (Connection conexion = ConexionBD.getDBConnection();
+	         PreparedStatement statement = conexion.prepareStatement(query)) {
+	        statement.setInt(1, diasPenalizacion);
 	        statement.executeUpdate();
 	    } catch (SQLException e) {
-	    	System.err.println("Error updating late_return_penalty_days in the library table.");
+	    	System.err.println("Error al actualizar dias_penalizacion en la tabla `biblioteca`");
 	        e.printStackTrace();
 	    }
 	}
