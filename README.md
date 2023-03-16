@@ -4,7 +4,7 @@
 [![English](https://img.shields.io/badge/lang-English-red.svg)](https://github.com/alejandroMAD/coding-essentials/blob/main/README.md)
 [![Español](https://img.shields.io/badge/lang-Español-yellow.svg)](https://github.com/alejandroMAD/coding-essentials/blob/main/README.es.md)
 
-![Application logo](/coding_essentials_banner.png)
+![Application logo](/images/coding_essentials_banner.png)
 
 A bundle of three independent Java programming projects covering basic algorithms, OOP fundamentals, and database connectivity (JDBC) designed for first-year programming students to train themselves and pass their course.
 
@@ -480,7 +480,7 @@ Taking these requirements into account, create a Java program with the following
 
 <h3 id="library-design">3.3 Database Design:</h3>
 
-![Database design](/library_design.png)
+![Database design](/images/library_design_en.png)
     
 <h3 id="library-db-creation">3.4 Database DDL creation with CREATE statements:</h3>
 
