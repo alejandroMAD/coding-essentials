@@ -311,12 +311,12 @@ The following price guide is recommended for the products in the store:
 
 <h3 id="yum-output">2.5 Console Output:</h3>
 
-```
-+------------------------+
-| Welcome to the Yum Snack Bar|
-| Puerta del Sol, Km. 0, 28013 Madrid, Spain|
+```diff
+|------------------------------------------------------|
+| Welcome to the Yum Snack Bar                         |
+| Puerta del Sol, Km. 0, 28013 Madrid, Spain           |
 | Serving popcorn, cholesterol, and joy for 37  years. |
-+------------------------+
+|------------------------------------------------------|
 
 Transaction [ID=1,
 	formattedTimestamp=15/02/2023-15:00:33,
@@ -328,13 +328,13 @@ Transaction [ID=2,
 	items=[Soda beverage cup 'MEDIUM' - price=4.5], Product: 'Mixed nuts bag' - price=7.2],
 	totalCost=11.7]
 	
-products.IllegalSizeException: Soda cup and popcorn box must be of the same size.
-	at products.Menu.<init>(Menu.java:16)
-	at store.Main.main(Main.java:42)
+- products.IllegalSizeException: Soda cup and popcorn box must be of the same size.
+-	at products.Menu.<init>(Menu.java:16)
+-	at store.Main.main(Main.java:42)
 	
-java.lang.IllegalArgumentException: CandyBag weight must be 20g or higher
-	at products.CandyBag.<init>(CandyBag.java:18)
-	at store.Main.main(Main.java:55)
+- java.lang.IllegalArgumentException: CandyBag weight must be 20g or higher
+-	at products.CandyBag.<init>(CandyBag.java:18)
+-	at store.Main.main(Main.java:55)
 	
 Transaction [ID=5,
 	formattedTimestamp=15/02/2023-15:00:33,
@@ -613,90 +613,90 @@ VALUES
 
 <h3 id="library-output">3.6 Console-Output:</h3>
 
-```
-+--------------------------------------------------------------+
+```diff
+|--------------------------------------------------------------|
 | Do you want to borrow or return a book? (Borrow/Return/Exit) |
-+--------------------------------------------------------------+
+|--------------------------------------------------------------|
 borrow
 Enter book ID: 1
 Enter reader ID: 1
-Book El Quijote borrowed successfully by George Stobbart and set 'unavailable'.
-+--------------------------------------------------------------+
++ Book El Quijote borrowed successfully by George Stobbart and set 'unavailable'.
+|--------------------------------------------------------------|
 | Do you want to borrow or return a book? (Borrow/Return/Exit) |
-+--------------------------------------------------------------+
+|--------------------------------------------------------------|
 return
 Enter book ID: 3
 Enter reader ID: 1
-Book 'Las aventuras de Huckleberry Finn' returned successfully and set 'available'.
-+--------------------------------------------------------------+
++ Book 'Las aventuras de Huckleberry Finn' returned successfully and set 'available'.
+|--------------------------------------------------------------|
 | Do you want to borrow or return a book? (Borrow/Return/Exit) |
-+--------------------------------------------------------------+
+|--------------------------------------------------------------|
 borrow
 Enter book ID: 1
 Enter reader ID: 6
-The book 'El Quijote' is already borrowed.
-+--------------------------------------------------------------+
+- The book 'El Quijote' is already borrowed.
+|--------------------------------------------------------------|
 | Do you want to borrow or return a book? (Borrow/Return/Exit) |
-+--------------------------------------------------------------+
+|--------------------------------------------------------------|
 borrow
 Enter book ID: 10
 Enter reader ID: 4
-Reader Augustin Rosso has already the maximum borrowings.
-+--------------------------------------------------------------+
+- Reader Augustin Rosso has already the maximum borrowings.
+|--------------------------------------------------------------|
 | Do you want to borrow or return a book? (Borrow/Return/Exit) |
-+--------------------------------------------------------------+
+|--------------------------------------------------------------|
 borrow
 Enter book ID: 14
 Enter reader ID: 15
-Reader Gamal Khan has a late return or penalty and can't borrow books.
-+--------------------------------------------------------------+
+- Reader Gamal Khan has a late return or penalty and can't borrow books.
+|--------------------------------------------------------------|
 | Do you want to borrow or return a book? (Borrow/Return/Exit) |
-+--------------------------------------------------------------+
+|--------------------------------------------------------------|
 return
 Enter book ID: 11
 Enter reader ID: 9
-No borrowing found for the specified book and reader IDs.
-+--------------------------------------------------------------+
+- No borrowing found for the specified book and reader IDs.
+|--------------------------------------------------------------|
 | Do you want to borrow or return a book? (Borrow/Return/Exit) |
-+--------------------------------------------------------------+
+|--------------------------------------------------------------|
 return
 Enter book ID: 9
 Enter reader ID: 12
-Book 'El perro de los Baskerville' returned successfully and set 'available'.
-+--------------------------------------------------------------+
++ Book 'El perro de los Baskerville' returned successfully and set 'available'.
+|--------------------------------------------------------------|
 | Do you want to borrow or return a book? (Borrow/Return/Exit) |
-+--------------------------------------------------------------+
+|--------------------------------------------------------------|
 borrow
 Enter book ID: 9
 Enter reader ID: 2
-Reader Nicole Collard has a late return or penalty and can't borrow books.
-+--------------------------------------------------------------+
+- Reader Nicole Collard has a late return or penalty and can't borrow books.
+|--------------------------------------------------------------|
 | Do you want to borrow or return a book? (Borrow/Return/Exit) |
-+--------------------------------------------------------------+
+|--------------------------------------------------------------|
 return
 Enter book ID: 15
 Enter reader ID: 3
-Book 'Las metamorfosis' returned successfully and set 'available'.
-Late return penalty applied: 3 days.
-+--------------------------------------------------------------+
++ Book 'Las metamorfosis' returned successfully and set 'available'.
++ Late return penalty applied: 3 days.
+|--------------------------------------------------------------|
 | Do you want to borrow or return a book? (Borrow/Return/Exit) |
-+--------------------------------------------------------------+
+|--------------------------------------------------------------|
 return
 Enter book ID: 7
 Enter reader ID: 2
-Book 'Robinson Crusoe' returned successfully and set 'available'.
-Late return penalty applied: 12 days.
-+--------------------------------------------------------------+
++ Book 'Robinson Crusoe' returned successfully and set 'available'.
++ Late return penalty applied: 12 days.
+|--------------------------------------------------------------|
 | Do you want to borrow or return a book? (Borrow/Return/Exit) |
-+--------------------------------------------------------------+
+|--------------------------------------------------------------|
 return
 Enter book ID: 12
 Enter reader ID: 2
-Book 'The stand' returned successfully and set 'available'.
-Late return penalty applied: 6 days.
-+--------------------------------------------------------------+
++ Book 'The stand' returned successfully and set 'available'.
++ Late return penalty applied: 6 days.
+|--------------------------------------------------------------|
 | Do you want to borrow or return a book? (Borrow/Return/Exit) |
-+--------------------------------------------------------------+
+|--------------------------------------------------------------|
 exit
 Exiting program...
 ```
