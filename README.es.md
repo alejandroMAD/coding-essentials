@@ -521,7 +521,7 @@ INSERT INTO biblioteca (biblioteca_nombre, biblioteca_direccion, biblioteca_tele
 VALUES 
     ('Biblioteca Islas Filipinas', 'Calle Jesús Maestro, 3', '915800811', 3, 15, 3);
 
-INSERT INTO libro (titulo, autor, fecha, editor, ISBN, numero_paginas, disponible)
+INSERT INTO libro (titulo, autor, fecha_edicion, editor, ISBN, numero_paginas, disponible)
 VALUES
     ('El Quijote', 'Miguel de Cervantes', 1605, 'Francisco de Robles', '9788424921862', 863, true),
     ('Moby Dick', 'Herman Melville', 1851, 'Harper & Brothers', '9781593080275', 635, false),
