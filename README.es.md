@@ -17,7 +17,8 @@ Exceptuando el primer ejercicio, que es un caso de pura imaginación para aplica
     1. [Conocimientos necesarios](#lineage-knowledge)
     2. [Requisitos](#lineage-requirements)
     3. [Salida en consola](#lineage-output)
-    4. [Resumen](#lineage-summary)
+    4. [Diagrama de clases](#lineage-class-diagram)
+    5. [Resumen](#lineage-summary)
 2. [Ejercicio segundo: Yum Snack Bar](#yum-snack-bar)
     1. [Conocimientos necesarios](#yum-knowledge)
     2. [Requisitos](#yum-requirements)
@@ -175,7 +176,11 @@ Primera mitad: [Mercurio, Venus, Tierra, Marte] / Segunda mitad: [Júpiter, Satu
 ===== Robots construidos en total: [6] =====
 ```
 
-<h3 id="lineage-summary">1.4 Resumen:</h3>
+<h3 id="lineage-class-diagram">1.4 Diagrama de clases:</h3>
+
+![Application class diagram](/images/robots_sp_cd.png)
+
+<h3 id="lineage-summary">1.5 Resumen:</h3>
 
 Este programa tiene como objetivo ilustrar un ejemplo de programación orientada a objetos en Java. Utiliza clases abstractas y herencia para crear una jerarquía de tipos de robot con diferentes funcionalidades.
 
