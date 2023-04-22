@@ -17,7 +17,8 @@ Every exercise but the first—a mere play of imagination on objects— are the 
     1. [Required Knowledge](#lineage-knowledge)
     2. [Project Requirements](#lineage-requirements)
     3. [Console Output](#lineage-output)
-    4. [Summary](#lineage-summary)
+    4. [Class Diagram](#lineage-class-diagram)
+    5. [Summary](#lineage-summary)
 2. [Second Exercise: Yum Snack Bar](#yum-snack-bar)
     1. [Required Knowledge](#yum-knowledge)
     2. [Project Requirements](#yum-requirements)
@@ -176,7 +177,11 @@ First half: [Mercurio, Venus, Tierra, Marte] / Second half: [Júpiter, Saturno, 
 =====Total robots manufactured: [6]=====
 ```
 
-<h3 id="lineage-summary">1.4 Summary:</h3>
+<h3 id="lineage-class-diagram">1.4 Class Diagram:</h3>
+
+![Application logo](/images/robots_en_cd.png)
+
+<h3 id="lineage-summary">1.5 Summary:</h3>
 
 This program is intended to serve as a good example of object-oriented programming in Java. It uses abstract classes and inheritance to create a hierarchy of robot classes with different functionality.
 
