@@ -179,7 +179,7 @@ First half: [Mercurio, Venus, Tierra, Marte] / Second half: [Júpiter, Saturno, 
 
 <h3 id="lineage-class-diagram">1.4 Class Diagram:</h3>
 
-![Application logo](/images/robots_en_cd.png)
+![Application class diagram](/images/robots_en_cd.png)
 
 <h3 id="lineage-summary">1.5 Summary:</h3>
 
